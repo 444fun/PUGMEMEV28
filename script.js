@@ -20,6 +20,10 @@ const METAPLEX_CONFIG = {
     treasuryAddress: null      // To be set when deployed
 };
 
+// PUG Token Configuration
+// This is a PUBLIC Solana token address, not a secret API key
+const PUG_TOKEN_ADDRESS = 'HZk8CX1absvWs7273D4dLeeMBneWMa4dioGzvumppump';
+
 // IPFS Configuration
 const IPFS_CONFIG = {
     gateway: 'https://gateway.pinata.cloud/ipfs/',
@@ -2576,7 +2580,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     // CONTRATO DA MEMECOIN - INTEGRAÇÃO AVANÇADA
     // ==========================================
-    const CONTRACT_ADDRESS = 'HZk8CX1absvWs7273D4dLeeMBneWMa4dioGzvumppump';
+    const CONTRACT_ADDRESS = PUG_TOKEN_ADDRESS;
     const contractDisplay = document.getElementById('contractDisplay');
     const viewContract = document.getElementById('viewContract');
     const copyContractBtn = document.getElementById('copyContract');
@@ -2957,7 +2961,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     class PriceManager {
         constructor() {
-            this.tokenAddress = 'HZk8CX1absvWs7273D4dLeeMBneWMa4dioGzvumppump';
+            this.tokenAddress = PUG_TOKEN_ADDRESS;
             this.basePrice = 0.00003791;
             this.currentPrice = this.basePrice;
             this.priceHistory = [this.basePrice];
