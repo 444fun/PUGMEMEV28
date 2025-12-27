@@ -2,6 +2,8 @@
 
 ## ✅ STATUS: PRONTO PARA DEPLOY
 
+<!-- This section outlines the final deployment instructions for the PUGMEM system, which has been fully configured and tested. -->
+
 O PUGMEM está completamente configurado e testado. Aqui estão as instruções finais para deploy:
 
 ---
