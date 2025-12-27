@@ -23,7 +23,7 @@ O PUGMEM foi **deployado com sucesso** no GitHub!
 
 - GitHub Pages será ativado
 - Site ficará online em **1-2 minutos**
-- URL: `https://444fun.github.io/PUGMEM/`
+- URL: `https://pugmeme.io`
 
 ---
 

@@ -33,7 +33,7 @@
 
 ### **Acessar Launch:**
 
-1. Abra o site: `https://444fun.github.io/PUGMEM/`
+1. Abra o site: `https://pugmeme.io`
 2. Clique no botão **"LAUNCH"** na seção de preço
 3. A seção de launch será exibida
 
@@ -151,7 +151,7 @@ class TokenLaunchManager {
 
 ## 📞 **TESTE AGORA:**
 
-1. **Acesse:** `https://444fun.github.io/PUGMEM/`
+1. **Acesse:** `https://pugmeme.io`
 2. **Clique:** Botão "LAUNCH"
 3. **Teste:** Conexão e criação de token (simulado)
 4. **Verifique:** Status e progresso visual
