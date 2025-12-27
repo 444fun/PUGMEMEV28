@@ -17,41 +17,110 @@ O PUGMEM está **100% pronto** para deploy em produção. Todas as verificaçõe
 
 ---
 
-## 🚀 DEPLOY IMEDIATO
+## 🚀 DEPLOY IMEDIATO - GITHUB PAGES (MAIS FÁCIL)
 
-### Opção 1: Netlify (Recomendado)
+### ✅ PASSO 1: Criar Repositório no GitHub
+
+1. Vá para https://github.com/new
+2. **Nome do repositório:** `pugmem` (ou `pugmem-website`)
+3. **Descrição:** `PUG MEMECOIN - Solana Memecoin Revolution`
+4. **Público** (para que seja acessível)
+5. ❌ **NÃO** marque "Add a README file"
+6. Clique **"Create repository"**
+
+### ✅ PASSO 2: Conectar e Deploy (Execute estes comandos)
 
 ```bash
-# 1. Instalar Netlify CLI
-npm install -g netlify-cli
+# Substitua SEU_USERNAME pelo seu username do GitHub
+git remote add origin https://github.com/SEU_USERNAME/pugmem.git
 
-# 2. Login
-netlify login
-
-# 3. Deploy
-netlify deploy --prod --dir=. --site-name pugmem
+# Fazer push para GitHub
+git push -u origin master
 ```
 
-### Opção 2: Vercel
+### ✅ PASSO 3: Ativar GitHub Pages
+
+1. No repositório GitHub, vá para **Settings** > **Pages**
+2. **Source:** "Deploy from a branch"
+3. **Branch:** `master` (ou `main`)
+4. **Folder:** `/ (root)`
+5. Clique **"Save"**
+
+### 🎉 RESULTADO ESPERADO:
+
+- **URL do site:** `https://SEU_USERNAME.github.io/pugmem/`
+- **HTTPS:** Automático
+- **Deploy:** Em 1-2 minutos
+- **Custo:** GRÁTIS
+
+---
+
+## ⚡ DEPLOY ALTERNATIVO - NETLIFY (Se GitHub Pages não funcionar)
 
 ```bash
-# 1. Instalar Vercel CLI
-npm install -g vercel
+# 1. Login no Netlify
+netlify login
+
+# 2. Criar e deploy
+netlify deploy --create-site --dir=. --prod
+```
+
+---
+
+## 🔗 DEPLOY ALTERNATIVO - VERCEL (Ultra rápido)
+
+```bash
+# 1. Login no Vercel
+vercel login
 
 # 2. Deploy
 vercel --prod
 ```
 
-### Opção 3: GitHub Pages
+---
 
-```bash
-# 1. Commit e push
-git add .
-git commit -m "🚀 Deploy PUGMEM v1.0 - Produção"
+## 📊 PRÓXIMOS PASSOS APÓS DEPLOY:
+
+### 1. Testar Site (Imediato)
+
+- [ ] Abrir URL de produção
+- [ ] Testar wallet connection
+- [ ] Verificar botões sociais
+- [ ] Confirmar responsividade
+
+### 2. Configurar Domínio (24h)
+
+- [ ] Comprar domínio (ex: pugmem.com)
+- [ ] Configurar DNS para apontar para host
+- [ ] Ativar HTTPS
+
+### 3. Google Analytics (48h)
+
+- [ ] Verificar dados chegando no GA4
+- [ ] Configurar Goals conforme `ANALYTICS_SETUP.md`
+- [ ] Criar dashboards
+
+### 4. Monitoramento (Semanal)
+
+- [ ] Acompanhar conexões de wallet
+- [ ] Monitorar engajamento social
+- [ ] Analisar tráfego e conversões
+
+---
+
+## 📞 SUPORTE:
+
+- **Deploy falhou?** Verifique console do navegador (F12)
+- **Analytics não funciona?** Confirme ID `G-4Q7LXSL53E`
+- **Web3 erro?** Verifique conexão com Phantom wallet
+
+**🎉 BOA SORTE NO LANÇAMENTO DO PUGMEM!**
 git push origin main
 
 # 2. Ativar GitHub Pages no repositório
+
 # Settings > Pages > Source: Deploy from branch > main
+
 ```
 
 ---
@@ -96,3 +165,4 @@ git push origin main
 
 **🎉 BOA SORTE NO LANÇAMENTO DO PUGMEM!**</content>
 <parameter name="filePath">c:\Users\earle\husky\DEPLOY_NOW.md
+```
