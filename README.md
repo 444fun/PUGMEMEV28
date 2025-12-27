@@ -708,12 +708,12 @@ Edite `index.html` e adicione novos cards:
       **Conecte sua Wallet**: Junte-se à blockchain 3. **Compre $PUG**: Adquira
       sua armadura digital 4. **Participe da Comunidade**: Lute nas batalhas
       meméticas 5. **HODL Forte**: Seja parte da lenda eterna ### **Links
-      Essenciais** - 🌐 **Website**: [pugmeme.io](https://pugmeme.io) -
-      🐦 **Twitter**: [@PUGMemCoin](https://twitter.com/PUGMemCoin) - 💬
+      Essenciais** - 🌐 **Website**: [pugmeme.io](https://pugmeme.io) - 🐦
+      **Twitter**: [@PUGMemCoin](https://twitter.com/PUGMemCoin) - 💬
       **Discord**: [PUG Army](https://discord.gg/pugarmy) - 📱 **Telegram**:
       [PUG Warriors](https://t.me/pugwarriors) - 🎯 **DEX**: [Compra
-      $PUG](https://dex.pugmeme.io) --- ## ⚡ **MANTRA FINAL** **PUG é mais
-      que uma moeda. PUG é um movimento.** **PUG é mais que um meme. PUG é uma
+      $PUG](https://dex.pugmeme.io) --- ## ⚡ **MANTRA FINAL** **PUG é mais que
+      uma moeda. PUG é um movimento.** **PUG é mais que um meme. PUG é uma
       revolução.** **PUG é mais que uma comunidade. PUG é uma família.** **PUG é
       mais que uma tecnologia. PUG é o futuro.** **HODL PUG. AMEM PUG. SEJAM
       PUG.** --- *#PUGREVOLUTION #TOGETHERWEMOON #PUGARMY #MEMECOINREVOLUTION

@@ -2,47 +2,47 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Cache node modules
-      uses: actions/cache@v4
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
+      - name: Cache node modules
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-        cache: 'npm'
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "npm"
 
-    - name: Install dependencies
-      run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-    - name: Build (if needed)
-      run: |
-        # Add build commands here if your project needs building
-        echo "Build step - customize as needed"
+      - name: Build (if needed)
+        run: |
+          # Add build commands here if your project needs building
+          echo "Build step - customize as needed"
 
-    - name: Run tests (if any)
-      run: |
-        # Add test commands here
-        echo "Test step - customize as needed"
+      - name: Run tests (if any)
+        run: |
+          # Add test commands here
+          echo "Test step - customize as needed"
 
-    - name: Deploy to Vercel
-      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      run: |
-        # Vercel deployment will happen automatically via GitHub integration
-        echo "Deploy triggered via Vercel GitHub integration"
+      - name: Deploy to Vercel
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: |
+          # Vercel deployment will happen automatically via GitHub integration
+          echo "Deploy triggered via Vercel GitHub integration"
