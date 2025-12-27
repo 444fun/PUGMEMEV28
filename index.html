@@ -2191,6 +2191,118 @@
         });
     </script>
 
+    <!-- Token Launch Section -->
+    <section class="token-launch" id="token-launch" style="display: none;">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-title">
+                    <span class="title-icon">🚀</span>
+                    <h2>LAUNCH $PUGMEM</h2>
+                    <p>Ir ao ar na Solana</p>
+                </div>
+            </div>
+
+            <div class="launch-container web3-3d-panel">
+                <div class="launch-header">
+                    <h3>🚀 Token Launch Dashboard</h3>
+                    <p>Crie seu token SPL, adicione liquidez no Raydium e lance na Solana</p>
+                </div>
+
+                <div class="launch-steps">
+                    <div class="launch-step" id="step1">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Conectar Carteira</h4>
+                            <p>Conecte sua carteira Phantom para continuar</p>
+                            <button class="btn-primary" id="connectLaunchWallet">🔗 Conectar Phantom</button>
+                        </div>
+                    </div>
+
+                    <div class="launch-step" id="step2" style="display: none;">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Criar Token SPL</h4>
+                            <p>Configure os parâmetros do seu token</p>
+                            <div class="token-config">
+                                <div class="config-group">
+                                    <label>Nome do Token:</label>
+                                    <input type="text" id="tokenName" value="$PUGMEM" placeholder="Ex: $PUGMEM">
+                                </div>
+                                <div class="config-group">
+                                    <label>Símbolo:</label>
+                                    <input type="text" id="tokenSymbol" value="PUG" placeholder="Ex: PUG" maxlength="10">
+                                </div>
+                                <div class="config-group">
+                                    <label>Supply Total:</label>
+                                    <input type="number" id="tokenSupply" value="1000000000" placeholder="Ex: 1000000000">
+                                </div>
+                                <div class="config-group">
+                                    <label>Decimals:</label>
+                                    <input type="number" id="tokenDecimals" value="9" min="0" max="9">
+                                </div>
+                            </div>
+                            <button class="btn-primary" id="createTokenBtn">🪙 Criar Token SPL</button>
+                        </div>
+                    </div>
+
+                    <div class="launch-step" id="step3" style="display: none;">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Adicionar Liquidez</h4>
+                            <p>Adicione liquidez no Raydium para criar o pool de trading</p>
+                            <div class="liquidity-config">
+                                <div class="config-group">
+                                    <label>Quantidade de SOL:</label>
+                                    <input type="number" id="solAmount" value="1" step="0.1" min="0.1">
+                                </div>
+                                <div class="config-group">
+                                    <label>Quantidade de Tokens:</label>
+                                    <input type="number" id="tokenAmount" value="500000000" placeholder="Metade do supply">
+                                </div>
+                            </div>
+                            <button class="btn-primary" id="addLiquidityBtn">💧 Adicionar Liquidez</button>
+                        </div>
+                    </div>
+
+                    <div class="launch-step" id="step4" style="display: none;">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Finalizar Launch</h4>
+                            <p>Burn LP tokens e renuncie ownership</p>
+                            <div class="final-actions">
+                                <button class="btn-secondary" id="burnLpBtn">🔥 Burn LP Tokens</button>
+                                <button class="btn-secondary" id="renounceBtn">👑 Renunciar Ownership</button>
+                                <button class="btn-primary" id="completeLaunchBtn">🎉 Completar Launch</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="launch-status">
+                    <div class="status-panel">
+                        <h4>📊 Status do Launch</h4>
+                        <div class="status-item">
+                            <span class="status-label">Carteira:</span>
+                            <span class="status-value" id="walletStatus">❌ Não conectada</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Token:</span>
+                            <span class="status-value" id="tokenStatus">⏳ Aguardando</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Liquidez:</span>
+                            <span class="status-value" id="liquidityStatus">⏳ Aguardando</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Launch:</span>
+                            <span class="status-value" id="launchStatus">⏳ Aguardando</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <script src="script.js"></script>
 
     <!-- Analytics Libraries -->

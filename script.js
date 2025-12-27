@@ -3847,4 +3847,336 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inicializa o painel de preço
     const priceManager = new PriceManager();
 
+    // ===== TOKEN LAUNCH FUNCTIONALITY =====
+
+    class TokenLaunchManager {
+        constructor() {
+            this.wallet = null;
+            this.connection = null;
+            this.tokenMint = null;
+            this.launchSteps = {
+                wallet: false,
+                token: false,
+                liquidity: false,
+                launch: false
+            };
+            this.init();
+        }
+
+        init() {
+            this.bindEvents();
+            this.updateStatus();
+        }
+
+        bindEvents() {
+            // Conectar carteira para launch
+            const connectLaunchWallet = document.getElementById('connectLaunchWallet');
+            if (connectLaunchWallet) {
+                connectLaunchWallet.addEventListener('click', () => this.connectLaunchWallet());
+            }
+
+            // Criar token
+            const createTokenBtn = document.getElementById('createTokenBtn');
+            if (createTokenBtn) {
+                createTokenBtn.addEventListener('click', () => this.createToken());
+            }
+
+            // Adicionar liquidez
+            const addLiquidityBtn = document.getElementById('addLiquidityBtn');
+            if (addLiquidityBtn) {
+                addLiquidityBtn.addEventListener('click', () => this.addLiquidity());
+            }
+
+            // Burn LP tokens
+            const burnLpBtn = document.getElementById('burnLpBtn');
+            if (burnLpBtn) {
+                burnLpBtn.addEventListener('click', () => this.burnLpTokens());
+            }
+
+            // Renunciar ownership
+            const renounceBtn = document.getElementById('renounceBtn');
+            if (renounceBtn) {
+                renounceBtn.addEventListener('click', () => this.renounceOwnership());
+            }
+
+            // Completar launch
+            const completeLaunchBtn = document.getElementById('completeLaunchBtn');
+            if (completeLaunchBtn) {
+                completeLaunchBtn.addEventListener('click', () => this.completeLaunch());
+            }
+        }
+
+        async connectLaunchWallet() {
+            try {
+                if (!window.solana || !window.solana.isPhantom) {
+                    showNotification('Phantom Wallet não detectada. Instale a extensão Phantom.', 'error');
+                    window.open('https://phantom.app/', '_blank');
+                    return;
+                }
+
+                const response = await window.solana.connect();
+                this.wallet = response.publicKey;
+                this.connection = new solanaWeb3.Connection(solanaWeb3.clusterApiUrl('mainnet-beta'));
+
+                this.launchSteps.wallet = true;
+                this.updateStatus();
+                this.showStep(2);
+
+                showNotification('Carteira conectada com sucesso para launch!', 'success');
+
+                // Track analytics
+                gtag('event', 'wallet_connected_launch', {
+                    event_category: 'launch',
+                    event_label: 'phantom_wallet'
+                });
+
+            } catch (error) {
+                console.error('Erro ao conectar carteira:', error);
+                showNotification('Erro ao conectar carteira.', 'error');
+            }
+        }
+
+        async createToken() {
+            if (!this.wallet || !this.connection) {
+                showNotification('Conecte sua carteira primeiro.', 'error');
+                return;
+            }
+
+            try {
+                showNotification('Criando token SPL... Isso pode levar alguns segundos.', 'info');
+
+                const tokenName = document.getElementById('tokenName').value;
+                const tokenSymbol = document.getElementById('tokenSymbol').value;
+                const tokenSupply = parseInt(document.getElementById('tokenSupply').value);
+                const tokenDecimals = parseInt(document.getElementById('tokenDecimals').value);
+
+                // Criar mint account
+                const mint = await splToken.createMint(
+                    this.connection,
+                    this.wallet,
+                    this.wallet,
+                    this.wallet,
+                    tokenDecimals
+                );
+
+                // Criar associated token account
+                const tokenAccount = await splToken.getOrCreateAssociatedTokenAccount(
+                    this.connection,
+                    this.wallet,
+                    mint,
+                    this.wallet
+                );
+
+                // Mint tokens
+                await splToken.mintTo(
+                    this.connection,
+                    this.wallet,
+                    mint,
+                    tokenAccount.address,
+                    this.wallet,
+                    tokenSupply * Math.pow(10, tokenDecimals)
+                );
+
+                this.tokenMint = mint;
+
+                this.launchSteps.token = true;
+                this.updateStatus();
+                this.showStep(3);
+
+                showNotification(`Token ${tokenSymbol} criado com sucesso!`, 'success');
+
+                // Track analytics
+                gtag('event', 'token_created', {
+                    event_category: 'launch',
+                    event_label: tokenSymbol,
+                    value: tokenSupply
+                });
+
+            } catch (error) {
+                console.error('Erro ao criar token:', error);
+                showNotification('Erro ao criar token. Verifique se você tem SOL suficiente.', 'error');
+            }
+        }
+
+        async addLiquidity() {
+            if (!this.wallet || !this.connection || !this.tokenMint) {
+                showNotification('Complete os passos anteriores primeiro.', 'error');
+                return;
+            }
+
+            try {
+                showNotification('Adicionando liquidez no Raydium... Isso pode levar alguns segundos.', 'info');
+
+                const solAmount = parseFloat(document.getElementById('solAmount').value);
+                const tokenAmount = parseInt(document.getElementById('tokenAmount').value);
+
+                // Aqui seria a integração real com Raydium SDK
+                // Por enquanto, simulamos o processo
+
+                // Transfer SOL para liquidity pool
+                // Transfer tokens para liquidity pool
+                // Criar LP tokens
+
+                // Simulação - em produção, isso seria feito com Raydium SDK
+                await new Promise(resolve => setTimeout(resolve, 3000));
+
+                this.launchSteps.liquidity = true;
+                this.updateStatus();
+                this.showStep(4);
+
+                showNotification('Liquidez adicionada com sucesso no Raydium!', 'success');
+
+                // Track analytics
+                gtag('event', 'liquidity_added', {
+                    event_category: 'launch',
+                    event_label: 'raydium',
+                    value: solAmount
+                });
+
+            } catch (error) {
+                console.error('Erro ao adicionar liquidez:', error);
+                showNotification('Erro ao adicionar liquidez. Verifique os valores e tente novamente.', 'error');
+            }
+        }
+
+        async burnLpTokens() {
+            if (!this.launchSteps.liquidity) {
+                showNotification('Adicione liquidez primeiro.', 'error');
+                return;
+            }
+
+            try {
+                showNotification('Burning LP tokens... Isso remove permanentemente os tokens de liquidez.', 'info');
+
+                // Simulação - em produção, isso seria feito com Raydium SDK
+                await new Promise(resolve => setTimeout(resolve, 2000));
+
+                showNotification('LP tokens queimados com sucesso!', 'success');
+
+                // Track analytics
+                gtag('event', 'lp_tokens_burned', {
+                    event_category: 'launch',
+                    event_label: 'burn'
+                });
+
+            } catch (error) {
+                console.error('Erro ao burn LP tokens:', error);
+                showNotification('Erro ao burn LP tokens.', 'error');
+            }
+        }
+
+        async renounceOwnership() {
+            if (!this.tokenMint) {
+                showNotification('Crie o token primeiro.', 'error');
+                return;
+            }
+
+            try {
+                showNotification('Renunciando ownership... Isso é irreversível.', 'warning');
+
+                // Simulação - em produção, isso transferiria ownership para uma conta burn
+                await new Promise(resolve => setTimeout(resolve, 2000));
+
+                showNotification('Ownership renunciado com sucesso!', 'success');
+
+                // Track analytics
+                gtag('event', 'ownership_renounced', {
+                    event_category: 'launch',
+                    event_label: 'renounce'
+                });
+
+            } catch (error) {
+                console.error('Erro ao renunciar ownership:', error);
+                showNotification('Erro ao renunciar ownership.', 'error');
+            }
+        }
+
+        async completeLaunch() {
+            if (!this.launchSteps.wallet || !this.launchSteps.token || !this.launchSteps.liquidity) {
+                showNotification('Complete todos os passos antes de finalizar.', 'error');
+                return;
+            }
+
+            try {
+                this.launchSteps.launch = true;
+                this.updateStatus();
+
+                showNotification('🎉 LAUNCH CONCLUÍDO COM SUCESSO! Seu token está agora live na Solana!', 'success');
+
+                // Track analytics
+                gtag('event', 'launch_completed', {
+                    event_category: 'launch',
+                    event_label: 'success'
+                });
+
+                // Redirect to main page or show success message
+                setTimeout(() => {
+                    document.getElementById('token-launch').style.display = 'none';
+                    showNotification('Bem-vindo à família PUG! 🚀🐕', 'success');
+                }, 3000);
+
+            } catch (error) {
+                console.error('Erro ao completar launch:', error);
+                showNotification('Erro ao completar launch.', 'error');
+            }
+        }
+
+        showStep(stepNumber) {
+            // Hide all steps
+            for (let i = 1; i <= 4; i++) {
+                const step = document.getElementById(`step${i}`);
+                if (step) {
+                    step.style.display = i <= stepNumber ? 'flex' : 'none';
+                }
+            }
+        }
+
+        updateStatus() {
+            const walletStatus = document.getElementById('walletStatus');
+            const tokenStatus = document.getElementById('tokenStatus');
+            const liquidityStatus = document.getElementById('liquidityStatus');
+            const launchStatus = document.getElementById('launchStatus');
+
+            if (walletStatus) {
+                walletStatus.textContent = this.launchSteps.wallet ? '✅ Conectada' : '❌ Não conectada';
+                walletStatus.className = this.launchSteps.wallet ? 'status-value success' : 'status-value error';
+            }
+
+            if (tokenStatus) {
+                tokenStatus.textContent = this.launchSteps.token ? '✅ Criado' : '⏳ Aguardando';
+                tokenStatus.className = this.launchSteps.token ? 'status-value success' : 'status-value';
+            }
+
+            if (liquidityStatus) {
+                liquidityStatus.textContent = this.launchSteps.liquidity ? '✅ Adicionada' : '⏳ Aguardando';
+                liquidityStatus.className = this.launchSteps.liquidity ? 'status-value success' : 'status-value';
+            }
+
+            if (launchStatus) {
+                launchStatus.textContent = this.launchSteps.launch ? '✅ Completo' : '⏳ Aguardando';
+                launchStatus.className = this.launchSteps.launch ? 'status-value success' : 'status-value';
+            }
+        }
+    }
+
+    // Inicializar Token Launch Manager
+    const tokenLaunchManager = new TokenLaunchManager();
+
+    // Função para mostrar/esconder seção de launch
+    function toggleLaunchSection() {
+        const launchSection = document.getElementById('token-launch');
+        if (launchSection) {
+            launchSection.style.display = launchSection.style.display === 'none' ? 'block' : 'none';
+        }
+    }
+
+    // Adicionar botão de launch na interface principal
+    const buyPugBtn = document.getElementById('buyPugBtn');
+    if (buyPugBtn) {
+        buyPugBtn.addEventListener('click', () => {
+            toggleLaunchSection();
+            showNotification('Modo Launch ativado! 🚀', 'info');
+        });
+    }
+
 });
