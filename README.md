@@ -79,22 +79,32 @@
 
 ## 🚀 **DEPLOY EM PRODUÇÃO**
 
-### **Opções de Deploy Recomendadas:**
+### **✅ Deploy Ativo no Vercel**
 
-#### **🌐 Netlify (Mais Fácil)**
+**Status:** 🟢 **PRODUÇÃO ATIVA**  
+**Domínio:** `https://pugmeme.io`  
+**Plataforma:** Vercel  
+**Último Deploy:** Automático via GitHub
+
+### **Opções de Deploy Disponíveis:**
+
+#### **⚡ Vercel (ATUALMENTE ATIVO)**
+
+```bash
+# Deploy automático - já configurado
+# Todo push na branch main dispara deploy automático
+git add .
+git commit -m "🚀 Deploy PUGMEM atualização"
+git push origin main
+```
+
+#### **🌐 Netlify (Alternativo)**
 
 ```bash
 npm install -g netlify-cli
 netlify login
 netlify init
 netlify deploy --prod --dir=.
-```
-
-#### **⚡ Vercel (Mais Rápido)**
-
-```bash
-npm install -g vercel
-vercel --prod
 ```
 
 #### **🐙 GitHub Pages (Grátis)**
@@ -108,12 +118,17 @@ git push origin main
 
 ### **📋 Checklist Pré-Deploy:**
 
-- [x] Google Analytics configurado
-- [x] Meta tags SEO completas
-- [x] HTTPS obrigatório
+- [x] Google Analytics configurado (`G-4Q7LXSL53E`)
+- [x] Vercel Analytics ativo
+- [x] Speed Insights implementado
+- [x] Meta tags SEO completas (og:url: pugmeme.io)
+- [x] Tag canonical adicionada
+- [x] Domínio customizado: pugmeme.io
+- [x] HTTPS automático via Vercel
 - [x] Links sociais funcionais
 - [x] Web3 funcionalidades testadas
 - [x] Design responsivo aprovado
+- [x] Sistema de Token Launch implementado
 
 ---
 
@@ -693,11 +708,11 @@ Edite `index.html` e adicione novos cards:
       **Conecte sua Wallet**: Junte-se à blockchain 3. **Compre $PUG**: Adquira
       sua armadura digital 4. **Participe da Comunidade**: Lute nas batalhas
       meméticas 5. **HODL Forte**: Seja parte da lenda eterna ### **Links
-      Essenciais** - 🌐 **Website**: [pugmemcoin.com](https://pugmemcoin.com) -
+      Essenciais** - 🌐 **Website**: [pugmeme.io](https://pugmeme.io) -
       🐦 **Twitter**: [@PUGMemCoin](https://twitter.com/PUGMemCoin) - 💬
       **Discord**: [PUG Army](https://discord.gg/pugarmy) - 📱 **Telegram**:
       [PUG Warriors](https://t.me/pugwarriors) - 🎯 **DEX**: [Compra
-      $PUG](https://dex.pugmemcoin.com) --- ## ⚡ **MANTRA FINAL** **PUG é mais
+      $PUG](https://dex.pugmeme.io) --- ## ⚡ **MANTRA FINAL** **PUG é mais
       que uma moeda. PUG é um movimento.** **PUG é mais que um meme. PUG é uma
       revolução.** **PUG é mais que uma comunidade. PUG é uma família.** **PUG é
       mais que uma tecnologia. PUG é o futuro.** **HODL PUG. AMEM PUG. SEJAM
