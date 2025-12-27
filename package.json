@@ -1,0 +1,15 @@
+{
+  "name": "husky",
+  "version": "1.0.0",
+  "description": "**Google Analytics Configurado:** `G-4Q7LXSL53E`\r **Última Atualização:** Dezembro 2025\r **Status de Produção:** ✅ Aprovado para Deploy\r **Verificação Pré-Deploy:** ✅ TODAS AS VERIFICAÇÕES APROVADAS\r **🚀 Token Launch:** ✅ Implementado",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/speed-insights": "^1.3.1"
+  }
+}
