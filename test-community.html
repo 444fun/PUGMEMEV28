@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste - PUG Web3 Community</title>
+    <link rel="stylesheet" href="styles-web3.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Teste das Funcionalidades da Comunidade</h1>
+
+        <!-- Test Chat -->
+        <section class="test-section">
+            <h2>💬 Teste do Chat</h2>
+            <div id="chatMessages" class="chat-messages" style="height: 200px; border: 1px solid #333; padding: 10px; margin-bottom: 10px;"></div>
+            <input type="text" id="chatInput" placeholder="Digite uma mensagem..." style="width: 70%; padding: 5px;">
+            <button id="sendMessage">Enviar</button>
+        </section>
+
+        <!-- Test Feed -->
+        <section class="test-section">
+            <h2>📱 Teste do Feed</h2>
+            <div class="feed-item">
+                <div class="feed-content">Teste de post no feed! 🚀</div>
+                <div class="feed-actions">
+                    <a href="#" class="feed-action like-action" data-id="test1">❤️ 0</a>
+                    <a href="#" class="feed-action comment-action" data-id="test1">💬 0</a>
+                    <a href="#" class="feed-action share-action" data-id="test1">🔗 0</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Test Actions -->
+        <section class="test-section">
+            <h2>⚡ Teste das Ações Rápidas</h2>
+            <button class="action-btn share-meme">Compartilhar Meme</button>
+            <button class="action-btn join-discord">Entrar no Discord</button>
+            <button class="action-btn follow-twitter">Seguir no Twitter</button>
+        </section>
+
+        <!-- Test Stats -->
+        <section class="test-section">
+            <h2>📊 Teste das Estatísticas</h2>
+            <div class="stat-item">
+                <div class="stat-number">1,234</div>
+                <div class="stat-label">Membros</div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Basic test functionality for community page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Chat functionality
+            const chatInput = document.getElementById('chatInput');
+            const sendButton = document.getElementById('sendMessage');
+            const chatMessages = document.getElementById('chatMessages');
+
+            if (sendButton && chatInput && chatMessages) {
+                sendButton.addEventListener('click', function() {
+                    const message = chatInput.value.trim();
+                    if (message) {
+                        const messageDiv = document.createElement('div');
+                        messageDiv.innerHTML = `<strong>You:</strong> ${message}`;
+                        messageDiv.style.marginBottom = '10px';
+                        chatMessages.appendChild(messageDiv);
+                        chatInput.value = '';
+                        chatMessages.scrollTop = chatMessages.scrollHeight;
+                    }
+                });
+
+                chatInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        sendButton.click();
+                    }
+                });
+            }
+
+            // Feed actions
+            document.querySelectorAll('.feed-action').forEach(action => {
+                action.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const currentText = this.textContent;
+                    const number = parseInt(currentText.split(' ')[1]) || 0;
+                    this.innerHTML = this.innerHTML.replace(/\d+/, number + 1);
+                });
+            });
+
+            // Action buttons
+            document.querySelectorAll('.action-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    alert(`Ação "${this.textContent}" clicada! (Funcionalidade de teste)`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

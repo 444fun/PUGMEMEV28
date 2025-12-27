@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Web3 PUG</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #0f0c1d; color: white; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #333; border-radius: 8px; }
+        button { padding: 10px 15px; margin: 5px; background: #7857ff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #50ffd1; }
+        .success { color: #50ffd1; }
+        .error { color: #ff6b6b; }
+        .info { color: #ffd666; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Teste das Integrações Web3 PUG</h1>
+
+    <div class="test-section">
+        <h3>🔗 Solana API</h3>
+        <button onclick="testSolanaConnection()">Testar Conexão Solana</button>
+        <button onclick="testWalletConnection()">Conectar Wallet</button>
+        <div id="solana-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>🎨 Metaplex API</h3>
+        <button onclick="testMetaplexInit()">Inicializar Metaplex</button>
+        <div id="metaplex-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>📤 IPFS API</h3>
+        <button onclick="testIPFSConnection()">Testar IPFS</button>
+        <input type="file" id="ipfs-file" accept="image/*">
+        <button onclick="testIPFSUpload()">Upload para IPFS</button>
+        <div id="ipfs-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>💾 Database</h3>
+        <button onclick="testDatabase()">Testar Database</button>
+        <div id="db-result"></div>
+    </div>
+
+    <!-- Web3 Libraries -->
+    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
+    <script src="https://unpkg.com/@metaplex-foundation/mpl-token-metadata@3.2.1/dist/index.umd.js"></script>
+    <script src="https://unpkg.com/@metaplex-foundation/js@0.20.1/dist/index.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ipfs-http-client@60.0.1/dist/index.min.js"></script>
+
+    <script>
+        // Test functions
+        function logResult(elementId, message, type = 'info') {
+            const element = document.getElementById(elementId);
+            element.innerHTML = `<span class="${type}">${message}</span>`;
+            console.log(message);
+        }
+
+        async function testSolanaConnection() {
+            try {
+                logResult('solana-result', '🔄 Testando conexão Solana...', 'info');
+
+                // Test basic connection
+                const connection = new solanaWeb3.Connection('https://api.mainnet-beta.solana.com');
+                const version = await connection.getVersion();
+
+                logResult('solana-result', `✅ Solana conectado! Versão: ${version['solana-core']}`, 'success');
+            } catch (error) {
+                logResult('solana-result', `❌ Erro Solana: ${error.message}`, 'error');
+            }
+        }
+
+        async function testWalletConnection() {
+            try {
+                logResult('solana-result', '🔄 Testando wallet...', 'info');
+
+                if (!window.solana) {
+                    throw new Error('Phantom wallet não encontrado');
+                }
+
+                const response = await window.solana.connect();
+                const address = response.publicKey.toString();
+
+                logResult('solana-result', `✅ Wallet conectada: ${address.slice(0, 8)}...${address.slice(-4)}`, 'success');
+            } catch (error) {
+                logResult('solana-result', `❌ Erro wallet: ${error.message}`, 'error');
+            }
+        }
+
+        async function testMetaplexInit() {
+            try {
+                logResult('metaplex-result', '🔄 Inicializando Metaplex...', 'info');
+
+                if (!window.Metaplex) {
+                    throw new Error('Metaplex não carregado');
+                }
+
+                logResult('metaplex-result', '✅ Metaplex carregado com sucesso!', 'success');
+            } catch (error) {
+                logResult('metaplex-result', `❌ Erro Metaplex: ${error.message}`, 'error');
+            }
+        }
+
+        async function testIPFSConnection() {
+            try {
+                logResult('ipfs-result', '🔄 Testando IPFS...', 'info');
+
+                if (!window.IpfsHttpClient) {
+                    throw new Error('IPFS client não carregado');
+                }
+
+                logResult('ipfs-result', '✅ IPFS client carregado!', 'success');
+            } catch (error) {
+                logResult('ipfs-result', `❌ Erro IPFS: ${error.message}`, 'error');
+            }
+        }
+
+        async function testIPFSUpload() {
+            try {
+                const fileInput = document.getElementById('ipfs-file');
+                if (!fileInput.files[0]) {
+                    logResult('ipfs-result', '❌ Selecione um arquivo primeiro', 'error');
+                    return;
+                }
+
+                logResult('ipfs-result', '🔄 Fazendo upload...', 'info');
+
+                const client = window.IpfsHttpClient.create({
+                    host: 'ipfs.infura.io',
+                    port: 5001,
+                    protocol: 'https'
+                    // Removed authorization for testing - add your key for production
+                });
+
+                const result = await client.add(fileInput.files[0]);
+                const url = `https://ipfs.io/ipfs/${result.cid}`;
+
+                logResult('ipfs-result', `✅ Upload concluído! <a href="${url}" target="_blank">${result.cid.toString().slice(0, 12)}...</a>`, 'success');
+            } catch (error) {
+                logResult('ipfs-result', `❌ Erro upload: ${error.message}`, 'error');
+            }
+        }
+
+        async function testDatabase() {
+            try {
+                logResult('db-result', '🔄 Testando database...', 'info');
+
+                // Test localStorage
+                localStorage.setItem('test_web3', JSON.stringify({ test: 'success', timestamp: Date.now() }));
+                const data = JSON.parse(localStorage.getItem('test_web3'));
+
+                logResult('db-result', `✅ Database funcionando! Test: ${data.test}`, 'success');
+            } catch (error) {
+                logResult('db-result', `❌ Erro database: ${error.message}`, 'error');
+            }
+        }
+
+        // Auto-test on load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                testSolanaConnection();
+                testMetaplexInit();
+                testIPFSConnection();
+                testDatabase();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

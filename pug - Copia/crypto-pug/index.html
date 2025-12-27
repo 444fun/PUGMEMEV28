@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MemeCoin — A criptomoeda para se divertir</title>
+    <meta name="description"
+        content="MemeCoin — Uma meme coin criada para chamar a atenção e divertir as pessoas. Não é conselho financeiro." />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="brand">
+                <div class="logo" aria-hidden="true">🪙</div>
+                <div>
+                    <h1>MemeCoin</h1>
+                    <p class="tag">Pra zoar, compartilhar e se divertir — não é conselho financeiro</p>
+                </div>
+            </div>
+            <nav class="nav">
+                <a href="#sobre">Sobre</a>
+                <a href="#roadmap">Roadmap</a>
+                <a href="#comunidade">Comunidade</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Banner com a borda (use border_frame.png na mesma pasta) -->
+        <section class="banner" role="region" aria-label="Banner principal com borda">
+            <div class="banner-inner">
+                <div class="hero-content">
+                    <h2>Uma meme coin para todo mundo compartilhar</h2>
+                    <p class="lead">Curta, compartilhe e brinque com nossa moeda temática — sem promessas de
+                        investimento. Apenas diversão!</p>
+
+                    <div class="actions">
+                        <button id="mintBtn" class="btn primary">Mint (brincadeira)</button>
+                        <button id="shareBtn" class="btn outline">Compartilhar</button>
+                    </div>
+
+                    <div class="stats">
+                        <div class="stat">
+                            <span id="mintCount">0</span>
+                            <small>Mints (brincadeira)</small>
+                        </div>
+                        <div class="stat">
+                            <span id="holdersCount">—</span>
+                            <small>Comunidade</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-art" aria-hidden="true">
+                    <div class="coin">🪙</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resto da página -->
+        <section id="sobre" class="container section">
+            <h3>Sobre a MemeCoin</h3>
+            <p>Esta moeda foi criada para divertir e chamar atenção — para memes, campanhas virais e festas online. Não
+                há garantia de valor, não é investimento e serve só para diversão e marketing social.</p>
+            <ul>
+                <li>Fácil de compartilhar</li>
+                <li>Design divertido e simples</li>
+                <li>Pronto para integrar jogos, giveaways e campanhas</li>
+            </ul>
+        </section>
+
+        <section id="roadmap" class="container section alt">
+            <h3>Roadmap (MVP)</h3>
+            <ol>
+                <li>Lançamento da landing page e comunidade</li>
+                <li>Templates para redes sociais e stickers</li>
+                <li>Eventos virais e mini-jogos</li>
+                <li>Opção de integração com smart contract (se decidir)</li>
+            </ol>
+        </section>
+
+        <section id="comunidade" class="container section">
+            <h3>Comunidade</h3>
+            <p>Junte-se ao nosso espaço para memes e novidades:</p>
+            <div class="links">
+                <a href="#" class="chip">Telegram</a>
+                <a href="#" class="chip">Discord</a>
+                <a href="#" class="chip">Twitter/X</a>
+            </div>
+        </section>
+
+        <section class="container section disclaimer">
+            <h4>Aviso</h4>
+            <p>Esta página e o botão "Mint" são apenas para fins recreativos e de marketing social. Isto não constitui
+                aconselhamento financeiro. Se decidir integrar uma blockchain real futuramente, tome cuidado com
+                segurança e conformidade.</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; <span id="year"></span> MemeCoin — Feito para diversão. <a href="LICENSE">MIT</a></p>
+        </div>
+    </footer>
+
+    <div id="confetti-root" aria-hidden="true"></div>
+
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>

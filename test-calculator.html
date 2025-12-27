@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Solana PUG - Teste</title>
+    <link rel="stylesheet" href="styles-web3.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f0c1d 0%, #1a0b2e 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .test-container {
+            text-align: center;
+            color: white;
+        }
+        .test-title {
+            font-size: 2em;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #9945FF, #14F195);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .instructions {
+            margin: 20px 0;
+            font-size: 1.1em;
+            color: #b0b0c8;
+        }
+        .feature-list {
+            text-align: left;
+            display: inline-block;
+            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .feature-list h3 {
+            color: #14F195;
+            margin-bottom: 10px;
+        }
+        .feature-list ul {
+            list-style: none;
+            padding: 0;
+        }
+        .feature-list li {
+            margin: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        .feature-list li::before {
+            content: '⚡';
+            position: absolute;
+            left: 0;
+            color: #9945FF;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1 class="test-title">🧮 Calculadora Solana PUG</h1>
+
+        <div class="solana-calculator-gif">
+            <div class="calculator-display">
+                <div class="display-text">SOL Calculator</div>
+                <div class="display-value" id="calcResult">0.00000000</div>
+            </div>
+            <div class="calculator-buttons">
+                <button class="calc-btn" data-value="7">7</button>
+                <button class="calc-btn" data-value="8">8</button>
+                <button class="calc-btn" data-value="9">9</button>
+                <button class="calc-btn calc-clear" data-action="clear">C</button>
+                <button class="calc-btn" data-value="4">4</button>
+                <button class="calc-btn" data-value="5">5</button>
+                <button class="calc-btn" data-value="6">6</button>
+                <button class="calc-btn calc-convert" data-action="convert">SOL</button>
+                <button class="calc-btn" data-value="1">1</button>
+                <button class="calc-btn" data-value="2">2</button>
+                <button class="calc-btn" data-value="3">3</button>
+                <button class="calc-btn calc-equals" data-action="equals">=</button>
+                <button class="calc-btn calc-zero" data-value="0">0</button>
+                <button class="calc-btn" data-value=".">.</button>
+                <button class="calc-btn calc-price" data-action="price">$</button>
+            </div>
+            <div class="calculator-led">
+                <div class="led-dot led-red"></div>
+                <div class="led-dot led-yellow"></div>
+                <div class="led-dot led-green"></div>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <p>🎯 <strong>Como usar:</strong></p>
+            <p>Digite valores e use os botões para calcular conversões SOL/PUG</p>
+        </div>
+
+        <div class="feature-list">
+            <h3>✨ Funcionalidades</h3>
+            <ul>
+                <li>Calculadora completa com operações básicas</li>
+                <li>Conversão automática SOL ↔ PUG</li>
+                <li>Preço PUG atualizado em tempo real</li>
+                <li>Animações estilo calculadora antiga</li>
+                <li>Efeitos visuais cyberpunk</li>
+                <li>LEDs indicadores animados</li>
+                <li>Interface responsiva</li>
+                <li>Integração com APIs de preço</li>
+            </ul>
+        </div>
+
+        <div class="instructions">
+            <p>🔄 <strong>Botões especiais:</strong></p>
+            <p><strong>SOL</strong> = Converte entre SOL e PUG | <strong>$</strong> = Mostra preço atual | <strong>C</strong> = Limpa | <strong>=</strong> = Calcula</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
