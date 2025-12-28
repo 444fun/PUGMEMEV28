@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>$PUGMEM - Memecoin Pug para Apaixonados por Memes</title>
+    <meta name="description" content="$PUGMEM - A memecoin mais fofa do Solana. Pugs, memes e Web3 para verdadeiros amantes de memes!" />
+    <meta name="keywords" content="PUG, MEMECOIN, Solana, Memes, Web3, Crypto, Pug Dog, Meme Coin, Blockchain" />
+    <meta name="author" content="PUG MEMECOIN Team" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="$PUGMEM - Memecoin Pug para Apaixonados por Memes" />
+    <meta property="og:description" content="Junte-se à revolução dos pugs memes no Solana! 🐕💎🚀" />
+    <meta property="og:image" content="pug-hero.jpg" />
+    <meta property="og:url" content="https://pugmem.io" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="$PUGMEM - Memecoin Pug para Apaixonados por Memes" />
+    <meta name="twitter:description" content="Junte-se à revolução dos pugs memes no Solana! 🐕💎🚀" />
+    <meta name="twitter:image" content="pug-hero.jpg" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Orbitron:wght@400;700;900&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="pug-logo.jpg" />
+
+    <style>
+        /* Web3 Pug Meme Theme */
+        :root {
+            --pug-bg: #000011;
+            --pug-accent: #ff6b9d;
+            --pug-secondary: #4ecdc4;
+            --pug-tertiary: #ffe66d;
+            --pug-dark: #2d1b69;
+            --pug-glow: rgba(255, 107, 157, 0.5);
+            --pug-shadow: rgba(255, 107, 157, 0.3);
+            --font-meme: 'Comic Neue', cursive;
+            --font-space: 'Space Grotesk', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-space);
+            background: var(--pug-bg);
+            color: var(--pug-accent);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Pug Paw Print Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255, 107, 157, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(78, 205, 196, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(255, 230, 109, 0.05) 0%, transparent 50%);
+            animation: pawPrint 20s ease-in-out infinite;
+            z-index: -2;
+        }
+
+        body::after {
+            content: '🐾';
+            position: fixed;
+            font-size: 50px;
+            opacity: 0.1;
+            animation: pawFloat 15s linear infinite;
+            z-index: -1;
+        }
+
+        body::after:nth-child(2) { top: 20%; left: 10%; animation-delay: -5s; }
+        body::after:nth-child(3) { top: 60%; left: 80%; animation-delay: -10s; }
+        body::after:nth-child(4) { top: 80%; left: 30%; animation-delay: -15s; }
+
+        @keyframes pawPrint {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.7; }
+        }
+
+        @keyframes pawFloat {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.1; }
+            90% { opacity: 0.1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 4em;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--pug-accent), var(--pug-secondary), var(--pug-tertiary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 40px 0;
+            text-shadow: 0 0 30px var(--pug-glow);
+            animation: pugBounce 2s ease-in-out infinite alternate;
+            font-family: var(--font-meme);
+        }
+
+        @keyframes pugBounce {
+            from { transform: scale(1); }
+            to { transform: scale(1.05); }
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 60px 0;
+            position: relative;
+        }
+
+        .pug-hero {
+            width: 300px;
+            height: 300px;
+            background: url('pug-hero.jpg') center/cover;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            border: 5px solid var(--pug-accent);
+            box-shadow: 0 0 50px var(--pug-shadow);
+            animation: pugSpin 10s linear infinite;
+        }
+
+        @keyframes pugSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hero-text {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            font-family: var(--font-meme);
+        }
+
+        .meme-section {
+            background: rgba(45, 27, 105, 0.8);
+            border: 3px solid var(--pug-accent);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 40px 0;
+            backdrop-filter: blur(20px);
+            box-shadow: 
+                0 0 60px var(--pug-shadow),
+                inset 0 0 60px rgba(255, 107, 157, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .meme-section::before {
+            content: '😂🐕🚀';
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 2em;
+            opacity: 0.5;
+            animation: memeDance 2s ease-in-out infinite;
+        }
+
+        @keyframes memeDance {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(5deg) scale(1.1); }
+            50% { transform: rotate(-5deg) scale(0.9); }
+            75% { transform: rotate(3deg) scale(1.05); }
+        }
+
+        .meme-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .meme-card {
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid var(--pug-secondary);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .meme-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px var(--pug-shadow);
+            border-color: var(--pug-accent);
+        }
+
+        .meme-card::after {
+            content: '🐾';
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 2em;
+            opacity: 0.3;
+        }
+
+        .meme-image {
+            width: 100%;
+            height: 200px;
+            background: var(--pug-dark);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            color: var(--pug-accent);
+        }
+
+        .meme-title {
+            font-size: 1.2em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-family: var(--font-meme);
+        }
+
+        .meme-text {
+            font-size: 0.9em;
+            opacity: 0.8;
+            margin-bottom: 15px;
+        }
+
+        .meme-button {
+            background: linear-gradient(45deg, var(--pug-accent), var(--pug-secondary));
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            color: var(--pug-bg);
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-family: var(--font-meme);
+        }
+
+        .meme-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px var(--pug-shadow);
+        }
+
+        .pug-facts {
+            background: rgba(78, 205, 196, 0.1);
+            border: 2px solid var(--pug-secondary);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .fact-title {
+            font-size: 2em;
+            margin-bottom: 20px;
+            font-family: var(--font-meme);
+        }
+
+        .fact-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .fact-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid var(--pug-tertiary);
+        }
+
+        .community-section {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .community-title {
+            font-size: 3em;
+            margin-bottom: 30px;
+            font-family: var(--font-meme);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, var(--pug-accent), var(--pug-secondary));
+            color: var(--pug-bg);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+            font-family: var(--font-meme);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--pug-shadow);
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .social-link:hover::before {
+            left: 100%;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 2px solid var(--pug-accent);
+            margin-top: 60px;
+        }
+
+        .footer-text {
+            font-size: 1.2em;
+            opacity: 0.8;
+            font-family: var(--font-meme);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            .pug-hero {
+                width: 200px;
+                height: 200px;
+            }
+            .meme-grid {
+                grid-template-columns: 1fr;
+            }
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="hero-section">
+            <div class="pug-hero"></div>
+            <h1>$PUGMEM 🐕💎🚀</h1>
+            <p class="hero-text">
+                A memecoin mais fofa do universo! Para apaixonados por pugs e memes que querem revolucionar o Web3 com carinhas adoráveis e muito humor. 🐾😂
+            </p>
+        </header>
+
+        <section class="meme-section">
+            <h2 style="text-align: center; font-size: 2.5em; margin-bottom: 20px; font-family: var(--font-meme);">Galeria de Memes Pug 🖼️</h2>
+            <div class="meme-grid">
+                <div class="meme-card">
+                    <div class="meme-image">🐕</div>
+                    <h3 class="meme-title">Pug Astronauta</h3>
+                    <p class="meme-text">Quando seu pug sonha em ir para a lua... mas só quer dormir no sofá!</p>
+                    <button class="meme-button">👍 Like</button>
+                </div>
+                <div class="meme-card">
+                    <div class="meme-image">🚀</div>
+                    <h3 class="meme-title">Pug to the Moon</h3>
+                    <p class="meme-text">Pugs não vão para Marte, eles vão para o coração dos memes!</p>
+                    <button class="meme-button">❤️ Love</button>
+                </div>
+                <div class="meme-card">
+                    <div class="meme-image">💎</div>
+                    <h3 class="meme-title">Diamond Pug</h3>
+                    <p class="meme-text">Este pug vale mais que diamantes... vale memes infinitos!</p>
+                    <button class="meme-button">💎 Diamond</button>
+                </div>
+                <div class="meme-card">
+                    <div class="meme-image">🐾</div>
+                    <h3 class="meme-title">Paw-some Meme</h3>
+                    <p class="meme-text">Pugs têm patas incríveis... e memes ainda melhores!</p>
+                    <button class="meme-button">🐾 Paw</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="pug-facts">
+            <h2 class="fact-title">Fatos Incríveis sobre Pugs 🐶</h2>
+            <div class="fact-list">
+                <div class="fact-item">
+                    <strong>Fato #1:</strong> Pugs foram criados na China antiga como cães de companhia para imperadores!
+                </div>
+                <div class="fact-item">
+                    <strong>Fato #2:</strong> O focinho enrugado dos pugs ajuda a filtrar o ar... e coletar memes!
+                </div>
+                <div class="fact-item">
+                    <strong>Fato #3:</strong> Pugs podem roncar como humanos... especialmente depois de um dia de trading!
+                </div>
+                <div class="fact-item">
+                    <strong>Fato #4:</strong> Existem mais memes de pugs na internet do que grãos de areia na praia!
+                </div>
+            </div>
+        </section>
+
+        <section class="community-section">
+            <h2 class="community-title">Junte-se à Comunidade Pug! 🌍</h2>
+            <div class="social-links">
+                <a href="#" class="social-link">🐦 Twitter</a>
+                <a href="#" class="social-link">💬 Discord</a>
+                <a href="#" class="social-link">📱 Telegram</a>
+                <a href="#" class="social-link">🖼️ Instagram</a>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p class="footer-text">
+                $PUGMEM - Feito com ❤️ para amantes de pugs e memes. DYOR! 🚀🐕💎
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Funções interativas para amantes de memes
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.meme-button');
+            
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const emoji = this.textContent.split(' ')[0];
+                    this.textContent = emoji + ' Clicado!';
+                    this.style.background = 'linear-gradient(45deg, #ffe66d, #ff6b9d)';
+                    
+                    setTimeout(() => {
+                        this.textContent = emoji + ' ' + this.textContent.split(' ')[1];
+                        this.style.background = 'linear-gradient(45deg, var(--pug-accent), var(--pug-secondary))';
+                    }, 1000);
+                });
+            });
+
+            // Efeito de hover nos cards
+            const cards = document.querySelectorAll('.meme-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.animation = 'pugBounce 0.5s ease-in-out';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.animation = '';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
