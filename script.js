@@ -22,7 +22,7 @@ const METAPLEX_CONFIG = {
 
 // PUG Token Configuration
 // This is a PUBLIC Solana token address, not a secret API key
-const PUG_TOKEN_ADDRESS = 'HZk8CX1absvWs7273D4dLeeMBneWMa4dioGzvumppump';
+const PUG_TOKEN_ADDRESS = 'GKKJkrCB8QEy7NwcNVwNa8avdywW6iCoNZpzaMtepump';
 
 // IPFS Configuration
 const IPFS_CONFIG = {
@@ -75,7 +75,7 @@ const COINGECKO_CONFIG = {
 const DEXSCREENER_CONFIG = {
     baseUrl: 'https://api.dexscreener.com/latest/dex',
     pairs: {
-        pug: 'PUG_TOKEN_ADDRESS' // Replace with actual token address
+        pug: PUG_TOKEN_ADDRESS // Replace with actual token address
     }
 };
 
@@ -1889,35 +1889,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const dbManager = new DatabaseManager();
     
     // ==========================================
-    // NOTIFICATION HELPER
-    // ==========================================
-    function showNotification(message, type = 'info') {
-        // Cria o elemento de notificação se não existir
-        let notification = document.querySelector('.notification');
-        if (!notification) {
-            notification = document.createElement('div');
-            notification.className = 'notification';
-            document.body.appendChild(notification);
-        }
-        
-        // Define o tipo e mensagem
-        notification.className = `notification ${type}`;
-        notification.textContent = message;
-        
-        // Mostra a notificação
-        notification.style.display = 'block';
-        notification.style.opacity = '1';
-        
-        // Esconde após 3 segundos
-        setTimeout(() => {
-            notification.style.opacity = '0';
-            setTimeout(() => {
-                notification.style.display = 'none';
-            }, 300);
-        }, 3000);
-    }
-    
-    // ==========================================
     // WALLET CONNECTION SIMULATION
     // ==========================================
     const connectWalletBtn = document.getElementById('connectWallet');
@@ -2727,6 +2698,27 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
+        // Configuração do botão copiar endereço completo no painel
+        const copyFullContractBtn = document.getElementById('copyFullContract');
+        if (copyFullContractBtn) {
+            copyFullContractBtn.addEventListener('click', async () => {
+                const success = await copyToClipboard(contractConfig.address);
+                if (success) {
+                    showNotification('✅ Endereço completo copiado para área de transferência!', 'success');
+
+                    // Animação visual de feedback
+                    copyFullContractBtn.style.transform = 'scale(0.95)';
+                    copyFullContractBtn.querySelector('.copy-text').textContent = 'Copiado!';
+                    setTimeout(() => {
+                        copyFullContractBtn.style.transform = '';
+                        copyFullContractBtn.querySelector('.copy-text').textContent = 'Copiar';
+                    }, 2000);
+                } else {
+                    showNotification('❌ Erro ao copiar endereço', 'error');
+                }
+            });
+        }
+
         // Adicionar menu de contexto ao chip do contrato
         if (contractChip) {
             contractChip.addEventListener('contextmenu', (e) => {
@@ -3251,7 +3243,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     // Adiciona funcionalidade de "like" - abre Solscan
                     setTimeout(() => {
-                        window.open('https://solscan.io/account/EK13eX1SzkZy2tRgrg9T6ycHLjqnbAX2BrMu1tLhB3RN?cluster=mainnet', '_blank');
+                        window.open('https://solscan.io/account/GKKJkrCB8QEy7NwcNVwNa8avdywW6iCoNZpzaMtepump?cluster=mainnet', '_blank');
                         showNotification('❤️ Curtido! Verificando conta no Solscan...', 'success');
                     }, 1000);
                 });
@@ -4181,6 +4173,48 @@ document.addEventListener('DOMContentLoaded', () => {
             toggleLaunchSection();
             showNotification('Modo Launch ativado! 🚀', 'info');
         });
+    }
+
+    // ==========================================
+    // MOBILE NAVIGATION
+    // ==========================================
+    const hamburgerMenu = document.getElementById('hamburgerMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileConnectWallet = document.getElementById('mobileConnectWallet');
+
+    if (hamburgerMenu && mobileMenu) {
+        hamburgerMenu.addEventListener('click', () => {
+            hamburgerMenu.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburgerMenu.contains(e.target) && !mobileMenu.contains(e.target)) {
+                hamburgerMenu.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // Close mobile menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburgerMenu.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Mobile wallet connect
+        if (mobileConnectWallet) {
+            mobileConnectWallet.addEventListener('click', () => {
+                const desktopConnect = document.getElementById('connectWallet');
+                if (desktopConnect) {
+                    desktopConnect.click();
+                }
+                hamburgerMenu.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        }
     }
 
 });

@@ -522,6 +522,122 @@ body::after {
     color: white;
 }
 
+/* Mobile Navigation */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1001;
+}
+
+.hamburger-line {
+    width: 100%;
+    height: 3px;
+    background: var(--text-primary);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+.mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 15, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--dark-border);
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
+    z-index: 1000;
+}
+
+.mobile-menu.active {
+    display: flex;
+}
+
+.mobile-nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 18px;
+    transition: color 0.3s;
+    padding: 10px 0;
+}
+
+.mobile-nav-link:hover {
+    color: var(--solana-green);
+}
+
+.mobile-btn-connect {
+    background: linear-gradient(145deg, #1a1a2e, #16213e);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 15px;
+    color: var(--solana-green);
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Space Grotesk', sans-serif;
+    box-shadow:
+        6px 6px 12px rgba(0, 0, 0, 0.3),
+        -6px -6px 12px rgba(80, 255, 209, 0.08),
+        inset 2px 2px 4px rgba(255, 255, 255, 0.1),
+        inset -2px -2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-content {
+        justify-content: space-between;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .hamburger-menu {
+        display: flex;
+    }
+    
+    .logo-text {
+        font-size: 28px;
+    }
+    
+    .logo-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .navbar {
+        padding: 15px 0;
+    }
+}
+
 /* ==========================================
    HERO SECTION - 3D ERA
    ========================================== */
@@ -979,9 +1095,197 @@ body::after {
 }
 
 .hero-actions {
+    position: relative;
+    margin: 40px 0;
+    perspective: 1000px;
+}
+
+.hero-actions .web3-3d-container {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 24px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-actions .web3-btn-3d {
+    position: relative;
+    width: 200px;
+    height: 60px;
+    margin: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hero-actions .web3-btn-3d:hover {
+    transform: rotateX(15deg) rotateY(-15deg) translateZ(30px) scale(1.05);
+}
+
+.hero-actions .btn-3d-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    backface-visibility: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.hero-actions .btn-3d-front {
+    background: linear-gradient(135deg, #9945FF 0%, #14F195 50%, #FFD700 100%);
+    color: #0f0c1d;
+    transform: translateZ(15px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.hero-actions .btn-3d-back {
+    background: linear-gradient(135deg, #FFD700 0%, #9945FF 50%, #14F195 100%);
+    color: #0f0c1d;
+    transform: rotateY(180deg) translateZ(15px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.hero-actions .btn-3d-left {
+    background: linear-gradient(135deg, #14F195 0%, #FFD700 100%);
+    width: 30px;
+    left: -15px;
+    transform: rotateY(-90deg) translateZ(15px);
+}
+
+.hero-actions .btn-3d-right {
+    background: linear-gradient(135deg, #FFD700 0%, #9945FF 100%);
+    width: 30px;
+    right: -15px;
+    transform: rotateY(90deg) translateZ(15px);
+}
+
+.hero-actions .btn-3d-top {
+    background: linear-gradient(135deg, #9945FF 0%, #14F195 100%);
+    height: 30px;
+    top: -15px;
+    transform: rotateX(90deg) translateZ(15px);
+}
+
+.hero-actions .btn-3d-bottom {
+    background: linear-gradient(135deg, #14F195 0%, #FFD700 100%);
+    height: 30px;
+    bottom: -15px;
+    transform: rotateX(-90deg) translateZ(15px);
+}
+
+.hero-actions .btn-glow-effect {
+    position: absolute;
+    inset: -4px;
+    border-radius: 16px;
+    background: linear-gradient(45deg, #9945FF, #14F195, #FFD700, #9945FF);
+    background-size: 400% 400%;
+    animation: rainbowGlow 3s ease-in-out infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.hero-actions .web3-btn-3d:hover .btn-glow-effect {
+    opacity: 1;
+}
+
+@keyframes rainbowGlow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.hero-actions .web3-glow-effects {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.hero-actions .glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(153, 69, 255, 0.3), transparent 70%);
+    animation: floatOrb 6s ease-in-out infinite;
+}
+
+.hero-actions .glow-orb-1 {
+    width: 80px;
+    height: 80px;
+    top: -20px;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.hero-actions .glow-orb-2 {
+    width: 60px;
+    height: 60px;
+    top: 60%;
+    right: 15%;
+    animation-delay: 2s;
+    background: radial-gradient(circle, rgba(20, 241, 149, 0.3), transparent 70%);
+}
+
+.hero-actions .glow-orb-3 {
+    width: 100px;
+    height: 100px;
+    bottom: -30px;
+    left: 70%;
+    animation-delay: 4s;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.3), transparent 70%);
+}
+
+@keyframes floatOrb {
+    0%, 100% {
+        transform: translateY(0px) scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateY(-20px) scale(1.1);
+        opacity: 1;
+    }
+}
+
+/* Responsividade para hero-actions 3D */
+@media (max-width: 768px) {
+    .hero-actions .web3-3d-container {
+        gap: 16px;
+    }
+
+    .hero-actions .web3-btn-3d {
+        width: 160px;
+        height: 50px;
+    }
+
+    .hero-actions .btn-3d-face {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-actions .web3-3d-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .hero-actions .web3-btn-3d {
+        width: 200px;
+        height: 55px;
+    }
 }
 
 .btn-primary, .btn-secondary {
@@ -3404,6 +3708,272 @@ body::after {
 
 .chip-link:hover::after {
     margin-left: 8px;
+}
+
+/* ==========================================
+   CONTRACT PANEL - PAINEL DO CONTRATO
+   ========================================== */
+.contract-panel {
+    padding: 80px 0;
+    background: linear-gradient(135deg, 
+        rgba(8, 24, 40, 0.95) 0%, 
+        rgba(20, 241, 149, 0.02) 50%, 
+        rgba(8, 24, 40, 0.95) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.contract-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(20, 241, 149, 0.03), transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(153, 69, 255, 0.03), transparent 50%);
+    pointer-events: none;
+}
+
+.contract-panel-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 2;
+}
+
+.contract-panel-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.contract-panel-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    text-shadow: 0 0 30px rgba(20, 241, 149, 0.3);
+}
+
+.contract-icon {
+    font-size: 2rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+.contract-panel-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 400;
+    margin: 0;
+}
+
+.contract-address-display {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.contract-address-card {
+    background: linear-gradient(135deg, 
+        rgba(8, 24, 40, 0.9), 
+        rgba(20, 241, 149, 0.05));
+    border: 1px solid rgba(20, 241, 149, 0.3);
+    border-radius: 20px;
+    padding: 40px;
+    backdrop-filter: blur(20px);
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.3),
+        0 0 40px rgba(20, 241, 149, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.contract-address-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(20, 241, 149, 0.05), 
+        rgba(153, 69, 255, 0.05),
+        transparent);
+    transition: left 0.8s ease;
+}
+
+.contract-address-card:hover::before {
+    left: 100%;
+}
+
+.contract-address-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.label-icon {
+    font-size: 1.5rem;
+}
+
+.label-text {
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.contract-address-value {
+    margin-bottom: 30px;
+}
+
+.address-code {
+    display: block;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #14f195;
+    background: rgba(20, 241, 149, 0.1);
+    border: 1px solid rgba(20, 241, 149, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    word-break: break-all;
+    text-shadow: 0 0 10px rgba(20, 241, 149, 0.5);
+    transition: all 0.3s ease;
+}
+
+.contract-address-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.contract-copy-btn,
+.contract-explorer-btn,
+.contract-pump-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    border: 1px solid;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.contract-copy-btn {
+    background: linear-gradient(135deg, 
+        rgba(153, 69, 255, 0.2), 
+        rgba(20, 241, 149, 0.1));
+    border-color: rgba(153, 69, 255, 0.5);
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(153, 69, 255, 0.2);
+}
+
+.contract-copy-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(153, 69, 255, 0.4);
+    border-color: rgba(153, 69, 255, 0.8);
+    background: linear-gradient(135deg, 
+        rgba(153, 69, 255, 0.3), 
+        rgba(20, 241, 149, 0.2));
+}
+
+.contract-explorer-btn {
+    background: linear-gradient(135deg, 
+        rgba(20, 241, 149, 0.2), 
+        rgba(8, 24, 40, 0.8));
+    border-color: rgba(20, 241, 149, 0.5);
+    color: #14f195;
+    box-shadow: 0 4px 15px rgba(20, 241, 149, 0.2);
+}
+
+.contract-explorer-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(20, 241, 149, 0.4);
+    border-color: rgba(20, 241, 149, 0.8);
+    background: linear-gradient(135deg, 
+        rgba(20, 241, 149, 0.3), 
+        rgba(8, 24, 40, 0.9));
+}
+
+.contract-pump-btn {
+    background: linear-gradient(135deg, 
+        rgba(255, 193, 7, 0.2), 
+        rgba(255, 87, 34, 0.1));
+    border-color: rgba(255, 193, 7, 0.5);
+    color: #ffc107;
+    box-shadow: 0 4px 15px rgba(255, 193, 7, 0.2);
+}
+
+.contract-pump-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
+    border-color: rgba(255, 193, 7, 0.8);
+    background: linear-gradient(135deg, 
+        rgba(255, 193, 7, 0.3), 
+        rgba(255, 87, 34, 0.2));
+}
+
+.contract-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+}
+
+.contract-info-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.contract-info-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(20, 241, 149, 0.3);
+    box-shadow: 0 10px 30px rgba(20, 241, 149, 0.1);
+}
+
+.info-icon {
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+
+.info-content h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.info-content p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    font-weight: 500;
 }
 
 /* ==========================================
@@ -8533,5 +9103,918 @@ body::after {
 
     .step-content h4 {
         font-size: 1.1rem;
+    }
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN - SMARTPHONE OPTIMIZATION
+   ========================================== */
+
+/* Extra Large Devices (1200px and up) */
+@media (max-width: 1200px) {
+    .container {
+        max-width: 1100px;
+        padding: 0 15px;
+    }
+    
+    .hero-title {
+        font-size: 60px;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+}
+
+/* Large Devices (992px and up) */
+@media (max-width: 992px) {
+    .container {
+        max-width: 960px;
+        padding: 0 15px;
+    }
+    
+    .hero-title {
+        font-size: 55px;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .nav-links {
+        gap: 25px;
+    }
+    
+    .logo-text {
+        font-size: 32px;
+    }
+}
+
+/* Medium Devices (768px and up) */
+@media (max-width: 768px) {
+    .container {
+        max-width: 720px;
+        padding: 0 15px;
+    }
+    
+    /* Navigation */
+    .nav-content {
+        justify-content: space-between;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .hamburger-menu {
+        display: flex;
+    }
+    
+    .logo-text {
+        font-size: 28px;
+    }
+    
+    .logo-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .navbar {
+        padding: 15px 0;
+    }
+    
+    /* Hero Section */
+    .hero {
+        padding: 80px 0;
+        text-align: center;
+    }
+    
+    .hero-title {
+        font-size: 42px;
+        line-height: 1.1;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-bottom: 30px;
+    }
+    
+    .hero-stats {
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 30px;
+    }
+    
+    .hero-actions {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+    
+    .hero-chip-row {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    .hero-chip {
+        flex: 1 1 45%;
+        min-width: 140px;
+    }
+    
+    /* Buttons */
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        max-width: 300px;
+        padding: 14px 24px;
+        font-size: 16px;
+    }
+    
+    /* Cards and Grids */
+    .milestones-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .nft-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+    
+    /* Sections */
+    .section-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
+    .section-title {
+        font-size: 28px;
+    }
+    
+    .section-description {
+        font-size: 16px;
+        max-width: 100%;
+    }
+    
+    /* Price Panel */
+    .price-panel {
+        padding: 20px;
+    }
+    
+    .price-display {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .price-metrics {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .metric-item {
+        flex: 1 1 45%;
+        min-width: 120px;
+    }
+    
+    /* Calculator */
+    .solana-calculator-gif {
+        max-width: 100%;
+        overflow-x: auto;
+    }
+    
+    .calculator-buttons {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+    }
+    
+    .calc-btn {
+        padding: 12px;
+        font-size: 14px;
+        min-height: 44px;
+    }
+    
+    /* Video Section */
+    .video-frame {
+        max-width: 100%;
+        aspect-ratio: 16 / 9;
+    }
+    
+    /* Footer */
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+/* Small Devices (576px and up) */
+@media (max-width: 576px) {
+    .container {
+        padding: 0 10px;
+    }
+    
+    /* Navigation */
+    .logo-text {
+        font-size: 24px;
+    }
+    
+    .logo-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    /* Hero */
+    .hero {
+        padding: 60px 0;
+    }
+    
+    .hero-title {
+        font-size: 36px;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.95rem;
+    }
+    
+    .hero-badge {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+    
+    /* Buttons */
+    .btn-primary, .btn-secondary {
+        padding: 12px 20px;
+        font-size: 15px;
+        min-height: 48px;
+    }
+    
+    /* Cards */
+    .web3-card {
+        padding: 20px;
+    }
+    
+    .nft-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Price Panel */
+    .price-panel {
+        padding: 15px;
+    }
+    
+    .main-price {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .price-value {
+        font-size: 28px;
+    }
+    
+    .price-metrics {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    /* Calculator */
+    .calculator-display {
+        padding: 15px;
+    }
+    
+    .display-text {
+        font-size: 14px;
+    }
+    
+    .display-value {
+        font-size: 20px;
+    }
+    
+    .calculator-buttons {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+    }
+    
+    .calc-btn {
+        padding: 10px;
+        font-size: 13px;
+        min-height: 40px;
+    }
+    
+    /* Sections */
+    .section-title {
+        font-size: 24px;
+    }
+    
+    .section-description {
+        font-size: 15px;
+    }
+    
+    /* Mobile Menu */
+    .mobile-menu {
+        padding: 15px;
+        gap: 15px;
+    }
+    
+    .mobile-nav-link {
+        font-size: 16px;
+        padding: 12px 0;
+    }
+    
+    .mobile-btn-connect {
+        padding: 12px 20px;
+        font-size: 15px;
+    }
+    
+    /* Notifications */
+    .notification {
+        left: 10px;
+        right: 10px;
+        max-width: none;
+        font-size: 14px;
+        padding: 12px 16px;
+    }
+    
+    /* Forms */
+    input, textarea, select {
+        font-size: 16px; /* Prevents zoom on iOS */
+        padding: 12px;
+    }
+    
+    /* Tables */
+    table {
+        font-size: 14px;
+    }
+    
+    th, td {
+        padding: 8px 4px;
+    }
+}
+
+/* Extra Small Devices (480px and down) */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 8px;
+    }
+    
+    /* Hero */
+    .hero-title {
+        font-size: 32px;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    /* Cards */
+    .web3-card {
+        padding: 15px;
+        margin: 10px 0;
+    }
+    
+    /* Buttons */
+    .btn-primary, .btn-secondary {
+        padding: 10px 16px;
+        font-size: 14px;
+        min-height: 44px;
+    }
+    
+    /* Price */
+    .price-value {
+        font-size: 24px;
+    }
+    
+    .metric-value {
+        font-size: 16px;
+    }
+    
+    /* Calculator */
+    .calculator-display {
+        padding: 12px;
+    }
+    
+    .display-value {
+        font-size: 18px;
+    }
+    
+    .calc-btn {
+        padding: 8px;
+        font-size: 12px;
+        min-height: 36px;
+    }
+    
+    /* Video */
+    .video-frame {
+        margin: 20px 0;
+    }
+    
+    /* Stats */
+    .stat-item {
+        padding: 15px;
+    }
+    
+    .stat-number {
+        font-size: 24px;
+    }
+    
+    .stat-label {
+        font-size: 12px;
+    }
+    
+    /* Footer */
+    .footer-links a {
+        font-size: 14px;
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+    /* Increase touch targets */
+    .btn-primary, .btn-secondary, .web3-btn {
+        min-height: 48px;
+        min-width: 48px;
+    }
+    
+    .nav-link, .mobile-nav-link {
+        padding: 12px 16px;
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .calc-btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    /* Reduce hover effects on touch */
+    .web3-card:hover {
+        transform: none;
+    }
+    
+    .btn-connect:hover {
+        transform: none;
+    }
+    
+    /* Improve tap feedback */
+    .web3-btn:active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease;
+    }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* Ensure text remains crisp */
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    
+    /* Optimize images for retina */
+    .logo-icon, .hero-visual img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Landscape Orientation for Mobile */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        padding: 40px 0;
+    }
+    
+    .hero-title {
+        font-size: 28px;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.85rem;
+        margin-bottom: 20px;
+    }
+    
+    .navbar {
+        padding: 10px 0;
+    }
+    
+    .logo-text {
+        font-size: 20px;
+    }
+    
+    .mobile-menu {
+        padding: 10px;
+        max-height: 60vh;
+        overflow-y: auto;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .web3-background, .bg-animation, .holographic-grid, .neon-particles {
+        display: none !important;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .web3-card {
+        border: 1px solid #ccc !important;
+        box-shadow: none !important;
+    }
+    
+    .btn-connect, .btn-primary, .btn-secondary {
+        background: #f0f0f0 !important;
+        color: black !important;
+        border: 1px solid #ccc !important;
+    }
+}
+
+/* ==========================================
+   MOBILE-SPECIFIC OPTIMIZATIONS
+   ========================================== */
+
+/* Prevent horizontal scroll on mobile */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* Improve scrolling on iOS */
+body {
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Better text rendering on mobile */
+body {
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: 100%;
+}
+
+/* Optimize images for mobile */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Better focus states for mobile */
+button:focus, a:focus, input:focus, textarea:focus, select:focus {
+    outline: 2px solid var(--solana-blue);
+    outline-offset: 2px;
+}
+
+/* Mobile-friendly modal dialogs */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background: var(--dark-card);
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow-y: auto;
+    border: 1px solid var(--dark-border);
+}
+
+/* Mobile-optimized tables */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.table-responsive table {
+    min-width: 600px;
+}
+
+/* Better button spacing on mobile */
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+@media (min-width: 576px) {
+    .btn-group {
+        flex-direction: row;
+    }
+}
+
+/* Mobile-optimized forms */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--dark-border);
+    border-radius: 8px;
+    background: rgba(20, 20, 32, 0.8);
+    color: var(--text-primary);
+    font-size: 16px; /* Prevents zoom on iOS */
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: var(--solana-blue);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+}
+
+/* Mobile-optimized cards */
+.card-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+@media (min-width: 576px) {
+    .card-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
+@media (min-width: 768px) {
+    .card-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+}
+
+/* Loading states for mobile */
+.loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--solana-blue);
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Mobile-optimized animations */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-primary: #ffffff;
+        --text-secondary: #b0b0c8;
+        --dark-bg: #0a0a0f;
+        --dark-card: rgba(20, 20, 32, 0.95);
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    :root {
+        --text-primary: #ffffff;
+        --text-secondary: #ffffff;
+        --dark-border: rgba(255, 255, 255, 0.5);
+        --accent-glow: rgba(255, 255, 255, 0.8);
+    }
+
+    .web3-card {
+        border: 2px solid var(--dark-border);
+    }
+}
+
+/* Real-time Price Chart Styles */
+.price-chart-container {
+    margin-top: 30px;
+    background: linear-gradient(135deg, rgba(120, 87, 255, 0.1), rgba(80, 255, 209, 0.05));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.price-chart-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(120, 87, 255, 0.05), rgba(80, 255, 209, 0.03), rgba(255, 214, 102, 0.02));
+    pointer-events: none;
+    z-index: 1;
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.chart-header h3 {
+    color: #50ffd1;
+    font-size: 1.5em;
+    margin: 0;
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(80, 255, 209, 0.5);
+}
+
+.chart-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.chart-timeframe {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85em;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.chart-timeframe:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+}
+
+.chart-timeframe.active {
+    background: linear-gradient(45deg, #7857ff, #50ffd1);
+    border-color: #50ffd1;
+    color: #0f0c1d;
+    box-shadow: 0 0 15px rgba(80, 255, 209, 0.3);
+}
+
+.tradingview-widget-container {
+    position: relative;
+    z-index: 2;
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(15, 12, 29, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tradingview-chart {
+    width: 100%;
+    height: 400px;
+    background: rgba(15, 12, 29, 0.95);
+}
+
+/* Chart Loading Animation */
+.price-chart-container .loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    color: #50ffd1;
+    font-size: 1.2em;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.price-chart-container .loading::after {
+    content: '';
+    width: 30px;
+    height: 30px;
+    border: 3px solid rgba(80, 255, 209, 0.3);
+    border-top: 3px solid #50ffd1;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Fallback Chart Styles */
+.fallback-chart {
+    width: 100%;
+    height: 400px;
+    background: rgba(15, 12, 29, 0.9);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #50ffd1;
+    text-align: center;
+    padding: 20px;
+}
+
+.fallback-chart-icon {
+    font-size: 3em;
+    margin-bottom: 15px;
+}
+
+.fallback-chart h3 {
+    margin: 0 0 10px 0;
+    color: #50ffd1;
+    font-size: 1.5em;
+}
+
+.fallback-chart p {
+    margin: 0 0 20px 0;
+    opacity: 0.8;
+    font-size: 1em;
+}
+
+.fallback-chart-link {
+    background: linear-gradient(45deg, #7857ff, #50ffd1);
+    color: #0f0c1d;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(120, 87, 255, 0.3);
+}
+
+.fallback-chart-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(120, 87, 255, 0.4);
+}
+
+/* Responsive Chart */
+@media (max-width: 768px) {
+    .price-chart-container {
+        padding: 15px;
+    }
+
+    .chart-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .chart-controls {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .tradingview-chart {
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .price-chart-container {
+        padding: 10px;
+    }
+
+    .chart-header h3 {
+        font-size: 1.2em;
+    }
+
+    .chart-timeframe {
+        padding: 4px 8px;
+        font-size: 0.8em;
+    }
+
+    .tradingview-chart {
+        height: 250px;
     }
 }

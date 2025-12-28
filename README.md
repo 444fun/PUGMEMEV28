@@ -82,7 +82,7 @@
 ### **✅ Deploy Ativo no Vercel**
 
 **Status:** 🟢 **PRODUÇÃO ATIVA**  
-**Domínio:** `https://pugmeme.io`  
+**Domínio:** `https://pugmem.io`  
 **Plataforma:** Vercel  
 **Último Deploy:** Automático via GitHub
 
@@ -121,9 +121,9 @@ git push origin main
 - [x] Google Analytics configurado (`G-4Q7LXSL53E`)
 - [x] Vercel Analytics ativo
 - [x] Speed Insights implementado
-- [x] Meta tags SEO completas (og:url: pugmeme.io)
+- [x] Meta tags SEO completas (og:url: pugmem.io)
 - [x] Tag canonical adicionada
-- [x] Domínio customizado: pugmeme.io
+- [x] Domínio customizado: pugmem.io
 - [x] HTTPS automático via Vercel
 - [x] Links sociais funcionais
 - [x] Web3 funcionalidades testadas
@@ -708,11 +708,11 @@ Edite `index.html` e adicione novos cards:
       **Conecte sua Wallet**: Junte-se à blockchain 3. **Compre $PUG**: Adquira
       sua armadura digital 4. **Participe da Comunidade**: Lute nas batalhas
       meméticas 5. **HODL Forte**: Seja parte da lenda eterna ### **Links
-      Essenciais** - 🌐 **Website**: [pugmeme.io](https://pugmeme.io) - 🐦
+      Essenciais** - 🌐 **Website**: [pugmem.io](https://pugmem.io) - 🐦
       **Twitter**: [@PUGMemCoin](https://twitter.com/PUGMemCoin) - 💬
       **Discord**: [PUG Army](https://discord.gg/pugarmy) - 📱 **Telegram**:
       [PUG Warriors](https://t.me/pugwarriors) - 🎯 **DEX**: [Compra
-      $PUG](https://dex.pugmeme.io) --- ## ⚡ **MANTRA FINAL** **PUG é mais que
+      $PUG](https://dex.pugmem.io) --- ## ⚡ **MANTRA FINAL** **PUG é mais que
       uma moeda. PUG é um movimento.** **PUG é mais que um meme. PUG é uma
       revolução.** **PUG é mais que uma comunidade. PUG é uma família.** **PUG é
       mais que uma tecnologia. PUG é o futuro.** **HODL PUG. AMEM PUG. SEJAM

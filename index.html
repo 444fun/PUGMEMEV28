@@ -11,9 +11,9 @@
     <meta property="og:title" content="$PUGMEM - Solana Memecoin Revolution" />
     <meta property="og:description" content="A revolução dos memes caninos agora é uma memecoin futurista na Solana." />
     <meta property="og:image" content="WhatsApp Image 2025-12-27 at 08.37.48 top007.jpeg" />
-    <meta property="og:url" content="https://pugmeme.io" />
+    <meta property="og:url" content="https://pugmem.io" />
     <meta property="og:type" content="website" />
-    <link rel="canonical" href="https://pugmeme.io" />
+    <link rel="canonical" href="https://pugmem.io" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="$PUGMEM - Solana Memecoin Revolution" />
     <meta name="twitter:description" content="A revolução dos memes caninos agora é uma memecoin futurista na Solana." />
@@ -658,11 +658,19 @@
                         <div class="btn-glow-effect"></div>
                     </button>
                     <button class="btn-secondary social-btn" data-platform="x" onclick="window.open('https://x.com/Pugmem', '_blank')">
-                        <span class="btn-icon">🐦</span>
+                        <span class="btn-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="currentColor"/>
+                            </svg>
+                        </span>
                         <span class="btn-text">Follow on X</span>
                     </button>
                     <button class="btn-secondary social-btn" data-platform="telegram" onclick="window.open('https://t.me/pugmem', '_blank')">
-                        <span class="btn-icon">📱</span>
+                        <span class="btn-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" fill="currentColor"/>
+                            </svg>
+                        </span>
                         <span class="btn-text">Join Telegram</span>
                     </button>
                 </div>
@@ -679,14 +687,14 @@
                         <span>Yield</span>
                         <strong>Staking Solana</strong>
                     </div>
-                    <div class="hero-chip address-chip" id="contractChip" data-address="HZk8CX1absvWs7273D4dLeeMBneWMa4dioGzvumppump">
+                    <div class="hero-chip address-chip" id="contractChip" data-address="GKKJkrCB8QEy7NwcNVwNa8avdywW6iCoNZpzaMtepump">
                         <div class="chip-meta">
                             <span class="chip-label">Contrato Solana</span>
-                            <span class="chip-value" id="contractDisplay">HZk8...pump</span>
+                            <span class="chip-value" id="contractDisplay">GKKJ...pump</span>
                         </div>
                         <div class="chip-actions">
                             <button type="button" class="chip-copy" id="copyContract">Copiar</button>
-                            <a class="chip-link" id="viewContract" href="https://solscan.io/account/HZk8CX1absvWs7273D4dLeeMBneWMa4dioGzvumppump" target="_blank" rel="noopener">Explorer</a>
+                            <a class="chip-link" id="viewContract" href="https://solscan.io/account/GKKJkrCB8QEy7NwcNVwNa8avdywW6iCoNZpzaMtepump" target="_blank" rel="noopener">Explorer</a>
                         </div>
                     </div>
                 </div>
@@ -973,18 +981,19 @@
                     </div>
                 </div>
 
-                <div class="price-chart-placeholder">
-                    <div class="chart-animation">
-                        <div class="chart-line"></div>
-                        <div class="chart-dots">
-                            <span class="dot dot-1"></span>
-                            <span class="dot dot-2"></span>
-                            <span class="dot dot-3"></span>
-                            <span class="dot dot-4"></span>
-                            <span class="dot dot-5"></span>
+                <div class="price-chart-container">
+                    <div class="chart-header">
+                        <h3>$PUG/USD Chart</h3>
+                        <div class="chart-controls">
+                            <button class="chart-timeframe active" data-timeframe="1D">1D</button>
+                            <button class="chart-timeframe" data-timeframe="7D">7D</button>
+                            <button class="chart-timeframe" data-timeframe="1M">1M</button>
+                            <button class="chart-timeframe" data-timeframe="1Y">1Y</button>
                         </div>
                     </div>
-                    <div class="chart-label">Price Chart (Simulated)</div>
+                    <div class="tradingview-widget-container">
+                        <div id="tradingview-chart" class="tradingview-chart"></div>
+                    </div>
                 </div>
 
                 <div class="price-actions web3-3d-panel">
@@ -1700,11 +1709,19 @@
                     <p class="footer-description">O memecoin mais valioso da Solana - Blue Chip Status</p>
                     <div class="social-links">
                         <a href="https://x.com/Pugmem" class="social-link web3-link" target="_blank">
-                            <span class="link-icon">🐦</span>
+                            <span class="link-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="currentColor"/>
+                                </svg>
+                            </span>
                             <span class="link-text">X (Twitter)</span>
                         </a>
                         <a href="https://t.me/pugmem" class="social-link web3-link" target="_blank">
-                            <span class="link-icon">📱</span>
+                            <span class="link-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" fill="currentColor"/>
+                                </svg>
+                            </span>
                             <span class="link-text">Telegram</span>
                         </a>
                         <a href="#" class="social-link web3-link" target="_blank">
@@ -2304,8 +2321,6 @@
         </div>
     </section>
 
-    <script src="script.js"></script>
-
     <!-- Analytics Libraries -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4Q7LXSL53E"></script>
     <script>
@@ -2332,5 +2347,100 @@
 
     <!-- Vercel Speed Insights -->
     <script src="https://unpkg.com/@vercel/speed-insights/dist/index.js"></script>
+
+    <!-- TradingView Chart Widget -->
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <script type="text/javascript">
+        // Initialize TradingView Chart
+        function initTradingViewChart() {
+            const chartContainer = document.getElementById('tradingview-chart');
+
+            // Show loading state
+            chartContainer.innerHTML = '<div class="loading">Carregando gráfico em tempo real...</div>';
+
+            if (typeof TradingView !== 'undefined') {
+                try {
+                    new TradingView.widget({
+                        "width": "100%",
+                        "height": 400,
+                        "symbol": "DEXSCREENER:GKKJkrCB8QEy7NwcNVwNa8avdywW6iCoNZpzaMtepump",
+                        "interval": "D",
+                        "timezone": "Etc/UTC",
+                        "theme": "dark",
+                        "style": "1",
+                        "locale": "en",
+                        "toolbar_bg": "#0f0c1d",
+                        "enable_publishing": false,
+                        "allow_symbol_change": false,
+                        "container_id": "tradingview-chart",
+                        "backgroundColor": "rgba(15, 12, 29, 0.9)",
+                        "gridColor": "rgba(120, 87, 255, 0.1)",
+                        "hide_top_toolbar": false,
+                        "hide_legend": false,
+                        "save_image": false,
+                        "studies": [],
+                        "show_popup_button": false,
+                        "popup_width": "1000",
+                        "popup_height": "650",
+                        "overrides": {
+                            "mainSeriesProperties.style": 1,
+                            "mainSeriesProperties.priceLineColor": "#50ffd1",
+                            "mainSeriesProperties.priceLineWidth": 2,
+                            "mainSeriesProperties.priceLineStyle": 0,
+                            "volumePaneSize": "medium"
+                        }
+                    });
+                } catch (error) {
+                    console.error('Erro ao inicializar gráfico TradingView:', error);
+                    showFallbackChart();
+                }
+            } else {
+                // TradingView not loaded, show fallback
+                setTimeout(showFallbackChart, 2000);
+            }
+        }
+
+        // Fallback chart using DexScreener embed
+        function showFallbackChart() {
+            const chartContainer = document.getElementById('tradingview-chart');
+            chartContainer.innerHTML = `
+                <div style="width: 100%; height: 400px; background: rgba(15, 12, 29, 0.9); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #50ffd1; text-align: center; padding: 20px;">
+                    <div style="font-size: 2em; margin-bottom: 10px;">📈</div>
+                    <h3 style="margin: 0 0 10px 0; color: #50ffd1;">$PUG Live Chart</h3>
+                    <p style="margin: 0 0 20px 0; opacity: 0.8;">Gráfico em tempo real indisponível temporariamente</p>
+                    <a href="https://dexscreener.com/solana/GKKJkrCB8QEy7NwcNVwNa8avdywW6iCoNZpzaMtepump" target="_blank" style="background: linear-gradient(45deg, #7857ff, #50ffd1); color: #0f0c1d; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
+                        Ver no DexScreener ↗
+                    </a>
+                </div>
+            `;
+        }
+
+        // Initialize chart when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait for TradingView script to load
+            setTimeout(initTradingViewChart, 1000);
+        });
+
+        // Chart timeframe controls
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('chart-timeframe')) {
+                // Remove active class from all buttons
+                document.querySelectorAll('.chart-timeframe').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                // Add active class to clicked button
+                e.target.classList.add('active');
+
+                // Update chart timeframe (this would require TradingView API)
+                const timeframe = e.target.dataset.timeframe;
+                console.log('Chart timeframe changed to:', timeframe);
+
+                // Show notification
+                if (typeof showNotification === 'function') {
+                    showNotification(`Timeframe alterado para ${timeframe}`, 'info');
+                }
+            }
+        });
+    </script>
 </body>
 </html>
