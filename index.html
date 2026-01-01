@@ -85,6 +85,78 @@
             transform: scale(1.05);
         }
 
+        /* Elon X Panel */
+        .elon-section {
+            padding: 90px 0;
+            background: radial-gradient(circle at 15% 20%, rgba(153, 69, 255, 0.08), transparent 45%),
+                radial-gradient(circle at 85% 80%, rgba(20, 241, 149, 0.08), transparent 45%),
+                #0b0f1a;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .elon-section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0)),
+                linear-gradient(300deg, rgba(20, 241, 149, 0.04), rgba(153, 69, 255, 0.04));
+            pointer-events: none;
+            mix-blend-mode: screen;
+        }
+
+        .elon-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .elon-card {
+            background: linear-gradient(145deg, rgba(17, 24, 39, 0.9), rgba(9, 9, 20, 0.9));
+            border: 1px solid rgba(153, 69, 255, 0.35);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            padding: 32px;
+            border-radius: 20px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .elon-header {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .elon-title {
+            font-size: 2.2em;
+            font-weight: 900;
+            color: #e5e7eb;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .elon-subtitle {
+            color: #c7d2fe;
+            font-size: 1.05em;
+            line-height: 1.6;
+        }
+
+        .elon-widget {
+            background: rgba(12, 16, 30, 0.8);
+            border: 1px solid rgba(153, 69, 255, 0.35);
+            border-radius: 16px;
+            padding: 12px;
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+        }
+
+        .elon-widget .twitter-timeline {
+            width: 100% !important;
+            min-height: 480px;
+        }
+
         /* Raydium Integration */
         .raydium-section {
             padding: 120px 0;
@@ -3136,6 +3208,21 @@
         </div>
     </section>
 
+    <!-- Elon X Panel -->
+    <section class="elon-section" id="elon">
+        <div class="elon-container">
+            <div class="elon-card">
+                <div class="elon-header">
+                    <h2 class="elon-title">🔭 Elon no X</h2>
+                    <p class="elon-subtitle">Feed ao vivo do perfil @elonmusk direto na página. Atualizações automáticas pelo widget oficial do X.</p>
+                </div>
+                <div class="elon-widget">
+                    <a class="twitter-timeline" data-theme="dark" data-height="520" href="https://x.com/elonmusk">Tweets by elonmusk</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- NFT Gallery Section -->
     <section class="gallery-section" id="gallery">
         <div class="gallery-container">
@@ -3330,6 +3417,7 @@
         </div>
     </footer>
 
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     <script src="https://s3.tradingview.com/tv.js"></script>
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
 
