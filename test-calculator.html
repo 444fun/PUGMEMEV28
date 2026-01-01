@@ -3,51 +3,1346 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora Solana PUG - Teste</title>
-    <link rel="stylesheet" href="styles-web3.css">
+    <title>$PUGMEM - Página Oficial da Memecoin | Pugs no Solana</title>
+    <meta name="description" content="$PUGMEM - A memecoin mais fofa do Solana! Junte-se à revolução dos pugs na blockchain. NFT Gallery, comunidade ativa e muito mais!" />
+    <meta name="keywords" content="PUGMEM, PUG, memecoin, Solana, pug, NFT, crypto, blockchain, meme, comunidade" />
+    <meta name="author" content="PUGMEM Team" />
+    <meta property="og:title" content="$PUGMEM - Memecoin dos Pugs" />
+    <meta property="og:description" content="A memecoin mais fofa do Solana! Pugs na blockchain!" />
+    <meta property="og:image" content="pug/pug-hero.jpg" />
+    <meta property="og:url" content="https://pugmem.io" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
+        /* Neo-Brutalist PUGMEM Theme */
+        :root {
+            --neo-black: #000000;
+            --neo-white: #FFFFFF;
+            --neo-red: #FF0000;
+            --neo-yellow: #FFFF00;
+            --neo-blue: #0080FF;
+            --neo-purple: #8000FF;
+            --neo-green: #00FF80;
+            --text-primary: #FFFFFF;
+            --text-secondary: #CCCCCC;
+            --bg-primary: #000000;
+            --bg-secondary: #111111;
+            --bg-tertiary: #222222;
+            --accent: #FF0000;
+            --border: 4px solid #FFFFFF;
+            --border-thick: 6px solid #FFFFFF;
+            --shadow-3d: 8px 8px 0px #FFFFFF;
+            --shadow-3d-hover: 12px 12px 0px #FF0000;
+            --shadow-inset: inset 0 0 20px rgba(255, 255, 255, 0.1);
+            --font-primary: 'Arial Black', 'Impact', sans-serif;
+            --font-meme: 'Arial Black', sans-serif;
+            --gradient-neo: linear-gradient(135deg, #FF0000, #FFFF00, #0080FF);
+            --gradient-neo-hover: linear-gradient(135deg, #8000FF, #00FF80, #FF0000);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background: linear-gradient(135deg, #0f0c1d 0%, #1a0b2e 100%);
+            font-family: var(--font-primary);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--neo-black);
+            border-bottom: var(--border);
+            z-index: 1000;
+            transition: none;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 900;
+            font-size: 2.5em;
+            color: var(--neo-white);
+            font-family: var(--font-meme);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        .logo img {
+            width: 70px;
+            height: 70px;
+            border-radius: 0;
+            border: var(--border);
+            object-fit: cover;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--neo-white);
+            font-weight: 900;
+            font-size: 1.4em;
+            transition: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 10px 20px;
+            border: var(--border);
+            box-shadow: var(--shadow-3d);
+        }
+
+        .nav-links a:hover {
+            background: var(--neo-red);
+            color: var(--neo-black);
+            box-shadow: var(--shadow-3d-hover);
+            transform: translate(-4px, -4px) scale(1.05);
+        }
+
+        .cta-button {
+            background: var(--neo-black);
+            color: var(--neo-white);
+            padding: 20px 40px;
+            border: var(--border-thick);
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1.5em;
+            font-family: var(--font-meme);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            box-shadow: var(--shadow-3d);
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-neo);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .cta-button:hover {
+            background: var(--neo-red);
+            color: var(--neo-black);
+            box-shadow: var(--shadow-3d-hover);
+            transform: translate(-6px, -6px) scale(1.05);
+            border-color: var(--neo-red);
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        .cta-button:active {
+            transform: translate(0, 0) scale(0.98);
+            box-shadow: 2px 2px 0px #FFFFFF;
+        }
+
+        /* Hero Section */
+        .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-family: 'Space Grotesk', sans-serif;
+            position: relative;
+            overflow: hidden;
+            background: var(--neo-black);
+            border-bottom: var(--border);
+            padding-top: 80px;
         }
-        .test-container {
-            text-align: center;
-            color: white;
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            min-height: 100vh;
         }
-        .test-title {
-            font-size: 2em;
-            margin-bottom: 30px;
-            background: linear-gradient(45deg, #9945FF, #14F195);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+
+        .hero-content {
+            position: relative;
         }
-        .instructions {
-            margin: 20px 0;
-            font-size: 1.1em;
-            color: #b0b0c8;
-        }
-        .feature-list {
-            text-align: left;
+
+        .hero-badge {
             display: inline-block;
-            margin: 20px 0;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 10px;
+            background: var(--neo-black);
+            color: var(--neo-white);
+            padding: 15px 30px;
+            border: var(--border);
+            font-size: 1.2em;
+            font-weight: 900;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-family: var(--font-meme);
+            box-shadow: var(--shadow-3d);
+            transform: perspective(1000px) rotateX(0deg);
+            transition: all 0.3s ease;
         }
-        .feature-list h3 {
-            color: #14F195;
+
+        .hero-badge:hover {
+            background: var(--neo-red);
+            color: var(--neo-black);
+            box-shadow: var(--shadow-3d-hover);
+            transform: perspective(1000px) rotateX(-5deg) translateY(-5px);
+        }
+
+        .hero-title {
+            font-size: 6em;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            font-family: var(--font-meme);
+            color: var(--neo-white);
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            text-shadow: 6px 6px 0px var(--neo-red);
+            transform: perspective(1000px) rotateX(0deg);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-title:hover {
+            transform: perspective(1000px) rotateX(-2deg) scale(1.02);
+            text-shadow: 8px 8px 0px var(--neo-yellow);
+        }
+
+        .hero-subtitle {
+            font-size: 2em;
+            color: var(--neo-white);
+            margin-bottom: 40px;
+            line-height: 1.6;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 3px 3px 0px var(--neo-blue);
+            max-width: 600px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 50px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: var(--neo-white);
+            padding: 30px;
+            border: var(--border-thick);
+            color: var(--neo-black);
+            box-shadow: var(--shadow-3d);
+            transform: perspective(1000px) rotateX(0deg);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-neo);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .stat-item:hover {
+            transform: perspective(1000px) rotateX(-5deg) translateY(-15px) scale(1.05);
+            box-shadow: var(--shadow-3d-hover);
+            border-color: var(--neo-red);
+        }
+
+        .stat-item:hover::before {
+            opacity: 1;
+        }
+
+        .stat-number {
+            font-size: 3em;
+            font-weight: 900;
+            color: var(--neo-black);
+            display: block;
+            font-family: var(--font-meme);
             margin-bottom: 10px;
         }
-        .feature-list ul {
-            list-style: none;
-            padding: 0;
+
+        .stat-label {
+            font-size: 1.2em;
+            color: var(--neo-black);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 900;
         }
-        .feature-list li {
+
+        .hero-buttons {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 25px 50px;
+            border: var(--border-thick);
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1.6em;
+            font-family: var(--font-meme);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            display: inline-block;
+            text-align: center;
+            min-width: 250px;
+            box-shadow: var(--shadow-3d);
+            transform: perspective(1000px) rotateX(0deg);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--neo-black);
+            color: var(--neo-white);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-neo);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn-primary:hover {
+            background: var(--neo-red);
+            color: var(--neo-black);
+            box-shadow: var(--shadow-3d-hover);
+            transform: perspective(1000px) rotateX(-5deg) translateY(-10px) scale(1.05);
+            border-color: var(--neo-red);
+        }
+
+        .btn-primary:hover::before {
+            opacity: 1;
+        }
+
+        .btn-secondary {
+            background: var(--neo-white);
+            color: var(--neo-black);
+        }
+
+        .btn-secondary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-neo-hover);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn-secondary:hover {
+            background: var(--neo-red);
+            color: var(--neo-black);
+            box-shadow: var(--shadow-3d-hover);
+            transform: perspective(1000px) rotateX(-5deg) translateY(-10px) scale(1.05);
+            border-color: var(--neo-red);
+        }
+
+        .btn-secondary:hover::before {
+            opacity: 1;
+        }
+
+        .btn-primary:active, .btn-secondary:active {
+            transform: perspective(1000px) rotateX(0deg) translateY(0) scale(0.98);
+            box-shadow: 4px 4px 0px #FFFFFF;
+        }
+
+        .hero-image {
+            position: relative;
+            text-align: center;
+        }
+
+        .pug-3d {
+            width: 600px;
+            height: 600px;
+            background: url('pug/pug-hero.jpg') center/cover;
+            border-radius: 50%;
+            margin: 0 auto;
+            border: var(--border-thick);
+            position: relative;
+            box-shadow: var(--shadow-3d);
+            transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+            transition: all 0.3s ease;
+        }
+
+        .pug-3d:hover {
+            transform: perspective(1000px) rotateX(-5deg) rotateY(5deg) scale(1.05);
+            box-shadow: var(--shadow-3d-hover);
+            border-color: var(--neo-red);
+        }
+
+        /* Sections */
+        .section {
+            padding: 140px 0;
+            position: relative;
+            background: var(--bg-primary);
+            border-bottom: var(--border);
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+
+        .section-title {
+            font-size: 4.5em;
+            font-weight: 900;
+            color: var(--neo-white);
+            margin-bottom: 30px;
+            font-family: var(--font-meme);
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            text-shadow: 6px 6px 0px var(--neo-red);
+            transform: perspective(1000px) rotateX(0deg);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            background: var(--gradient-neo);
+            z-index: -1;
+            opacity: 0.3;
+            transform: skew(-2deg, -2deg);
+        }
+
+        .section-title:hover {
+            transform: perspective(1000px) rotateX(-2deg) scale(1.02);
+            text-shadow: 8px 8px 0px var(--neo-yellow);
+        }
+
+        .section-subtitle {
+            font-size: 1.8em;
+            color: var(--neo-white);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 0px var(--neo-blue);
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-content h3 {
+            font-size: 2.5em;
+            color: var(--neo-white);
+            margin-bottom: 25px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 3px 3px 0px var(--neo-red);
+        }
+
+        .about-content p {
+            margin-bottom: 25px;
+            line-height: 1.8;
+            font-size: 1.3em;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-img {
+            width: 100%;
+            border-radius: 0;
+            box-shadow: var(--shadow-3d);
+            border: var(--border-thick);
+            transform: perspective(1000px) rotateX(0deg);
+            transition: all 0.3s ease;
+        }
+
+        .about-img:hover {
+            transform: perspective(1000px) rotateX(-5deg) scale(1.05);
+            box-shadow: var(--shadow-3d-hover);
+            border-color: var(--neo-red);
+        }
+
+        /* Tokenomics */
+        .tokenomics-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 50px;
+        }
+
+        .tokenomics-card {
+            background: var(--neo-white);
+            padding: 60px 50px;
+            border: var(--border-thick);
+            text-align: center;
+            box-shadow: var(--shadow-3d);
+            transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            color: var(--neo-black);
+        }
+
+        .tokenomics-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-neo);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .tokenomics-card:hover {
+            transform: perspective(1000px) rotateX(-5deg) rotateY(5deg) translateY(-20px) scale(1.05);
+            box-shadow: var(--shadow-3d-hover);
+            border-color: var(--neo-red);
+        }
+
+        .tokenomics-card:hover::before {
+            opacity: 1;
+        }
+
+        .tokenomics-icon {
+            width: 120px;
+            height: 120px;
+            background: var(--neo-black);
+            border: var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 3em;
+            color: var(--neo-white);
+            box-shadow: var(--shadow-3d);
+            transform: perspective(1000px) rotateX(0deg);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .tokenomics-icon:hover {
+            transform: perspective(1000px) rotateX(-10deg) rotateY(10deg) scale(1.1);
+            box-shadow: var(--shadow-3d-hover);
+            border-color: var(--neo-red);
+            background: var(--neo-red);
+            color: var(--neo-black);
+        }
+
+        .tokenomics-title {
+            font-size: 1.8em;
+            font-weight: 900;
+            color: var(--neo-black);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .tokenomics-value {
+            font-size: 3em;
+            font-weight: 900;
+            color: var(--neo-red);
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 0px var(--neo-black);
+        }
+
+        /* NFT Gallery */
+        .nft-gallery {
+            background: var(--bg-secondary);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .nft-card {
+            background: var(--neo-white);
+            border: var(--border-thick);
+            overflow: hidden;
+            box-shadow: var(--shadow-3d);
+            transform: perspective(1000px) rotateX(0deg);
+            transition: all 0.3s ease;
+            position: relative;
+            color: var(--neo-black);
+        }
+
+        .nft-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-neo);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .nft-card:hover {
+            transform: perspective(1000px) rotateX(-5deg) translateY(-15px) scale(1.05);
+            box-shadow: var(--shadow-3d-hover);
+            border-color: var(--neo-red);
+        }
+
+        .nft-card:hover::before {
+            opacity: 1;
+        }
+
+        .nft-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: var(--border);
+        }
+
+        .nft-info {
+            padding: 25px;
+        }
+
+        .nft-title {
+            font-size: 1.5em;
+            font-weight: 900;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nft-description {
+            color: var(--neo-black);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .nft-price {
+            font-size: 1.3em;
+            font-weight: 900;
+            color: var(--neo-red);
+            margin-bottom: 15px;
+        }
+
+        .btn-buy {
+            background: var(--neo-black);
+            color: var(--neo-white);
+            padding: 15px 30px;
+            border: var(--border);
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1.2em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            box-shadow: 4px 4px 0px #FFFFFF;
+            transition: all 0.2s ease;
+        }
+
+        .btn-buy:hover {
+            background: var(--neo-red);
+            color: var(--neo-black);
+            box-shadow: 6px 6px 0px #FFFFFF;
+            transform: translate(-2px, -2px);
+        }
+
+        .btn-buy:active {
+            transform: translate(0, 0);
+            box-shadow: 2px 2px 0px #FFFFFF;
+        }
+
+        /* Community */
+        .community-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .community-card {
+            background: var(--neo-white);
+            padding: 50px 40px;
+            border: var(--border-thick);
+            text-align: center;
+            box-shadow: var(--shadow-3d);
+            transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            color: var(--neo-black);
+        }
+
+        .community-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-neo);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .community-card:hover {
+            transform: perspective(1000px) rotateX(-5deg) rotateY(5deg) translateY(-15px) scale(1.05);
+            box-shadow: var(--shadow-3d-hover);
+            border-color: var(--neo-red);
+        }
+
+        .community-card:hover::before {
+            opacity: 1;
+        }
+
+        .community-icon {
+            width: 100px;
+            height: 100px;
+            background: var(--neo-black);
+            border: var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 2.5em;
+            color: var(--neo-white);
+            box-shadow: var(--shadow-3d);
+            transform: perspective(1000px) rotateX(0deg);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .community-icon:hover {
+            transform: perspective(1000px) rotateX(-10deg) rotateY(10deg) scale(1.1);
+            box-shadow: var(--shadow-3d-hover);
+            border-color: var(--neo-red);
+            background: var(--neo-red);
+            color: var(--neo-black);
+        }
+
+        .community-title {
+            font-size: 1.8em;
+            font-weight: 900;
+            color: var(--neo-black);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .community-desc {
+            color: var(--neo-black);
+            line-height: 1.6;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--neo-black);
+            color: var(--neo-white);
+            padding: 80px 0 40px;
+            border-top: var(--border);
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-section h4 {
+            color: var(--neo-white);
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 0px var(--neo-red);
+        }
+
+        .footer-section p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: var(--neo-white);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 10px 15px;
+            border: var(--border);
+            box-shadow: 4px 4px 0px #FFFFFF;
+            display: inline-block;
+            transition: all 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            background: var(--neo-red);
+            color: var(--neo-black);
+            box-shadow: 6px 6px 0px #FFFFFF;
+            transform: translate(-2px, -2px);
+        }
+
+        .footer-links a:active {
+            transform: translate(0, 0);
+            box-shadow: 2px 2px 0px #FFFFFF;
+        }
+
+        .footer-bottom {
+            border-top: var(--border);
+            padding-top: 40px;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                height: auto;
+                padding: 20px;
+            }
+
+            .nav-links {
+                margin: 20px 0;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 50px;
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: 4em;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .pug-3d {
+                width: 400px;
+                height: 400px;
+            }
+
+            .section {
+                padding: 80px 0;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="pug/pug-hero.jpg" alt="PUG Logo">
+                $PUGMEM
+            </div>
+            <ul class="nav-links">
+                <li><a href="#hero">INÍCIO</a></li>
+                <li><a href="#about">SOBRE</a></li>
+                <li><a href="#tokenomics">TOKENOMICS</a></li>
+                <li><a href="#gallery">NFT GALLERY</a></li>
+                <li><a href="#community">COMUNIDADE</a></li>
+            </ul>
+            <a href="#buy" class="cta-button">COMPRAR $PUG</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">MEMECOIN OFICIAL</div>
+                <h1 class="hero-title">$PUGMEM<br>REVOLUÇÃO<br>CANINA</h1>
+                <p class="hero-subtitle">
+                    A MEMECOIN MAIS FOFA DO SOLANA!
+                    PUGS NA BLOCKCHAIN COM TECNOLOGIA NEO 3D!
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">$0.045</span>
+                        <span class="stat-label">PREÇO ATUAL</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">1M+</span>
+                        <span class="stat-label">HOLDERS</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24H</span>
+                        <span class="stat-label">VOLUME</span>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#buy" class="btn-primary">COMPRAR AGORA</a>
+                    <a href="#gallery" class="btn-secondary">VER NFTS</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="pug-3d"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">SOBRE O $PUGMEM</h2>
+                <p class="section-subtitle">
+                    CONHEÇA A MEMECOIN QUE UNE O MELHOR DOS MUNDOS: FOFURA CANINA E TECNOLOGIA BLOCKCHAIN NEO 3D
+                </p>
+            </div>
+            <div class="about-grid">
+                <div class="about-content">
+                    <h3>A HISTÓRIA DOS PUGS</h3>
+                    <p>
+                        OS PUGS SÃO CONHECIDOS POR SUA PERSONALIDADE ENCHANTADORA E APARÊNCIA ÚNICA.
+                        AGORA, ESSA ENERGIA POSITIVA CHEGA AO MUNDO DAS CRIPTOMOEDAS COM O $PUGMEM.
+                    </p>
+                    <p>
+                        DESENVOLVIDO COM TECNOLOGIA SOLANA DE ÚLTIMA GERAÇÃO, OFERECEMOS UMA EXPERIÊNCIA
+                        PROFISSIONAL PARA TRADERS E ENTUSIASTAS DE MEMES.
+                    </p>
+                    <h3>TECNOLOGIA NEO 3D</h3>
+                    <p>
+                        UTILIZAMOS CONTRATOS INTELIGENTES AUDITADOS, LIQUIDEZ GARANTIDA E COMUNIDADE
+                        ATIVA PARA CRIAR UM ECOSSISTEMA SUSTENTÁVEL E DIVERTIDO COM EFEITOS 3D NEO-BRUTALIST.
+                    </p>
+                </div>
+                <div class="about-image">
+                    <img src="pug/pug-hero.jpg" alt="Pug Professional" class="about-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tokenomics Section -->
+    <section class="section" id="tokenomics">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">TOKENOMICS PROFISSIONAL</h2>
+                <p class="section-subtitle">
+                    ECONOMIA TOKEN SUSTENTÁVEL E TRANSPARENTE PARA O CRESCIMENTO A LONGO PRAZO
+                </p>
+            </div>
+            <div class="tokenomics-cards">
+                <div class="tokenomics-card">
+                    <div class="tokenomics-icon">💰</div>
+                    <h3 class="tokenomics-title">SUPPLY TOTAL</h3>
+                    <div class="tokenomics-value">1.000.000.000</div>
+                    <p>$PUG TOKENS DISPONÍVEIS</p>
+                </div>
+                <div class="tokenomics-card">
+                    <div class="tokenomics-icon">🔄</div>
+                    <h3 class="tokenomics-title">TAXAS</h3>
+                    <div class="tokenomics-value">5%</div>
+                    <p>REDISTRIBUIÇÃO AUTOMÁTICA</p>
+                </div>
+                <div class="tokenomics-card">
+                    <div class="tokenomics-icon">🏦</div>
+                    <h3 class="tokenomics-title">LIQUIDEZ</h3>
+                    <div class="tokenomics-value">50%</div>
+                    <p>BLOQUEADA PERMANENTEMENTE</p>
+                </div>
+                <div class="tokenomics-card">
+                    <div class="tokenomics-icon">👥</div>
+                    <h3 class="tokenomics-title">COMUNIDADE</h3>
+                    <div class="tokenomics-value">30%</div>
+                    <p>PARA DESENVOLVIMENTO</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NFT Gallery Section -->
+    <section class="section nft-gallery" id="gallery">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">NFT GALLERY PUGMEM</h2>
+                <p class="section-subtitle">
+                    COLEÇÃO OFICIAL DE NFTs DOS PUGS MAIS FOFA DA BLOCKCHAIN
+                </p>
+            </div>
+            <div class="gallery-grid">
+                <div class="nft-card">
+                    <img src="pug/pug-hero.jpg" alt="Pug Hero NFT" class="nft-image">
+                    <div class="nft-info">
+                        <h3 class="nft-title">PUG HERO #001</h3>
+                        <p class="nft-description">O lendário Pug Hero, fundador da revolução canina no Solana.</p>
+                        <div class="nft-price">0.5 SOL</div>
+                        <a href="#" class="btn-buy">COMPRAR NFT</a>
+                    </div>
+                </div>
+                <div class="nft-card">
+                    <img src="photo-1517423568366-8b83523034fd.avif" alt="Pug Warrior NFT" class="nft-image">
+                    <div class="nft-info">
+                        <h3 class="nft-title">PUG WARRIOR #002</h3>
+                        <p class="nft-description">Guerreiro pug com armadura dourada, pronto para batalhas.</p>
+                        <div class="nft-price">0.3 SOL</div>
+                        <a href="#" class="btn-buy">COMPRAR NFT</a>
+                    </div>
+                </div>
+                <div class="nft-card">
+                    <img src="pug/pup pug/photo-1517423738875-5ce310acd3da.avif" alt="Pug Mystic NFT" class="nft-image">
+                    <div class="nft-info">
+                        <h3 class="nft-title">PUG MYSTIC #003</h3>
+                        <p class="nft-description">Pug místico com poderes especiais e aura mágica.</p>
+                        <div class="nft-price">0.4 SOL</div>
+                        <a href="#" class="btn-buy">COMPRAR NFT</a>
+                    </div>
+                </div>
+                <div class="nft-card">
+                    <img src="pug - Copia/photo-1517423738875-5ce310acd3da.avif" alt="Pug Cyber NFT" class="nft-image">
+                    <div class="nft-info">
+                        <h3 class="nft-title">PUG CYBER #004</h3>
+                        <p class="nft-description">Pug cibernético com implantes tecnológicos futuristas.</p>
+                        <div class="nft-price">0.6 SOL</div>
+                        <a href="#" class="btn-buy">COMPRAR NFT</a>
+                    </div>
+                </div>
+                <div class="nft-card">
+                    <img src="pug/pug-hero.jpg" alt="Pug Royal NFT" class="nft-image">
+                    <div class="nft-info">
+                        <h3 class="nft-title">PUG ROYAL #005</h3>
+                        <p class="nft-description">Pug real com coroa e mantos luxuosos de ouro.</p>
+                        <div class="nft-price">0.8 SOL</div>
+                        <a href="#" class="btn-buy">COMPRAR NFT</a>
+                    </div>
+                </div>
+                <div class="nft-card">
+                    <img src="photo-1517423568366-8b83523034fd.avif" alt="Pug Cosmic NFT" class="nft-image">
+                    <div class="nft-info">
+                        <h3 class="nft-title">PUG COSMIC #006</h3>
+                        <p class="nft-description">Pug cósmico com poderes estelares e energia infinita.</p>
+                        <div class="nft-price">1.0 SOL</div>
+                        <a href="#" class="btn-buy">COMPRAR NFT</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="section" id="community">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">JUNTE-SE À COMUNIDADE</h2>
+                <p class="section-subtitle">
+                    SEJA PARTE DA FAMÍLIA PUG MAIS PROFISSIONAL DO WEB3
+                </p>
+            </div>
+            <div class="community-grid">
+                <div class="community-card">
+                    <div class="community-icon">🐦</div>
+                    <h3 class="community-title">TWITTER</h3>
+                    <p class="community-desc">
+                        SIGA NOSSAS ATUALIZAÇÕES DIÁRIAS, MEMES EXCLUSIVOS E ANÚNCIOS IMPORTANTES.
+                        JUNTE-SE A MAIS DE 50K SEGUIDORES!
+                    </p>
+                </div>
+                <div class="community-card">
+                    <div class="community-icon">💬</div>
+                    <h3 class="community-title">DISCORD</h3>
+                    <p class="community-desc">
+                        JUNTE-SE À NOSSA COMUNIDADE ATIVA PARA DISCUSSÕES, SUPORTE E EVENTOS.
+                        MAIS DE 10K MEMBROS ONLINE!
+                    </p>
+                </div>
+                <div class="community-card">
+                    <div class="community-icon">📱</div>
+                    <h3 class="community-title">TELEGRAM</h3>
+                    <p class="community-desc">
+                        RECEBA ALERTAS INSTANTÂNEOS SOBRE PREÇOS E NOTÍCIAS IMPORTANTES.
+                        CANAL OFICIAL COM 25K USUÁRIOS!
+                    </p>
+                </div>
+                <div class="community-card">
+                    <div class="community-icon">📸</div>
+                    <h3 class="community-title">INSTAGRAM</h3>
+                    <p class="community-desc">
+                        VEJA ARTES EXCLUSIVAS, BASTIDORES E CONTEÚDO VISUAL INCRÍVEL.
+                        MAIS DE 30K SEGUIDORES!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>$PUGMEM</h4>
+                    <p>A MEMECOIN PROFISSIONAL QUE COMBINA FOFURA CANINA COM TECNOLOGIA WEB3 NEO 3D DE PONTA.</p>
+                    <p>CONTRATO: GKKJkrCB8QEy7NwcNVwNa8avdywW6iCoNZpzaMtepump</p>
+                </div>
+                <div class="footer-section">
+                    <h4>LINKS ÚTEIS</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about">SOBRE</a></li>
+                        <li><a href="#tokenomics">TOKENOMICS</a></li>
+                        <li><a href="#gallery">NFT GALLERY</a></li>
+                        <li><a href="#community">COMUNIDADE</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>RECURSOS</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">WHITEPAPER</a></li>
+                        <li><a href="#">AUDITORIA</a></li>
+                        <li><a href="#">DOCUMENTAÇÃO</a></li>
+                        <li><a href="#">SUPORTE</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>CONTATO</h4>
+                    <p>ENTRE EM CONTATO CONOSCO PARA PARCERIAS E COLABORAÇÕES.</p>
+                    <p>EMAIL: contact@pugmem.io</p>
+                    <p>© 2025 $PUGMEM. TODOS OS DIREITOS RESERVADOS.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>FEITO COM 💜 PARA AMANTES DE PUGS | TECNOLOGIA NEO 3D | SOLANA BLOCKCHAIN</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Neo-Brutalist PUGMEM Script
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'var(--neo-black)';
+                navbar.style.borderBottom = 'var(--border)';
+            } else {
+                navbar.style.background = 'var(--neo-black)';
+                navbar.style.borderBottom = 'var(--border)';
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-links a, .footer-links a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.style.opacity = '1';
+                    entry.style.transform = 'translateY(0) perspective(1000px) rotateX(0deg)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px) perspective(1000px) rotateX(5deg)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+
+        // Hero stats animation
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-number');
+            stats.forEach(stat => {
+                const target = parseFloat(stat.textContent.replace(/[^\d.]/g, ''));
+                let current = 0;
+                const increment = target / 100;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    stat.textContent = typeof target === 'number' && target % 1 === 0 ?
+                        current.toFixed(0) : current.toFixed(3);
+                }, 20);
+            });
+        }
+
+        // Trigger stats animation when hero is visible
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    heroObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        heroObserver.observe(document.querySelector('.hero'));
+
+        // NFT Gallery interactions
+        document.querySelectorAll('.nft-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Add click animation
+                this.style.transform = 'perspective(1000px) rotateX(-10deg) rotateY(10deg) translateY(-25px) scale(1.1)';
+                setTimeout(() => {
+                    this.style.transform = 'perspective(1000px) rotateX(0deg) translateY(0) scale(1)';
+                }, 300);
+            });
+        });
+
+        // Community card hover effects
+        document.querySelectorAll('.community-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                const icon = this.querySelector('.community-icon');
+                icon.style.animation = 'none';
+                setTimeout(() => {
+                    icon.style.animation = 'bounce 0.6s ease';
+                }, 10);
+            });
+        });
+
+        // Add some dynamic effects
+        setInterval(() => {
+            const randomCard = document.querySelectorAll('.nft-card')[Math.floor(Math.random() * 6)];
+            if (randomCard) {
+                randomCard.style.boxShadow = 'var(--shadow-3d-hover)';
+                setTimeout(() => {
+                    randomCard.style.boxShadow = 'var(--shadow-3d)';
+                }, 500);
+            }
+        }, 3000);
+    </script>
+</body>
+</html>
             margin: 5px 0;
             padding-left: 20px;
             position: relative;

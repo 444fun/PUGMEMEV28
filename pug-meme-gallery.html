@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐕 PugMeme Gallery - Coleção NFT Oficial</title>
+    <meta name="description" content="Galeria oficial de memes PugMeme - Coleção NFT exclusiva da comunidade. Descubra arte digital única, memes raros e conecte-se com a família Pug.">
+    <meta name="keywords" content="PugMeme, NFT, Memes, Pug, Crypto, Blockchain, Arte Digital, Coleção, Comunidade">
+    <meta property="og:title" content="🐕 PugMeme Gallery - Coleção NFT Oficial">
+    <meta property="og:description" content="Galeria exclusiva de memes PugMeme. Arte digital única da comunidade mais fofinha do Web3.">
+    <meta property="og:image" content="pug-meme-nft-1.jpg">
+    <meta property="og:url" content="https://pugmem.io/gallery">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="pug-logo.jpg">
+
+    <style>
+        /* Neo PugMeme Theme */
+        :root {
+            --pug-primary: #8B4513;
+            --pug-secondary: #D2B48C;
+            --pug-accent: #FF6B35;
+            --pug-light: #F5F5DC;
+            --pug-dark: #2F1B14;
+            --neo-black: #000000;
+            --neo-white: #FFFFFF;
+            --neo-red: #FF0000;
+            --neo-yellow: #FFFF00;
+            --neo-blue: #0080FF;
+            --neo-purple: #8000FF;
+            --neo-green: #00FF80;
+            --text-primary: #FFFFFF;
+            --text-secondary: #CCCCCC;
+            --bg-primary: #000000;
+            --bg-secondary: #111111;
+            --bg-tertiary: #222222;
+            --border: 4px solid #FFFFFF;
+            --border-thick: 6px solid #FFFFFF;
+            --shadow-3d: 8px 8px 0px #FFFFFF;
+            --shadow-3d-hover: 12px 12px 0px #FF0000;
+            --font-primary: 'Inter', sans-serif;
+            --font-meme: 'Arial Black', 'Impact', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --gradient-neo: linear-gradient(135deg, #FF0000, #FFFF00, #0080FF);
+            --gradient-pug: linear-gradient(135deg, #8B4513, #FF6B35, #D2B48C);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Neo Particle Background */
+        .neo-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--neo-red);
+            border-radius: 50%;
+            animation: float-particle 8s ease-in-out infinite;
+        }
+
+        .particle:nth-child(2n) {
+            background: var(--neo-yellow);
+            animation-duration: 6s;
+            animation-delay: -2s;
+        }
+
+        .particle:nth-child(3n) {
+            background: var(--neo-blue);
+            animation-duration: 10s;
+            animation-delay: -4s;
+        }
+
+        @keyframes float-particle {
+            0%, 100% {
+                transform: translateY(100vh) rotate(0deg) scale(1);
+                opacity: 0;
+            }
+            50% {
+                transform: translateY(50vh) rotate(180deg) scale(1.5);
+                opacity: 1;
+            }
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--neo-black);
+            border-bottom: var(--border);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 900;
+            font-size: 2.2em;
+            color: var(--neo-white);
+            font-family: var(--font-meme);
+            text-shadow: 3px 3px 0px var(--neo-red);
+        }
+
+        .logo img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: var(--border);
+            object-fit: cover;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--neo-white);
+            font-weight: 700;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--neo-yellow);
+            transform: translateY(-3px);
+            text-shadow: 0 0 10px var(--neo-yellow);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 4px;
+            background: var(--gradient-neo);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: var(--neo-black);
+            color: var(--neo-white);
+            padding: 15px 30px;
+            border: var(--border-thick);
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1.2em;
+            font-family: var(--font-meme);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            box-shadow: var(--shadow-3d);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-neo);
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+
+        .cta-button:hover {
+            background: var(--neo-red);
+            color: var(--neo-black);
+            box-shadow: var(--shadow-3d-hover);
+            transform: translate(-4px, -4px) scale(1.05);
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--bg-primary);
+            border-bottom: var(--border);
+            padding: 120px 0 60px;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--neo-black);
+            color: var(--neo-white);
+            padding: 15px 30px;
+            border: var(--border);
+            font-size: 1.2em;
+            font-weight: 900;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-family: var(--font-meme);
+            box-shadow: var(--shadow-3d);
+            transform: perspective(1000px) rotateX(0deg);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-badge:hover {
+            transform: perspective(1000px) rotateX(-5deg) scale(1.05);
+            box-shadow: var(--shadow-3d-hover);
+        }
+
+        .hero-title {
+            font-size: 4.5em;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            font-family: var(--font-meme);
+            color: var(--neo-white);
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            text-shadow: 4px 4px 0px var(--neo-red);
+            transform: perspective(1000px) rotateX(0deg);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-title:hover {
+            transform: perspective(1000px) rotateX(-2deg) scale(1.02);
+            text-shadow: 6px 6px 0px var(--neo-yellow);
+        }
+
+        .hero-subtitle {
+            font-size: 1.8em;
+            color: var(--neo-white);
+            margin-bottom: 50px;
+            line-height: 1.6;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 60px;
+            margin-bottom: 60px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: var(--neo-white);
+            padding: 30px;
+            border: var(--border-thick);
+            color: var(--neo-black);
+            box-shadow: var(--shadow-3d);
+            transform: perspective(1000px) rotateX(0deg);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            min-width: 200px;
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-neo);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .stat-item:hover {
+            transform: perspective(1000px) rotateX(-5deg) translateY(-15px) scale(1.05);
+            box-shadow: var(--shadow-3d-hover);
+            border-color: var(--neo-red);
+        }
+
+        .stat-item:hover::before {
+            opacity: 1;
+        }
+
+        .stat-number {
+            font-size: 3em;
+            font-weight: 900;
+            color: var(--neo-black);
+            display: block;
+            font-family: var(--font-meme);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.2em;
+            color: var(--neo-black);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 900;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--neo-black);
+            color: var(--neo-white);
+            padding: 25px 50px;
+            border: var(--border-thick);
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1.6em;
+            font-family: var(--font-meme);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            display: inline-block;
+            box-shadow: var(--shadow-3d);
+            transform: perspective(1000px) rotateX(0deg);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-neo);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn-primary:hover {
+            background: var(--neo-red);
+            color: var(--neo-black);
+            box-shadow: var(--shadow-3d-hover);
+            transform: perspective(1000px) rotateX(-5deg) translateY(-10px) scale(1.08);
+            border-color: var(--neo-red);
+        }
+
+        .btn-primary:hover::before {
+            opacity: 1;
+        }
+
+        .btn-primary:active {
+            transform: perspective(1000px) rotateX(0deg) translateY(0) scale(0.98);
+            box-shadow: 4px 4px 0px #FFFFFF;
+        }
+
+        /* NFT Gallery Section */
+        .gallery-section {
+            padding: 120px 0;
+            background: var(--bg-secondary);
+            border-top: var(--border);
+            border-bottom: var(--border);
+        }
+
+        .gallery-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .gallery-title {
+            font-size: 4em;
+            font-weight: 900;
+            color: var(--neo-white);
+            margin-bottom: 30px;
+            font-family: var(--font-meme);
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            text-shadow: 4px 4px 0px var(--neo-red);
+        }
+
+        .gallery-subtitle {
+            font-size: 1.5em;
+            color: var(--neo-white);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-weight: 600;
+        }
+
+        .nft-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .nft-card {
+            background: var(--neo-white);
+            border: var(--border-thick);
+            box-shadow: var(--shadow-3d);
+            transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            color: var(--neo-black);
+        }
+
+        .nft-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-neo);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+
+        .nft-card:hover {
+            transform: perspective(1000px) rotateX(-10deg) rotateY(5deg) translateY(-20px) scale(1.05);
+            box-shadow: var(--shadow-3d-hover);
+            border-color: var(--neo-red);
+        }
+
+        .nft-card:hover::before {
+            opacity: 1;
+        }
+
+        .nft-image-container {
+            position: relative;
+            overflow: hidden;
+            height: 300px;
+        }
+
+        .nft-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .nft-card:hover .nft-image {
+            transform: scale(1.1);
+        }
+
+        .nft-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--neo-red);
+            color: var(--neo-white);
+            padding: 8px 15px;
+            border: 3px solid var(--neo-white);
+            font-weight: 900;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 2px 2px 0px var(--neo-black);
+        }
+
+        .nft-info {
+            padding: 25px;
+        }
+
+        .nft-title {
+            font-size: 1.8em;
+            font-weight: 900;
+            color: var(--neo-black);
+            margin-bottom: 10px;
+            font-family: var(--font-meme);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nft-description {
+            color: var(--neo-black);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        .nft-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .nft-price {
+            font-size: 1.4em;
+            font-weight: 900;
+            color: var(--neo-red);
+            font-family: var(--font-mono);
+        }
+
+        .nft-rarity {
+            background: var(--neo-black);
+            color: var(--neo-white);
+            padding: 5px 12px;
+            border-radius: 0;
+            font-size: 0.9em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nft-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-view, .btn-buy {
+            flex: 1;
+            padding: 15px;
+            border: 3px solid var(--neo-black);
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-family: var(--font-meme);
+        }
+
+        .btn-view {
+            background: var(--neo-white);
+            color: var(--neo-black);
+        }
+
+        .btn-view:hover {
+            background: var(--neo-black);
+            color: var(--neo-white);
+            transform: translateY(-3px);
+        }
+
+        .btn-buy {
+            background: var(--neo-red);
+            color: var(--neo-white);
+        }
+
+        .btn-buy:hover {
+            background: var(--neo-black);
+            color: var(--neo-white);
+            transform: translateY(-3px);
+        }
+
+        /* Community Features */
+        .community-section {
+            padding: 120px 0;
+            background: var(--bg-primary);
+        }
+
+        .community-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .community-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .community-title {
+            font-size: 3.5em;
+            font-weight: 900;
+            color: var(--neo-white);
+            margin-bottom: 25px;
+            font-family: var(--font-meme);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 4px 4px 0px var(--neo-red);
+        }
+
+        .community-subtitle {
+            font-size: 1.4em;
+            color: var(--neo-white);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-weight: 600;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: var(--neo-white);
+            padding: 40px 30px;
+            border: var(--border-thick);
+            text-align: center;
+            box-shadow: var(--shadow-3d);
+            transform: perspective(1000px) rotateX(0deg);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            color: var(--neo-black);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-neo);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .feature-card:hover {
+            transform: perspective(1000px) rotateX(-5deg) translateY(-15px) scale(1.05);
+            box-shadow: var(--shadow-3d-hover);
+            border-color: var(--neo-red);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--neo-black);
+            border: var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2.5em;
+            color: var(--neo-white);
+            box-shadow: var(--shadow-3d);
+            transform: perspective(1000px) rotateX(0deg);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: perspective(1000px) rotateX(-10deg) rotateY(10deg) scale(1.1);
+            box-shadow: var(--shadow-3d-hover);
+            border-color: var(--neo-red);
+            background: var(--neo-red);
+            color: var(--neo-black);
+        }
+
+        .feature-title {
+            font-size: 1.6em;
+            font-weight: 900;
+            color: var(--neo-black);
+            margin-bottom: 15px;
+            font-family: var(--font-meme);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .feature-desc {
+            color: var(--neo-black);
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--neo-black);
+            color: var(--neo-white);
+            padding: 80px 0 40px;
+            border-top: var(--border);
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-section h4 {
+            color: var(--neo-white);
+            font-size: 1.5em;
+            margin-bottom: 25px;
+            font-family: var(--font-meme);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 0px var(--neo-red);
+        }
+
+        .footer-section p {
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--neo-white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-links a:hover {
+            color: var(--neo-yellow);
+            text-shadow: 0 0 10px var(--neo-yellow);
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            border-top: 3px solid var(--neo-white);
+            padding-top: 40px;
+            text-align: center;
+            color: var(--neo-white);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Neo Functions - Interactive Elements */
+        .neo-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            backdrop-filter: blur(10px);
+        }
+
+        .neo-modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--neo-white);
+            border: var(--border-thick);
+            box-shadow: var(--shadow-3d);
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            color: var(--neo-black);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--neo-red);
+            color: var(--neo-white);
+            border: none;
+            width: 40px;
+            height: 40px;
+            font-size: 1.5em;
+            font-weight: 900;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--neo-black);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 40px;
+        }
+
+        .modal-title {
+            font-size: 2.5em;
+            font-weight: 900;
+            color: var(--neo-black);
+            margin-bottom: 20px;
+            font-family: var(--font-meme);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .modal-text {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        /* Notification System */
+        .neo-notification {
+            position: fixed;
+            top: 100px;
+            right: 30px;
+            background: var(--neo-black);
+            color: var(--neo-white);
+            border: var(--border);
+            padding: 20px 30px;
+            box-shadow: var(--shadow-3d);
+            transform: translateX(400px);
+            transition: transform 0.4s ease;
+            z-index: 1500;
+            max-width: 400px;
+        }
+
+        .neo-notification.active {
+            transform: translateX(0);
+        }
+
+        .notification-title {
+            font-weight: 900;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            font-family: var(--font-meme);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .notification-text {
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        /* Loading Animation */
+        .neo-loader {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--neo-white);
+            border-radius: 50%;
+            border-top-color: var(--neo-red);
+            animation: neo-spin 1s ease-in-out infinite;
+        }
+
+        @keyframes neo-spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3em;
+            }
+
+            .gallery-title {
+                font-size: 2.5em;
+            }
+
+            .nft-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .hero-stats {
+                gap: 30px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Neo Particles Background -->
+    <div class="neo-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="pug-logo.jpg" alt="PugMeme Logo">
+                🐕 PugMeme
+            </div>
+            <ul class="nav-links">
+                <li><a href="#hero">Início</a></li>
+                <li><a href="#gallery">Galeria NFT</a></li>
+                <li><a href="#community">Comunidade</a></li>
+                <li><a href="#about">Sobre</a></li>
+            </ul>
+            <a href="#mint" class="cta-button">Mint NFT</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-container">
+            <div class="hero-badge">🎨 GALERIA OFICIAL NFT</div>
+            <h1 class="hero-title">🐕 PugMeme<br>Collection</h1>
+            <p class="hero-subtitle">
+                A coleção mais fofa do Web3! Descubra memes raros, arte digital exclusiva e conecte-se com a comunidade PugMeme mais criativa do metaverso.
+            </p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">6</span>
+                    <span class="stat-label">NFTs Únicos</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">1000+</span>
+                    <span class="stat-label">Holders</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Comunidade</span>
+                </div>
+            </div>
+            <div class="hero-buttons">
+                <a href="#gallery" class="btn-primary">Ver Coleção</a>
+                <a href="#mint" class="btn-primary">Mint Agora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- NFT Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <div class="gallery-container">
+            <div class="gallery-header">
+                <h2 class="gallery-title">🏆 Coleção NFT Exclusiva</h2>
+                <p class="gallery-subtitle">
+                    Cada NFT é uma obra de arte única da comunidade PugMeme. Raridades limitadas, memes icônicos e utilitários exclusivos aguardam você!
+                </p>
+            </div>
+
+            <div class="nft-grid">
+                <!-- NFT 1 -->
+                <div class="nft-card" data-nft="pug-legendary">
+                    <div class="nft-image-container">
+                        <img src="pug-meme-nft-1.jpg" alt="Pug Legendary" class="nft-image" onerror="this.src='pug-hero.jpg'">
+                        <div class="nft-badge">Legendary</div>
+                    </div>
+                    <div class="nft-info">
+                        <h3 class="nft-title">🐕 Pug Legend</h3>
+                        <p class="nft-description">O pug lendário que iniciou tudo. Raridade máxima com poderes especiais na comunidade.</p>
+                        <div class="nft-meta">
+                            <div class="nft-price">0.5 SOL</div>
+                            <div class="nft-rarity">1/1</div>
+                        </div>
+                        <div class="nft-buttons">
+                            <a href="#" class="btn-view" onclick="openModal('pug-legendary')">Ver Detalhes</a>
+                            <a href="#" class="btn-buy" onclick="showNotification('NFT Indisponível', 'Este NFT lendário já foi mintado!')">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NFT 2 -->
+                <div class="nft-card" data-nft="pug-crypto">
+                    <div class="nft-image-container">
+                        <img src="pug-meme-nft-2.jpg" alt="Pug Crypto Master" class="nft-image" onerror="this.src='pug-hero.jpg'">
+                        <div class="nft-badge">Epic</div>
+                    </div>
+                    <div class="nft-info">
+                        <h3 class="nft-title">💎 Pug Crypto</h3>
+                        <p class="nft-description">O mestre das criptomoedas com seu chapéu de trader. Perfeito para hodlers.</p>
+                        <div class="nft-meta">
+                            <div class="nft-price">0.3 SOL</div>
+                            <div class="nft-rarity">5/10</div>
+                        </div>
+                        <div class="nft-buttons">
+                            <a href="#" class="btn-view" onclick="openModal('pug-crypto')">Ver Detalhes</a>
+                            <a href="#" class="btn-buy" onclick="showNotification('Compra Iniciada', 'Conectando carteira...')">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NFT 3 -->
+                <div class="nft-card" data-nft="pug-meme-lord">
+                    <div class="nft-image-container">
+                        <img src="pug-meme-nft-3.jpg" alt="Pug Meme Lord" class="nft-image" onerror="this.src='pug-hero.jpg'">
+                        <div class="nft-badge">Rare</div>
+                    </div>
+                    <div class="nft-info">
+                        <h3 class="nft-title">👑 Meme Lord</h3>
+                        <p class="nft-description">O senhor dos memes com sua coroa dourada. Domina todos os trends do Twitter.</p>
+                        <div class="nft-meta">
+                            <div class="nft-price">0.2 SOL</div>
+                            <div class="nft-rarity">15/50</div>
+                        </div>
+                        <div class="nft-buttons">
+                            <a href="#" class="btn-view" onclick="openModal('pug-meme-lord')">Ver Detalhes</a>
+                            <a href="#" class="btn-buy" onclick="showNotification('Compra Iniciada', 'Conectando carteira...')">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NFT 4 -->
+                <div class="nft-card" data-nft="pug-space">
+                    <div class="nft-image-container">
+                        <img src="pug-meme-nft-4.jpg" alt="Pug Space Explorer" class="nft-image" onerror="this.src='pug-hero.jpg'">
+                        <div class="nft-badge">Rare</div>
+                    </div>
+                    <div class="nft-info">
+                        <h3 class="nft-title">🚀 Space Pug</h3>
+                        <p class="nft-description">Explorador espacial pug com capacete futurista. Pronto para conquistar o metaverso.</p>
+                        <div class="nft-meta">
+                            <div class="nft-price">0.2 SOL</div>
+                            <div class="nft-rarity">20/50</div>
+                        </div>
+                        <div class="nft-buttons">
+                            <a href="#" class="btn-view" onclick="openModal('pug-space')">Ver Detalhes</a>
+                            <a href="#" class="btn-buy" onclick="showNotification('Compra Iniciada', 'Conectando carteira...')">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NFT 5 -->
+                <div class="nft-card" data-nft="pug-artist">
+                    <div class="nft-image-container">
+                        <img src="pug-meme-nft-5.jpg" alt="Pug Artist" class="nft-image" onerror="this.src='pug-hero.jpg'">
+                        <div class="nft-badge">Uncommon</div>
+                    </div>
+                    <div class="nft-info">
+                        <h3 class="nft-title">🎨 Artist Pug</h3>
+                        <p class="nft-description">Pug artista com pincéis e paleta. Cria as melhores artes da comunidade.</p>
+                        <div class="nft-meta">
+                            <div class="nft-price">0.1 SOL</div>
+                            <div class="nft-rarity">50/100</div>
+                        </div>
+                        <div class="nft-buttons">
+                            <a href="#" class="btn-view" onclick="openModal('pug-artist')">Ver Detalhes</a>
+                            <a href="#" class="btn-buy" onclick="showNotification('Compra Iniciada', 'Conectando carteira...')">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NFT 6 -->
+                <div class="nft-card" data-nft="pug-community">
+                    <div class="nft-image-container">
+                        <img src="pug-meme-nft-6.jpg" alt="Pug Community Hero" class="nft-image" onerror="this.src='pug-hero.jpg'">
+                        <div class="nft-badge">Common</div>
+                    </div>
+                    <div class="nft-info">
+                        <h3 class="nft-title">❤️ Community Pug</h3>
+                        <p class="nft-description">Herói da comunidade com coração gigante. Representa o amor e união dos pugs.</p>
+                        <div class="nft-meta">
+                            <div class="nft-price">0.05 SOL</div>
+                            <div class="nft-rarity">100/200</div>
+                        </div>
+                        <div class="nft-buttons">
+                            <a href="#" class="btn-view" onclick="openModal('pug-community')">Ver Detalhes</a>
+                            <a href="#" class="btn-buy" onclick="showNotification('Compra Iniciada', 'Conectando carteira...')">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NFT 7 -->
+                <div class="nft-card" data-nft="pug-whatsapp-1">
+                    <div class="nft-image-container">
+                        <img src="WhatsApp Image 2025-12-28 at 19.14.40.jpeg" alt="Pug WhatsApp 1" class="nft-image" onerror="this.src='pug-hero.jpg'">
+                        <div class="nft-badge">Exclusive</div>
+                    </div>
+                    <div class="nft-info">
+                        <h3 class="nft-title">📸 Pug Moment 1</h3>
+                        <p class="nft-description">Momento especial capturado da comunidade PugMeme. Arte autêntica e única.</p>
+                        <div class="nft-meta">
+                            <div class="nft-price">0.1 SOL</div>
+                            <div class="nft-rarity">1/1</div>
+                        </div>
+                        <div class="nft-buttons">
+                            <a href="#" class="btn-view" onclick="openModal('pug-whatsapp-1')">Ver Detalhes</a>
+                            <a href="#" class="btn-buy" onclick="showNotification('Compra Iniciada', 'Conectando carteira...')">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NFT 8 -->
+                <div class="nft-card" data-nft="pug-whatsapp-2">
+                    <div class="nft-image-container">
+                        <img src="WhatsApp Image 2025-12-28 at 19.00.09.jpeg" alt="Pug WhatsApp 2" class="nft-image" onerror="this.src='pug-hero.jpg'">
+                        <div class="nft-badge">Exclusive</div>
+                    </div>
+                    <div class="nft-info">
+                        <h3 class="nft-title">📸 Pug Moment 2</h3>
+                        <p class="nft-description">Outro momento icônico da jornada PugMeme. Preservado para sempre na blockchain.</p>
+                        <div class="nft-meta">
+                            <div class="nft-price">0.1 SOL</div>
+                            <div class="nft-rarity">1/1</div>
+                        </div>
+                        <div class="nft-buttons">
+                            <a href="#" class="btn-view" onclick="openModal('pug-whatsapp-2')">Ver Detalhes</a>
+                            <a href="#" class="btn-buy" onclick="showNotification('Compra Iniciada', 'Conectando carteira...')">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NFT 9 -->
+                <div class="nft-card" data-nft="pug-whatsapp-3">
+                    <div class="nft-image-container">
+                        <img src="WhatsApp Image 2025-12-27 at 10.26.23.jpeg" alt="Pug WhatsApp 3" class="nft-image" onerror="this.src='pug-hero.jpg'">
+                        <div class="nft-badge">Exclusive</div>
+                    </div>
+                    <div class="nft-info">
+                        <h3 class="nft-title">📸 Pug Moment 3</h3>
+                        <p class="nft-description">Captura histórica da comunidade PugMeme. Parte da coleção exclusiva.</p>
+                        <div class="nft-meta">
+                            <div class="nft-price">0.1 SOL</div>
+                            <div class="nft-rarity">1/1</div>
+                        </div>
+                        <div class="nft-buttons">
+                            <a href="#" class="btn-view" onclick="openModal('pug-whatsapp-3')">Ver Detalhes</a>
+                            <a href="#" class="btn-buy" onclick="showNotification('Compra Iniciada', 'Conectando carteira...')">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="community-section" id="community">
+        <div class="community-container">
+            <div class="community-header">
+                <h2 class="community-title">🌟 Funcionalidades Neo</h2>
+                <p class="community-subtitle">
+                    Recursos inovadores desenvolvidos especialmente para a comunidade PugMeme. Tecnologia de ponta para uma experiência única.
+                </p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎭</div>
+                    <h3 class="feature-title">Meme Generator</h3>
+                    <p class="feature-desc">Crie memes personalizados com templates exclusivos PugMeme. IA integrada para captions engraçadas.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎮</div>
+                    <h3 class="feature-title">Mini-Games</h3>
+                    <p class="feature-desc">Jogos interativos com recompensas NFT. Desafios diários e torneios comunitários.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3 class="feature-title">AI Companion</h3>
+                    <p class="feature-desc">Assistente virtual pug que ajuda na navegação, responde dúvidas e cria conteúdo personalizado.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3 class="feature-title">Art Studio</h3>
+                    <p class="feature-desc">Estúdio de criação digital integrado. Desenhe, edite e mint seus próprios PugMemes.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3 class="feature-title">Leaderboards</h3>
+                    <p class="feature-desc">Sistema de rankings baseado em contribuição comunitária. Recompensas exclusivas para top contributors.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3 class="feature-title">Voice Chat</h3>
+                    <p class="feature-desc">Chat de voz integrado com efeitos sonoros pug. Reuniões comunitárias e eventos ao vivo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>🐕 PugMeme</h4>
+                    <p>A comunidade mais fofa do Web3. Memes, NFTs e muito amor canino no metaverso.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>🏆 Coleção</h4>
+                    <ul class="footer-links">
+                        <li><a href="#gallery">Galeria NFT</a></li>
+                        <li><a href="#mint">Mint</a></li>
+                        <li><a href="#rarity">Raridades</a></li>
+                        <li><a href="#roadmap">Roadmap</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>🌟 Comunidade</h4>
+                    <ul class="footer-links">
+                        <li><a href="#discord">Discord</a></li>
+                        <li><a href="#twitter">Twitter</a></li>
+                        <li><a href="#telegram">Telegram</a></li>
+                        <li><a href="#instagram">Instagram</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>📚 Recursos</h4>
+                    <ul class="footer-links">
+                        <li><a href="#whitepaper">Whitepaper</a></li>
+                        <li><a href="#docs">Documentação</a></li>
+                        <li><a href="#support">Suporte</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 PugMeme Gallery. Feito com ❤️ para amantes de pugs | Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Neo Modal -->
+    <div class="neo-modal" id="neoModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <div class="modal-body">
+                <h2 class="modal-title" id="modalTitle">NFT Detalhes</h2>
+                <p class="modal-text" id="modalText">Carregando informações do NFT...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="neo-notification" id="neoNotification">
+        <div class="notification-title" id="notificationTitle">Notificação</div>
+        <div class="notification-text" id="notificationText">Mensagem de exemplo</div>
+    </div>
+
+    <script>
+        // Neo Functions - Advanced Interactive Features
+
+        // Particle Animation
+        function initParticles() {
+            const particles = document.querySelectorAll('.particle');
+            particles.forEach((particle, index) => {
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+            });
+        }
+
+        // Modal System
+        function openModal(nftId) {
+            const modal = document.getElementById('neoModal');
+            const title = document.getElementById('modalTitle');
+            const text = document.getElementById('modalText');
+
+            const nftData = {
+                'pug-legendary': {
+                    title: '🐕 Pug Legend - #001',
+                    text: 'O NFT mais raro da coleção PugMeme. Este pug lendário possui habilidades especiais na comunidade, incluindo acesso VIP a eventos exclusivos, direito a voto em decisões importantes e airdrops mensais. Uma verdadeira lenda digital!'
+                },
+                'pug-crypto': {
+                    title: '💎 Pug Crypto Master - #002',
+                    text: 'Especialista em criptomoedas com chapéu de trader profissional. Este NFT concede acesso ao canal exclusivo de análise de mercado e oportunidades de staking especiais. Perfeito para hodlers experientes!'
+                },
+                'pug-meme-lord': {
+                    title: '👑 Meme Lord - #003',
+                    text: 'O senhor supremo dos memes com coroa dourada. Domina todos os trends e possui o poder de criar memes virais. Acesso garantido aos melhores templates e ferramentas de criação de conteúdo.'
+                },
+                'pug-space': {
+                    title: '🚀 Space Pug Explorer - #004',
+                    text: 'Aventureiro espacial pronto para conquistar o metaverso. Este NFT inclui acesso antecipado a novos mundos virtuais e oportunidades de mineração em jogos blockchain.'
+                },
+                'pug-artist': {
+                    title: '🎨 Pug Artist - #005',
+                    text: 'Artista talentoso com pincéis e paleta criativa. Acesso completo ao estúdio digital PugMeme, ferramentas de IA para criação artística e exposição em galerias virtuais.'
+                },
+                'pug-community': {
+                    title: '❤️ Community Pug Hero - #006',
+                    text: 'Herói da comunidade com coração gigante. Representa o amor e união dos pugs. Acesso a eventos especiais da comunidade e direito a voz em decisões coletivas.'
+                }
+            };
+
+            if (nftData[nftId]) {
+                title.textContent = nftData[nftId].title;
+                text.textContent = nftData[nftId].text;
+            }
+
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('neoModal').classList.remove('active');
+        }
+
+        // Notification System
+        function showNotification(title, text) {
+            const notification = document.getElementById('neoNotification');
+            const titleEl = document.getElementById('notificationTitle');
+            const textEl = document.getElementById('notificationText');
+
+            titleEl.textContent = title;
+            textEl.textContent = text;
+
+            notification.classList.add('active');
+
+            setTimeout(() => {
+                notification.classList.remove('active');
+            }, 4000);
+        }
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0) rotateX(0deg)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.nft-card, .feature-card, .section').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px) rotateX(10deg)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Hero Stats Animation
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-number');
+            stats.forEach(stat => {
+                const target = parseFloat(stat.textContent.replace(/[^\d.]/g, ''));
+                let current = 0;
+                const increment = target / 100;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    if (target % 1 === 0) {
+                        stat.textContent = Math.floor(current);
+                    } else {
+                        stat.textContent = current.toFixed(1);
+                    }
+                }, 20);
+            });
+        }
+
+        // Trigger animations when hero is visible
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    initParticles();
+                    heroObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        heroObserver.observe(document.querySelector('.hero'));
+
+        // Click outside modal to close
+        document.getElementById('neoModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            initParticles();
+        });
+    </script>
+</body>
+</html>

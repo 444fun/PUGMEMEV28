@@ -660,6 +660,8 @@
             width: 100%;
             border: var(--border-thick);
             box-shadow: var(--shadow-3d);
+            animation: floatY 12s ease-in-out infinite alternate, glowPulse 6s ease-in-out infinite;
+            filter: drop-shadow(0 12px 28px rgba(0,255,180,0.22));
         }
 
         .hero-stats img + img {
@@ -701,6 +703,79 @@
 
         .stat-item:hover::before {
             opacity: 1;
+        }
+
+        /* Global animation utilities */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px) scale(0.98);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .anim-tilt:hover {
+            transform: rotateX(6deg) rotateY(-4deg) scale(1.02);
+            box-shadow: 0 18px 32px rgba(0,0,0,0.35), 0 0 0 2px rgba(255,255,255,0.08);
+        }
+
+        .anim-sheen {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .anim-sheen::after {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: -40%;
+            width: 80%;
+            height: 140%;
+            background: linear-gradient(120deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02), rgba(255,255,255,0.12));
+            transform: rotate(15deg);
+            animation: sheenMove 7s linear infinite;
+            pointer-events: none;
+        }
+
+        .parallax-glow {
+            position: relative;
+        }
+
+        .parallax-glow::before {
+            content: '';
+            position: absolute;
+            inset: -30%;
+            background: radial-gradient(circle at 30% 30%, rgba(0,255,180,0.18), transparent 50%),
+                        radial-gradient(circle at 70% 70%, rgba(124,58,237,0.14), transparent 55%);
+            filter: blur(32px);
+            opacity: 0.8;
+            animation: glowDrift 12s ease-in-out infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @keyframes floatY {
+            0% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-12px) scale(1.005); }
+            100% { transform: translateY(6px) scale(0.995); }
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { filter: drop-shadow(0 12px 28px rgba(0,255,180,0.22)); }
+            50% { filter: drop-shadow(0 14px 32px rgba(124,58,237,0.26)); }
+        }
+
+        @keyframes sheenMove {
+            0% { transform: translate(-120%, -10%) rotate(15deg); }
+            100% { transform: translate(160%, 10%) rotate(15deg); }
+        }
+
+        @keyframes glowDrift {
+            0%, 100% { transform: translate3d(0,0,0) scale(1); }
+            50% { transform: translate3d(6px,-6px,0) scale(1.05); }
         }
 
         .stat-number {
@@ -1131,6 +1206,25 @@
             vertical-align: middle;
             margin-right: 8px;
             filter: drop-shadow(0 0 4px rgba(0,0,0,0.35));
+        }
+
+        .swap-icon.phantom {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            object-fit: cover;
+            animation: phantomZoom 2.4s ease-in-out infinite alternate, phantomGlow 3.2s ease-in-out infinite;
+        }
+
+        @keyframes phantomZoom {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+            100% { transform: scale(1.02); }
+        }
+
+        @keyframes phantomGlow {
+            0%, 100% { filter: drop-shadow(0 0 6px rgba(124,58,237,0.45)) brightness(1); }
+            50% { filter: drop-shadow(0 0 12px rgba(20,241,149,0.55)) brightness(1.08); }
         }
 
         .btn-raydium:hover {
@@ -2704,8 +2798,8 @@
                         <a class="btn-raydium" href="https://www.okx.com/web3/dex?fromChain=solana&toChain=solana&fromToken=sol&toToken=EkPUWVb8ypF34YR9ncLMCmz8ttsXX2z8UMQefJhzpump" target="_blank" rel="noopener noreferrer">
                             <img class="swap-icon" src="https://www.okx.com/favicon.ico" alt="OKX logo">Abrir na OKX
                         </a>
-                        <a class="btn-primary" href="https://phantom.app/ul/browse/raydium.io/swap?inputCurrency=SOL&outputCurrency=PUGMEM" target="_blank" rel="noopener noreferrer">
-                            <img class="swap-icon" src="https://cdn.jsdelivr.net/gh/solana-mobile/mobile-wallet-adapter/master/docs/wallet-logos/phantom-logo.png" alt="Phantom logo">Abrir no Phantom
+                        <a class="btn-primary" href="https://phantom.app/ul/browse/raydium.io/swap?inputCurrency=sol&outputCurrency=EkPUWVb8ypF34YR9ncLMCmz8ttsXX2z8UMQefJhzpump" target="_blank" rel="noopener noreferrer">
+                            <img class="swap-icon phantom" src="WhatsApp Image 2025-12-31 at 22.40.07.jpeg" alt="Phantom logo">Abrir no Phantom
                         </a>
                         <a class="btn-primary" href="#mint">Mintar direto</a>
                     </div>
@@ -3308,13 +3402,12 @@
             });
         }, observerOptions);
 
-        // Observe all cards and sections
-        document.querySelectorAll('.nft-card, .feature-card, .section').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(50px) rotateX(10deg)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
-        });
+        // Observe cards and key sections with reveal animations
+        document.querySelectorAll('.nft-card, .feature-card, .section, .raydium-panel, .supply-card, .bonfida-card, .whitepaper-card, .whitepaper-pro, .hero-stats img')
+            .forEach(card => {
+                card.classList.add('reveal');
+                observer.observe(card);
+            });
 
         // Hero Stats Animation
         function animateStats() {
