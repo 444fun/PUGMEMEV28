@@ -932,7 +932,8 @@
                         #0b0f1a;
             object-fit: contain;
             padding: 10px;
-            margin-top: 18px;
+            margin: 18px auto 0;
+            display: block;
             animation: floatY 10s ease-in-out infinite alternate, glowPulse 7s ease-in-out infinite;
         }
 
@@ -1589,6 +1590,27 @@
             font-family: var(--font-mono);
             font-weight: 700;
             word-break: break-all;
+            flex-wrap: wrap;
+        }
+
+        .burn-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #9945ff, #14f195);
+            color: #0b0f1a;
+            font-weight: 800;
+            text-decoration: none;
+            box-shadow: 0 0 16px rgba(153, 69, 255, 0.25), 0 0 20px rgba(20, 241, 149, 0.25);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .burn-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 18px rgba(153, 69, 255, 0.35), 0 0 24px rgba(20, 241, 149, 0.32);
         }
 
         .burn-address-label {
@@ -3068,7 +3090,7 @@
                 <img src="WhatsApp Image 2025-12-28 at 19.17.13.jpeg" alt="PUGMEM hero visual">
                 <img src="WhatsApp Image 2025-12-28 at 19.01.59.jpeg" alt="PUGMEM hero visual 2">
                 <img src="WhatsApp Image 2025-12-30 at 23.36.49.jpeg" alt="PUGMEM hero visual 3">
-                <img src="WhatsApp%20Image%202025-12-31%20at%2014.22.46%20pugg.jpeg" alt="Pumpfun origin badge" class="pumpfun-badge" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://pump.fun/apple-touch-icon.png';">
+                <video class="pumpfun-badge" src="WhatsApp%20Video%202026-01-01%20at%2016.48.05.mp4" muted autoplay loop playsinline preload="metadata" poster="WhatsApp%20Image%202025-12-31%20at%2014.22.46%20pugg.jpeg" aria-label="Pumpfun origin badge"></video>
             </div>
             <div class="hero-buttons">
                 <a href="https://raydium.io/swap/?inputCurrency=SOL&outputCurrency=PUGMEM&inputMint=sol&outputMint=4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R" class="btn-primary" target="_blank" rel="noopener noreferrer">Comprar Agora</a>
@@ -3237,6 +3259,7 @@
                 <div class="burn-address">
                     <span class="burn-address-label">Endereço de queima:</span>
                     <span class="burn-address-hash">6FResKVaRYZoM3rKXZXtBDY51SpVLeCDXNw6JBytc9EU</span>
+                    <a class="burn-link" href="https://solscan.io/tx/3dfaZj39eB5w9cCkwBU3SBYfK2iGJh3oJ45K9Dhnue9xEVRx5h7zGMVzonGJbN4Ei3ANsDkVLLc74dMRrsUrGZrm?cluster=mainnet" target="_blank" rel="noopener noreferrer">Ver TX</a>
                 </div>
             </div>
 
