@@ -190,12 +190,40 @@
         .nft-neon-wrap {
             display: flex;
             justify-content: flex-end;
-            margin: 28px 0 12px;
+            margin: 18px 0 8px;
+        }
+
+        .nft-neon-orbit {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            isolation: isolate;
+        }
+
+        .nft-neon-orbit::before,
+        .nft-neon-orbit::after {
+            content: "";
+            position: absolute;
+            inset: -12%;
+            border: 2px solid rgba(153, 69, 255, 0.45);
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(153, 69, 255, 0.35), 0 0 30px rgba(20, 241, 149, 0.28);
+            animation: ringSpin 14s linear infinite;
+            mix-blend-mode: screen;
+        }
+
+        .nft-neon-orbit::after {
+            inset: -22%;
+            border-color: rgba(20, 241, 149, 0.45);
+            animation-duration: 18s;
+            animation-direction: reverse;
+            opacity: 0.75;
         }
 
         .nft-neon-img {
-            width: 260px;
-            max-width: 38vw;
+            width: 220px;
+            max-width: 32vw;
             border-radius: 18px;
             border: 2px solid rgba(153, 69, 255, 0.6);
             box-shadow: 0 0 30px rgba(153, 69, 255, 0.45), 0 0 40px rgba(20, 241, 149, 0.35);
@@ -208,6 +236,30 @@
             0% { transform: translateY(0) scale(1); box-shadow: 0 0 24px rgba(153, 69, 255, 0.35), 0 0 32px rgba(20, 241, 149, 0.28); }
             50% { transform: translateY(-12px) scale(1.02); box-shadow: 0 0 32px rgba(153, 69, 255, 0.5), 0 0 48px rgba(20, 241, 149, 0.42); }
             100% { transform: translateY(0) scale(1); box-shadow: 0 0 24px rgba(153, 69, 255, 0.35), 0 0 32px rgba(20, 241, 149, 0.28); }
+        }
+
+        @keyframes ringSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .badge-neon {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #9945ff, #14f195);
+            color: #0b0f1a;
+            font-weight: 850;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 0 20px rgba(153, 69, 255, 0.35), 0 0 26px rgba(20, 241, 149, 0.32);
+        }
+
+        .badge-neon::before {
+            content: "✦";
+            font-size: 1.1em;
         }
 
         /* Raydium Integration */
@@ -470,12 +522,79 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 15px;
-            font-weight: 900;
-            font-size: 2.2em;
+            gap: 12px;
+            font-weight: 850;
+            font-size: 1.7em;
             color: rgb(0, 255, 180);
             font-family: var(--font-meme);
             text-shadow: 3px 3px 0px var(--neo-red);
+            position: relative;
+            overflow: hidden;
+            padding: 6px 12px;
+            border: 1px solid rgba(153, 69, 255, 0.35);
+            border-radius: 14px;
+            box-shadow: 0 0 18px rgba(153, 69, 255, 0.25), 0 0 22px rgba(20, 241, 149, 0.22);
+            backdrop-filter: blur(6px);
+        }
+
+        .logo::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, rgba(153, 69, 255, 0.14), rgba(20, 241, 149, 0.14));
+            mix-blend-mode: screen;
+            opacity: 0.6;
+            animation: logoPulse 6s ease-in-out infinite, logoBlink 1.8s steps(2, end) infinite;
+            pointer-events: none;
+        }
+
+        .logo span {
+            animation: logoBlink 1.8s steps(2, end) infinite;
+        }
+
+        .logo::before {
+            content: "";
+            position: absolute;
+            inset: -10% 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.35) 50%, transparent 100%);
+            transform: skewX(-12deg) translateX(-120%);
+            animation: logoSweep 5s linear infinite;
+            pointer-events: none;
+        }
+
+        .logo-fx {
+            position: absolute;
+            inset: -30%;
+            background: radial-gradient(circle at 30% 30%, rgba(153, 69, 255, 0.18), transparent 45%),
+                radial-gradient(circle at 70% 60%, rgba(20, 241, 149, 0.18), transparent 45%);
+            filter: blur(18px);
+            opacity: 0.55;
+            animation: logoDrift 10s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes logoPulse {
+            0%, 100% { transform: scale(1); opacity: 0.55; }
+            50% { transform: scale(1.04); opacity: 0.85; }
+        }
+
+        @keyframes logoDrift {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(-6px, 8px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        @keyframes logoSweep {
+            0% { transform: skewX(-12deg) translateX(-120%); opacity: 0; }
+            10% { opacity: 0.8; }
+            50% { transform: skewX(-12deg) translateX(120%); opacity: 0.6; }
+            100% { transform: skewX(-12deg) translateX(120%); opacity: 0; }
+        }
+
+        @keyframes logoBlink {
+            0% { color: #ff4d4d; text-shadow: 0 0 10px #ff4d4d, 0 0 16px rgba(255, 77, 77, 0.6); }
+            50% { color: #00ff80; text-shadow: 0 0 10px #00ff80, 0 0 16px rgba(0, 255, 128, 0.6); }
+            100% { color: #ff4d4d; text-shadow: 0 0 10px #ff4d4d, 0 0 16px rgba(255, 77, 77, 0.6); }
         }
 
         .logo-avatars {
@@ -799,6 +918,22 @@
             box-shadow: var(--shadow-3d);
             animation: floatY 12s ease-in-out infinite alternate, glowPulse 6s ease-in-out infinite;
             filter: drop-shadow(0 12px 28px rgba(0,255,180,0.22));
+        }
+
+        .hero-stats .pumpfun-badge {
+            max-width: 120px;
+            width: 120px;
+            height: 120px;
+            border-radius: 18px;
+            border: 2px solid rgba(153, 69, 255, 0.55);
+            box-shadow: 0 0 18px rgba(153, 69, 255, 0.35), 0 0 26px rgba(20, 241, 149, 0.28);
+            background: radial-gradient(circle at 35% 35%, rgba(153, 69, 255, 0.22), transparent 50%),
+                        radial-gradient(circle at 65% 65%, rgba(20, 241, 149, 0.22), transparent 55%),
+                        #0b0f1a;
+            object-fit: contain;
+            padding: 10px;
+            margin-top: 18px;
+            animation: floatY 10s ease-in-out infinite alternate, glowPulse 7s ease-in-out infinite;
         }
 
         .hero-stats img + img {
@@ -2905,11 +3040,12 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
+                <div class="logo-fx"></div>
                 <div class="logo-avatars">
                     <img src="WhatsApp Image 2025-12-28 at 19.17.13.jpeg" alt="PUG Logo" class="logo-pug">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Elon_Musk_Royal_Society_%28crop2%29.jpg" alt="Elon Musk (Wikimedia Commons)" class="logo-elon">
+                    <img src="WhatsApp%20Image%202026-01-01%20at%2015.40.26.jpeg" alt="Elon Musk" class="logo-elon">
                 </div>
-                $PUGMEM
+                <span>$PUGMEM</span>
             </div>
             <ul class="nav-links">
                 <li><a href="#hero">Início</a></li>
@@ -2932,7 +3068,7 @@
                 <img src="WhatsApp Image 2025-12-28 at 19.17.13.jpeg" alt="PUGMEM hero visual">
                 <img src="WhatsApp Image 2025-12-28 at 19.01.59.jpeg" alt="PUGMEM hero visual 2">
                 <img src="WhatsApp Image 2025-12-30 at 23.36.49.jpeg" alt="PUGMEM hero visual 3">
-                <img src="pumpfun-pill.png" alt="Pumpfun origin badge">
+                <img src="WhatsApp%20Image%202025-12-31%20at%2014.22.46%20pugg.jpeg" alt="Pumpfun origin badge" class="pumpfun-badge" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://pump.fun/apple-touch-icon.png';">
             </div>
             <div class="hero-buttons">
                 <a href="https://raydium.io/swap/?inputCurrency=SOL&outputCurrency=PUGMEM&inputMint=sol&outputMint=4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R" class="btn-primary" target="_blank" rel="noopener noreferrer">Comprar Agora</a>
@@ -3254,6 +3390,9 @@
                     <img src="WhatsApp Image 2025-12-30 at 23.36.49.jpeg" alt="PUGMEM 23.36.49">
                 </div>
                 <div class="story-card">
+                    <img src="WhatsApp%20Image%202026-01-01%20at%2015.40.26.jpeg" alt="PUGMEM neon 2026" loading="lazy">
+                </div>
+                <div class="story-card">
                     <img src="WhatsApp Image 2025-12-31 at 14.22.46 pugg.jpeg" alt="PUGMEM 14.22.46 pugg">
                 </div>
                 <div class="story-card">
@@ -3335,6 +3474,7 @@
     <section class="gallery-section" id="gallery">
         <div class="gallery-container">
             <div class="gallery-header">
+                <div class="badge-neon">Modelo Neon</div>
                 <h2 class="gallery-title">🏆 Coleção NFT Exclusiva</h2>
                 <p class="gallery-subtitle">
                     Seis peças únicas da comunidade PugMeme, com raridades e utilidades Web3. Explore, veja detalhes e prepare sua carteira para mintar.
@@ -3342,7 +3482,9 @@
             </div>
 
             <div class="nft-neon-wrap">
-                <img class="nft-neon-img" src="WhatsApp Image 2026-01-01 at 15.40.26.jpeg" alt="Elon Musk neon" loading="lazy">
+                <div class="nft-neon-orbit">
+                    <img class="nft-neon-img" src="WhatsApp%20Image%202026-01-01%20at%2015.40.26.jpeg" alt="Elon Musk neon" loading="lazy">
+                </div>
             </div>
 
             <div class="nft-grid">

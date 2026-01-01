@@ -193,6 +193,34 @@
             margin: 28px 0 12px;
         }
 
+        .nft-neon-orbit {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            isolation: isolate;
+        }
+
+        .nft-neon-orbit::before,
+        .nft-neon-orbit::after {
+            content: "";
+            position: absolute;
+            inset: -12%;
+            border: 2px solid rgba(153, 69, 255, 0.45);
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(153, 69, 255, 0.35), 0 0 30px rgba(20, 241, 149, 0.28);
+            animation: ringSpin 14s linear infinite;
+            mix-blend-mode: screen;
+        }
+
+        .nft-neon-orbit::after {
+            inset: -22%;
+            border-color: rgba(20, 241, 149, 0.45);
+            animation-duration: 18s;
+            animation-direction: reverse;
+            opacity: 0.75;
+        }
+
         .nft-neon-img {
             width: 260px;
             max-width: 38vw;
@@ -208,6 +236,11 @@
             0% { transform: translateY(0) scale(1); box-shadow: 0 0 24px rgba(153, 69, 255, 0.35), 0 0 32px rgba(20, 241, 149, 0.28); }
             50% { transform: translateY(-12px) scale(1.02); box-shadow: 0 0 32px rgba(153, 69, 255, 0.5), 0 0 48px rgba(20, 241, 149, 0.42); }
             100% { transform: translateY(0) scale(1); box-shadow: 0 0 24px rgba(153, 69, 255, 0.35), 0 0 32px rgba(20, 241, 149, 0.28); }
+        }
+
+        @keyframes ringSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         /* Raydium Integration */
@@ -799,6 +832,22 @@
             box-shadow: var(--shadow-3d);
             animation: floatY 12s ease-in-out infinite alternate, glowPulse 6s ease-in-out infinite;
             filter: drop-shadow(0 12px 28px rgba(0,255,180,0.22));
+        }
+
+        .hero-stats .pumpfun-badge {
+            max-width: 120px;
+            width: 120px;
+            height: 120px;
+            border-radius: 18px;
+            border: 2px solid rgba(153, 69, 255, 0.55);
+            box-shadow: 0 0 18px rgba(153, 69, 255, 0.35), 0 0 26px rgba(20, 241, 149, 0.28);
+            background: radial-gradient(circle at 35% 35%, rgba(153, 69, 255, 0.22), transparent 50%),
+                        radial-gradient(circle at 65% 65%, rgba(20, 241, 149, 0.22), transparent 55%),
+                        #0b0f1a;
+            object-fit: contain;
+            padding: 10px;
+            margin-top: 18px;
+            animation: floatY 10s ease-in-out infinite alternate, glowPulse 7s ease-in-out infinite;
         }
 
         .hero-stats img + img {
@@ -2867,7 +2916,7 @@
             <div class="logo">
                 <div class="logo-avatars">
                     <img src="WhatsApp Image 2025-12-28 at 19.17.13.jpeg" alt="PUG Logo" class="logo-pug">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Elon_Musk_Royal_Society_%28crop2%29.jpg" alt="Elon Musk (Wikimedia Commons)" class="logo-elon">
+                    <img src="WhatsApp%20Image%202026-01-01%20at%2015.40.26.jpeg" alt="Elon Musk" class="logo-elon">
                 </div>
                 $PUGMEM
             </div>
@@ -2892,7 +2941,7 @@
                 <img src="WhatsApp Image 2025-12-28 at 19.17.13.jpeg" alt="PUGMEM hero visual">
                 <img src="WhatsApp Image 2025-12-28 at 19.01.59.jpeg" alt="PUGMEM hero visual 2">
                 <img src="WhatsApp Image 2025-12-30 at 23.36.49.jpeg" alt="PUGMEM hero visual 3">
-                <img src="pumpfun-pill.png" alt="Pumpfun origin badge">
+                <img src="WhatsApp%20Image%202025-12-31%20at%2014.22.46%20pugg.jpeg" alt="Pumpfun origin badge" class="pumpfun-badge" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://pump.fun/apple-touch-icon.png';">
             </div>
             <div class="hero-buttons">
                 <a href="https://raydium.io/swap/?inputCurrency=SOL&outputCurrency=PUGMEM&inputMint=sol&outputMint=4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R" class="btn-primary" target="_blank" rel="noopener noreferrer">Comprar Agora</a>
@@ -3214,6 +3263,9 @@
                     <img src="WhatsApp Image 2025-12-30 at 23.36.49.jpeg" alt="PUGMEM 23.36.49">
                 </div>
                 <div class="story-card">
+                    <img src="WhatsApp%20Image%202026-01-01%20at%2015.40.26.jpeg" alt="PUGMEM neon 2026" loading="lazy">
+                </div>
+                <div class="story-card">
                     <img src="WhatsApp Image 2025-12-31 at 14.22.46 pugg.jpeg" alt="PUGMEM 14.22.46 pugg">
                 </div>
                 <div class="story-card">
@@ -3302,7 +3354,9 @@
             </div>
 
             <div class="nft-neon-wrap">
-                <img class="nft-neon-img" src="WhatsApp Image 2026-01-01 at 15.40.26.jpeg" alt="Elon Musk neon" loading="lazy">
+                <div class="nft-neon-orbit">
+                    <img class="nft-neon-img" src="WhatsApp%20Image%202026-01-01%20at%2015.40.26.jpeg" alt="Elon Musk neon" loading="lazy">
+                </div>
             </div>
 
             <div class="nft-grid">
