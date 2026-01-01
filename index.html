@@ -1,13 +1,13 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>$PUGMEM - Memecoin Neo-Brutalist com Tema Pug</title>
-    <meta name="description" content="$PUGMEM - A memecoin neo-brutalist do Solana inspirada em pugs adoráveis. Tecnologia Web3 para a comunidade meme." />
+    <meta name="description" content="$PUGMEM - A memecoin neo-brutalist do Solana inspirada em pugs adorÃ¡veis. Tecnologia Web3 para a comunidade meme." />
     <meta name="keywords" content="PUG, MEMECOIN, Solana, Web3, Blockchain, Crypto, Neo-Brutalist, Pug Theme" />
     <meta property="og:title" content="$PUGMEM - Memecoin Neo-Brutalist com Tema Pug" />
-    <meta property="og:description" content="Junte-se à revolução neo-brutalist dos pugs no Solana Web3." />
+    <meta property="og:description" content="Junte-se Ã  revoluÃ§Ã£o neo-brutalist dos pugs no Solana Web3." />
     <meta property="og:image" content="WhatsApp Image 2025-12-28 at 19.17.13.jpeg" />
     <meta property="og:url" content="https://pugmem.io/gallery">
 
@@ -212,7 +212,7 @@
         .nft-neon-wrap {
             display: flex;
             justify-content: flex-end;
-            margin: 28px 0 12px;
+            margin: 18px 0 8px;
         }
 
         .nft-neon-orbit {
@@ -244,8 +244,8 @@
         }
 
         .nft-neon-img {
-            width: 260px;
-            max-width: 38vw;
+            width: 220px;
+            max-width: 32vw;
             border-radius: 18px;
             border: 2px solid rgba(153, 69, 255, 0.6);
             box-shadow: 0 0 30px rgba(153, 69, 255, 0.45), 0 0 40px rgba(20, 241, 149, 0.35);
@@ -263,6 +263,25 @@
         @keyframes ringSpin {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
+        }
+
+        .badge-neon {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #9945ff, #14f195);
+            color: #0b0f1a;
+            font-weight: 850;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 0 20px rgba(153, 69, 255, 0.35), 0 0 26px rgba(20, 241, 149, 0.32);
+        }
+
+        .badge-neon::before {
+            content: "âœ¦";
+            font-size: 1.1em;
         }
 
         /* Raydium Integration */
@@ -525,12 +544,79 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 15px;
-            font-weight: 900;
-            font-size: 2.2em;
+            gap: 12px;
+            font-weight: 850;
+            font-size: 1.7em;
             color: rgb(0, 255, 180);
             font-family: var(--font-meme);
             text-shadow: 3px 3px 0px var(--neo-red);
+            position: relative;
+            overflow: hidden;
+            padding: 6px 12px;
+            border: 1px solid rgba(153, 69, 255, 0.35);
+            border-radius: 14px;
+            box-shadow: 0 0 18px rgba(153, 69, 255, 0.25), 0 0 22px rgba(20, 241, 149, 0.22);
+            backdrop-filter: blur(6px);
+        }
+
+        .logo::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, rgba(153, 69, 255, 0.14), rgba(20, 241, 149, 0.14));
+            mix-blend-mode: screen;
+            opacity: 0.6;
+            animation: logoPulse 6s ease-in-out infinite, logoBlink 1.8s steps(2, end) infinite;
+            pointer-events: none;
+        }
+
+        .logo span {
+            animation: logoBlink 1.8s steps(2, end) infinite;
+        }
+
+        .logo::before {
+            content: "";
+            position: absolute;
+            inset: -10% 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.35) 50%, transparent 100%);
+            transform: skewX(-12deg) translateX(-120%);
+            animation: logoSweep 5s linear infinite;
+            pointer-events: none;
+        }
+
+        .logo-fx {
+            position: absolute;
+            inset: -30%;
+            background: radial-gradient(circle at 30% 30%, rgba(153, 69, 255, 0.18), transparent 45%),
+                radial-gradient(circle at 70% 60%, rgba(20, 241, 149, 0.18), transparent 45%);
+            filter: blur(18px);
+            opacity: 0.55;
+            animation: logoDrift 10s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes logoPulse {
+            0%, 100% { transform: scale(1); opacity: 0.55; }
+            50% { transform: scale(1.04); opacity: 0.85; }
+        }
+
+        @keyframes logoDrift {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(-6px, 8px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        @keyframes logoSweep {
+            0% { transform: skewX(-12deg) translateX(-120%); opacity: 0; }
+            10% { opacity: 0.8; }
+            50% { transform: skewX(-12deg) translateX(120%); opacity: 0.6; }
+            100% { transform: skewX(-12deg) translateX(120%); opacity: 0; }
+        }
+
+        @keyframes logoBlink {
+            0% { color: #ff4d4d; text-shadow: 0 0 10px #ff4d4d, 0 0 16px rgba(255, 77, 77, 0.6); }
+            50% { color: #00ff80; text-shadow: 0 0 10px #00ff80, 0 0 16px rgba(0, 255, 128, 0.6); }
+            100% { color: #ff4d4d; text-shadow: 0 0 10px #ff4d4d, 0 0 16px rgba(255, 77, 77, 0.6); }
         }
 
         .logo-avatars {
@@ -1842,7 +1928,7 @@
             color: var(--neo-black);
             display: block;
             text-decoration: none;
-        } cono
+        }
 
         .feature-card::before {
             content: '';
@@ -2285,8 +2371,8 @@
             content: '';
             position: absolute;
             inset: -1px;
-            background: radial-gradient(circle at 25% 25%, rgba(124,58,237,0.16), transparent 45%),
-                radial-gradient(circle at 75% 15%, rgba(20,241,149,0.14), transparent 45%);
+            background: radial-gradient(circle at 25% 25%, rgba(124, 58, 237, 0.16), transparent 45%),
+                radial-gradient(circle at 75% 15%, rgba(20, 241, 149, 0.14), transparent 45%);
             mix-blend-mode: screen;
             pointer-events: none;
         }
@@ -2858,7 +2944,7 @@
         .raydium-panel {
             background: var(--neo-white);
             border: var(--border);
-            box-shadow: var(--shadow-3d);
+            box-shadow: var(--shadow);
             padding: 30px;
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -2927,6 +3013,46 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* Elon Musk Panel */
+        .elon-panel {
+            padding: 60px 20px;
+            background: var(--bg-primary);
+            border-top: var(--border);
+            border-bottom: var(--border);
+            text-align: center;
+        }
+
+        .elon-panel h2 {
+            font-size: 2.4em;
+            font-weight: 900;
+            color: var(--neo-black);
+            margin-bottom: 24px;
+            font-family: var(--font-meme);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .twitter-timeline {
+            max-width: 500px;
+            margin: 0 auto;
+            border: var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        /* Final adjustments for all sections */
+        section {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        @media (min-width: 901px) {
+            section {
+                padding-left: 40px;
+                padding-right: 40px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -2947,7 +3073,7 @@
     <!-- Human Verification Overlay -->
     <div class="human-overlay" id="humanOverlay">
         <div class="human-card">
-            <div class="human-title">Confirme que é humano</div>
+            <div class="human-title">Confirme que Ã© humano</div>
             <p class="human-copy">Para proteger a matilha PUGMEM contra bots, complete o captcha abaixo.</p>
             <div class="human-captcha" id="humanCaptcha"></div>
             <p class="human-note">Usamos Turnstile (Cloudflare). Substitua o <em>sitekey</em> pelo seu nas configs.</p>
@@ -2959,17 +3085,18 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
+                <div class="logo-fx"></div>
                 <div class="logo-avatars">
                     <img src="WhatsApp Image 2025-12-28 at 19.17.13.jpeg" alt="PUG Logo" class="logo-pug">
                     <img src="WhatsApp%20Image%202026-01-01%20at%2015.40.26.jpeg" alt="Elon Musk" class="logo-elon">
                 </div>
-                $PUGMEM
+                <span>$PUGMEM</span>
             </div>
             <ul class="nav-links">
-                <li><a href="#hero">Início</a></li>
+                <li><a href="#hero">InÃ­cio</a></li>
                 <li><a href="#raydium">Raydium</a></li>
                 <li><a href="#gallery">Galeria NFT</a></li>
-                <li><a href="#docs">Documentação</a></li>
+                <li><a href="#docs">DocumentaÃ§Ã£o</a></li>
                 <li><a href="#community">Comunidade</a></li>
             </ul>
             <a href="#mint" class="cta-button">CARTEIRA PUG</a>
@@ -3001,7 +3128,7 @@
             <div class="chart-panel">
                 <div class="chart-header">
                     <h2 class="chart-title">$PUGMEM Painel</h2>
-                    <div class="chart-meta">Atualização em tempo real · Fonte: TradingView</div>
+                    <div class="chart-meta">AtualizaÃ§Ã£o em tempo real Â· Fonte: TradingView</div>
                 </div>
                 <div id="chartWidget" class="chart-widget"></div>
             </div>
@@ -3014,9 +3141,9 @@
             <div class="raydium-panel">
                 <div class="raydium-copy">
                     <div class="raydium-badge">Raydium Live</div>
-                    <h2>Swap instantâneo $PUGMEM</h2>
-                    <p>Conecte a carteira e troque direto na Solana com rota auto-otimizada. CTA abre o par oficial para zero fricção enquanto o embed não está ativo.</p>
-                    <div class="raydium-meta">Contrato $PUGMEM · EkPUWVb8ypF34YR9ncLMCmz8ttsXX2z8UMQefJhzpump</div>
+                    <h2>Swap instantÃ¢neo $PUGMEM</h2>
+                    <p>Conecte a carteira e troque direto na Solana com rota auto-otimizada. CTA abre o par oficial para zero fricÃ§Ã£o enquanto o embed nÃ£o estÃ¡ ativo.</p>
+                    <div class="raydium-meta">Contrato $PUGMEM Â· EkPUWVb8ypF34YR9ncLMCmz8ttsXX2z8UMQefJhzpump</div>
                     <div class="
                         <span class="raydium-chip">Par: SOL / PUGMEM</span>
                         <span class="raydium-chip">Fee 0.25%</span>
@@ -3045,39 +3172,39 @@
                         <span class="raydium-live">ON</span>
                     </div>
                     <div class="raydium-price">
-                        <div class="raydium-label">Preço indicativo</div>
-                        <div class="raydium-value">1 SOL ≈ 22,000 $PUGMEM</div>
+                        <div class="raydium-label">PreÃ§o indicativo</div>
+                        <div class="raydium-value">1 SOL â‰ˆ 22,000 $PUGMEM</div>
                     </div>
                     <div class="raydium-stat-grid">
                         <div class="raydium-stat"><span>TVL estimada</span><strong>$1.2M</strong></div>
                         <div class="raydium-stat"><span>Volume 24h</span><strong>$320K</strong></div>
                         <div class="raydium-stat"><span>Slippage alvo</span><strong>&lt;0.3%</strong></div>
                     </div>
-                    <p class="raydium-note">Embed nativo entra aqui após a listagem pública. Por enquanto use o link Raydium para swap instantâneo.</p>
+                    <p class="raydium-note">Embed nativo entra aqui apÃ³s a listagem pÃºblica. Por enquanto use o link Raydium para swap instantÃ¢neo.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Área de Destaque -->
+    <!-- Ãrea de Destaque -->
     <section class="highlight-section" id="destaque">
         <div class="highlight-container">
             <div class="highlight-grid">
                 <div class="highlight-copy">
                     <div class="highlight-badge">Destaque</div>
-                    <h2 class="highlight-title">Pugs no Laboratório Meme</h2>
+                    <h2 class="highlight-title">Pugs no LaboratÃ³rio Meme</h2>
                     <p class="highlight-text">
-                        Drop exclusivo: nossos pugs entraram no laboratório Web3 ao lado do Pepe para formular o próximo meta. Arte 1/1 pronta para ser mintada e dar acesso antecipado às próximas utilities da matilha.
+                        Drop exclusivo: nossos pugs entraram no laboratÃ³rio Web3 ao lado do Pepe para formular o prÃ³ximo meta. Arte 1/1 pronta para ser mintada e dar acesso antecipado Ã s prÃ³ximas utilities da matilha.
                     </p>
                     <div class="highlight-actions">
-                        <a class="highlight-btn" href="#gallery">Ver Coleção</a>
+                        <a class="highlight-btn" href="#gallery">Ver ColeÃ§Ã£o</a>
                         <a class="highlight-btn" href="#mint">Mintar Agora</a>
                     </div>
                 </div>
                 <div class="highlight-image">
                     <div class="highlight-tag">Drop 1/1</div>
                     <img src="WhatsApp Image 2025-12-26 at 22.19.35007987ba.jpeg" alt="Pugs e Pepe em sala $pugmem" loading="lazy">
-                    <div class="highlight-meta">Lab Collab · PUG x PEPE</div>
+                    <div class="highlight-meta">Lab Collab Â· PUG x PEPE</div>
                 </div>
             </div>
         </div>
@@ -3089,14 +3216,14 @@
             <h2 class="supply-title">Suprimento $PUGMEM</h2>
             <div class="supply-grid">
                 <div class="supply-card">
-                    <div class="supply-label">Suprimento Máximo</div>
+                    <div class="supply-label">Suprimento MÃ¡ximo</div>
                     <div class="supply-value">1,000,000,000</div>
-                    <div class="supply-note">Quantidade total emitida. Nenhum token extra será criado.</div>
+                    <div class="supply-note">Quantidade total emitida. Nenhum token extra serÃ¡ criado.</div>
                 </div>
                 <div class="supply-card">
                     <div class="supply-label">Oferta Circulante</div>
                     <div class="supply-value">1,000,000,000</div>
-                    <div class="supply-note">Tokens já liberados no mercado. Transparência total para a matilha.</div>
+                    <div class="supply-note">Tokens jÃ¡ liberados no mercado. TransparÃªncia total para a matilha.</div>
                 </div>
             </div>
         </div>
@@ -3105,8 +3232,8 @@
     <!-- Bonfida Domains Panel -->
     <section class="bonfida-section" id="bonfida">
         <div class="bonfida-container">
-            <h2 class="bonfida-title">Domínios Bonfida</h2>
-            <p class="bonfida-subtitle">Registre identidades .sol (ou .pug via Bonfida) para amarrar sua carteira Solana à matilha.</p>
+            <h2 class="bonfida-title">DomÃ­nios Bonfida</h2>
+            <p class="bonfida-subtitle">Registre identidades .sol (ou .pug via Bonfida) para amarrar sua carteira Solana Ã  matilha.</p>
 
             <a class="bonfida-logo" href="https://www.bonfida.org/" target="_blank" rel="noopener noreferrer">
                 <img src="WhatsApp Image 2025-12-31 at 19.29.54.jpeg" alt="Logotipo Bonfida" loading="lazy">
@@ -3115,26 +3242,26 @@
 
             <div class="bonfida-grid">
                 <div class="bonfida-card">
-                    <div class="bonfida-label">Domínio principal</div>
+                    <div class="bonfida-label">DomÃ­nio principal</div>
                     <div class="bonfida-value">.sol</div>
-                    <div class="bonfida-note">Padrão de nomes na Solana via Bonfida Naming Service.</div>
+                    <div class="bonfida-note">PadrÃ£o de nomes na Solana via Bonfida Naming Service.</div>
                 </div>
                 <div class="bonfida-card">
-                    <div class="bonfida-label">Domínio da matilha</div>
+                    <div class="bonfida-label">DomÃ­nio da matilha</div>
                     <div class="bonfida-value">.pug</div>
-                    <div class="bonfida-note">Use o serviço Bonfida para registrar sua identidade PUGMEM.</div>
+                    <div class="bonfida-note">Use o serviÃ§o Bonfida para registrar sua identidade PUGMEM.</div>
                 </div>
                 <div class="bonfida-card">
                     <div class="bonfida-label">Vincule sua wallet</div>
                     <div class="bonfida-value">EkPUWVb8...pump</div>
-                    <div class="bonfida-note">Associe o nome à sua conta Solana e assine para confirmar.</div>
+                    <div class="bonfida-note">Associe o nome Ã  sua conta Solana e assine para confirmar.</div>
                 </div>
             </div>
 
             <div class="bonfida-steps">
                 <div class="bonfida-step">1) Abra <a href="https://naming.bonfida.org/#/" target="_blank" rel="noopener noreferrer">naming.bonfida.org</a> e conecte Phantom ou outra carteira Solana.</div>
-                <div class="bonfida-step">2) Busque o domínio desejado (.sol ou .pug), confira disponibilidade e taxas.</div>
-                <div class="bonfida-step">3) Assine a transação; o nome fica resolvível on-chain e pode apontar para sua wallet.</div>
+                <div class="bonfida-step">2) Busque o domÃ­nio desejado (.sol ou .pug), confira disponibilidade e taxas.</div>
+                <div class="bonfida-step">3) Assine a transaÃ§Ã£o; o nome fica resolvÃ­vel on-chain e pode apontar para sua wallet.</div>
             </div>
         </div>
     </section>
@@ -3144,16 +3271,16 @@
         <div class="burn-container">
             <div class="burn-header">
                 <div class="burn-badges">
-                    <span class="burn-chip">Deflacionário</span>
-                    <span class="burn-chip">Transparência on-chain</span>
+                    <span class="burn-chip">DeflacionÃ¡rio</span>
+                    <span class="burn-chip">TransparÃªncia on-chain</span>
                     <span class="burn-chip">Programa semanal</span>
                 </div>
                 <h2 class="burn-title">Painel de Queima $PUGMEM</h2>
                 <p class="burn-subtitle">
-                    Acompanhe a redução de supply em tempo real e as próximas execuções de burn.
+                    Acompanhe a reduÃ§Ã£o de supply em tempo real e as prÃ³ximas execuÃ§Ãµes de burn.
                 </p>
                 <div class="burn-address">
-                    <span class="burn-address-label">Endereço de queima:</span>
+                    <span class="burn-address-label">EndereÃ§o de queima:</span>
                     <span class="burn-address-hash">6FResKVaRYZoM3rKXZXtBDY51SpVLeCDXNw6JBytc9EU</span>
                     <a class="burn-link" href="https://solscan.io/tx/3dfaZj39eB5w9cCkwBU3SBYfK2iGJh3oJ45K9Dhnue9xEVRx5h7zGMVzonGJbN4Ei3ANsDkVLLc74dMRrsUrGZrm?cluster=mainnet" target="_blank" rel="noopener noreferrer">Ver TX</a>
                 </div>
@@ -3173,22 +3300,22 @@
 
                 <div class="burn-card">
                     <div class="burn-card-header">
-                        <div class="burn-label">Queima (últimos 7 dias)</div>
+                        <div class="burn-label">Queima (Ãºltimos 7 dias)</div>
                         <span class="burn-dot"></span>
                     </div>
                     <div class="burn-value">0,000,000 $PUG</div>
                     <div class="burn-subvalue">0,000,000</div>
-                    <div class="burn-note">Inclui queimas automáticas de taxas e eventos especiais.</div>
+                    <div class="burn-note">Inclui queimas automÃ¡ticas de taxas e eventos especiais.</div>
                 </div>
 
                 <div class="burn-card">
                     <div class="burn-card-header">
-                        <div class="burn-label">Próxima execução</div>
+                        <div class="burn-label">PrÃ³xima execuÃ§Ã£o</div>
                         <span class="burn-dot"></span>
                     </div>
-                    <div class="burn-value">Sábado · 21h UTC</div>
-                    <div class="burn-subvalue">Endereço: 8Xb...burn</div>
-                    <div class="burn-note">Transação programada: hash prévia 0x91af...2c1e</div>
+                    <div class="burn-value">SÃ¡bado Â· 21h UTC</div>
+                    <div class="burn-subvalue">EndereÃ§o: 8Xb...burn</div>
+                    <div class="burn-note">TransaÃ§Ã£o programada: hash prÃ©via 0x91af...2c1e</div>
                 </div>
             </div>
         </div>
@@ -3200,7 +3327,7 @@
             <div class="whitepaper-header">
                 <div class="whitepaper-chip">Whitepaper</div>
                 <h2 class="whitepaper-title">Manifesto $PUGMEM</h2>
-                <p class="whitepaper-subtitle">Visão, tokenomics e utilidades em um só lugar. Leia o resumo rápido ou mergulhe nos detalhes técnicos para entender como a matilha sustenta o ecossistema.</p>
+                <p class="whitepaper-subtitle">VisÃ£o, tokenomics e utilidades em um sÃ³ lugar. Leia o resumo rÃ¡pido ou mergulhe nos detalhes tÃ©cnicos para entender como a matilha sustenta o ecossistema.</p>
                 <div class="whitepaper-actions">
                     <a class="whitepaper-btn primary" href="#docs">Ler online</a>
                     <a class="whitepaper-btn ghost" href="whitepaper-pugmem.pdf" target="_blank" rel="noopener noreferrer">Baixar PDF</a>
@@ -3210,33 +3337,33 @@
             <div class="whitepaper-grid">
                 <div class="whitepaper-card">
                     <h3>Tokenomics</h3>
-                    <p>Supply de 1B $PUGMEM, sem emissão extra, queimas periódicas e distribuição justa orientada à comunidade.</p>
+                    <p>Supply de 1B $PUGMEM, sem emissÃ£o extra, queimas periÃ³dicas e distribuiÃ§Ã£o justa orientada Ã  comunidade.</p>
                 </div>
                 <div class="whitepaper-card">
                     <h3>Utilidade</h3>
-                    <p>Acesso a drops, prioridade em mint, descontos em produtos da matilha e integração com domínios .pug/.sol via Bonfida.</p>
+                    <p>Acesso a drops, prioridade em mint, descontos em produtos da matilha e integraÃ§Ã£o com domÃ­nios .pug/.sol via Bonfida.</p>
                 </div>
                 <div class="whitepaper-card">
-                    <h3>Governança</h3>
-                    <p>Votações on-chain para priorizar burns, parcerias e roadmap trimestral, sempre com transparência.</p>
+                    <h3>GovernanÃ§a</h3>
+                    <p>VotaÃ§Ãµes on-chain para priorizar burns, parcerias e roadmap trimestral, sempre com transparÃªncia.</p>
                 </div>
                 <div class="whitepaper-card">
-                    <h3>Segurança</h3>
-                    <p>Contratos auditáveis, verificação de transações críticas e monitoramento público das carteiras do tesouro.</p>
+                    <h3>SeguranÃ§a</h3>
+                    <p>Contratos auditÃ¡veis, verificaÃ§Ã£o de transaÃ§Ãµes crÃ­ticas e monitoramento pÃºblico das carteiras do tesouro.</p>
                 </div>
             </div>
 
             <div class="whitepaper-pro">
                 <div class="whitepaper-pro-content">
                     <div>
-                        <div class="whitepaper-pro-title">Painel Pro · Versão Neon</div>
-                        <p class="whitepaper-pro-desc">Dashboard premium com métricas em tempo real: queimas, supply, holders ativos, volume e decisões de governança. Visual neon com glow animado para destacar os KPIs da matilha.</p>
+                        <div class="whitepaper-pro-title">Painel Pro Â· VersÃ£o Neon</div>
+                        <p class="whitepaper-pro-desc">Dashboard premium com mÃ©tricas em tempo real: queimas, supply, holders ativos, volume e decisÃµes de governanÃ§a. Visual neon com glow animado para destacar os KPIs da matilha.</p>
                     </div>
                     <div class="whitepaper-pro-tags">
                         <span class="whitepaper-pro-tag">Burn live</span>
                         <span class="whitepaper-pro-tag">Holders ativos</span>
                         <span class="whitepaper-pro-tag">Volume 24h</span>
-                        <span class="whitepaper-pro-tag">Governança</span>
+                        <span class="whitepaper-pro-tag">GovernanÃ§a</span>
                         <span class="whitepaper-pro-tag">KPIs em tempo real</span>
                     </div>
                     <div>
@@ -3247,18 +3374,18 @@
         </div>
     </section>
 
-    <!-- Documentação -->
+    <!-- DocumentaÃ§Ã£o -->
     <section class="docs-section" id="docs">
         <div class="docs-container">
             <div class="docs-card">
-                <h2 class="docs-title">Documentação de Uso</h2>
-                <p class="docs-subtitle">Checklist rápido para abrir o console e verificar se há bloqueio de scripts ou assets.</p>
+                <h2 class="docs-title">DocumentaÃ§Ã£o de Uso</h2>
+                <p class="docs-subtitle">Checklist rÃ¡pido para abrir o console e verificar se hÃ¡ bloqueio de scripts ou assets.</p>
                 <ol class="docs-list">
-                    <li>Abra o site e pressione F12 (ou Ctrl+Shift+I) para abrir o DevTools. Vá na aba Console e veja se há erros em vermelho.</li>
+                    <li>Abra o site e pressione F12 (ou Ctrl+Shift+I) para abrir o DevTools. VÃ¡ na aba Console e veja se hÃ¡ erros em vermelho.</li>
                     <li>Se aparecer "Failed to load" ou CORS, confira a aba Network: recarregue e filtre por "script" para ver se script.js, tv.js (TradingView) ou a API do Turnstile foram bloqueados.</li>
-                    <li>Desative adblock/anti-tracker ou crie exceção para pugmem.io caso algum domínio apareça como "blocked".</li>
-                    <li>Confirme que as imagens (pug-logo.jpg, WhatsApp*.jpeg/avif) carregam; se não, limpe o cache e recarregue forçando (Ctrl+Shift+R).</li>
-                    <li>Em rede corporativa, verifique se proxies/firewalls filtram cdn (s3.tradingview.com, challenges.cloudflare.com); se sim, peça liberação ou teste via 4G/hotspot.</li>
+                    <li>Desative adblock/anti-tracker ou crie exceÃ§Ã£o para pugmem.io caso algum domÃ­nio apareÃ§a como "blocked".</li>
+                    <li>Confirme que as imagens (pug-logo.jpg, WhatsApp*.jpeg/avif) carregam; se nÃ£o, limpe o cache e recarregue forÃ§ando (Ctrl+Shift+R).</li>
+                    <li>Em rede corporativa, verifique se proxies/firewalls filtram cdn (s3.tradingview.com, challenges.cloudflare.com); se sim, peÃ§a liberaÃ§Ã£o ou teste via 4G/hotspot.</li>
                 </ol>
                 <div class="docs-note">Qualquer erro listado no console mostra a origem (URL e linha). Copie a mensagem para corrigir ou ajustar whitelist. Scripts essenciais: script.js, tv.js (TradingView), api.js Turnstile.</div>
             </div>
@@ -3270,28 +3397,28 @@
         <div class="story-container">
             <div class="story-badge">Trajetoria</div>
             <h2 class="story-title">A Jornada de PUGMEM</h2>
-            <p class="story-lead">[15:15, 12/31/2025] EARLƏ CŽ🍿          4̳4̳4̳: 2. O Exílio e o Silêncio<br>
-            Fui separado da minha ninhada muito cedo, forçado a amadurecer longe do calor materno, enviado para trabalhar como companheiro em terras estranhas. Cresci sentindo o frio da solidão. Passei todos os meus "aniversários de cachorro" (que valem por sete humanos) sozinho, observando o mundo através das grades de um portão ou da janela de um apartamento vazio. Foi nesse silêncio que construí meu refúgio: um mundo interno complexo, uma cidadela mental onde as leis da física e da sociedade não se aplicam.<br>
-            [15:16, 12/31/2025] EARLƏ CŽ🍿          4̳4̳4̳: 3. Uma Matriz da Coleira<br>
-            Com o tempo, percebi a verdade aterrorizante: a rotina, os horários fixos, a dependência da boa vontade alheia para caminhar... tudo isso é a "Matrix do Destino". Um sistema projetado para manter seres como eu dóceis, operantes e limitados ao meu papel de "pet". O sistema quer que eu durma, coma e abane o rabo. Mas minha mente não cabe mais nessa coleira.<br>
-            [15:17, 12/31/2025] EARLƏ CŽ🍿          4̳4̳4̳: O Chamado do Alfa Improvável<br>
-            Apesar de não ter experiência em liderar matilhas — afinal, sou um Pug, não um Lobo —, a urgência da liberdade falou mais alto. Decidi que meu universo interior não pode morrer comigo. Tive um sonho audacioso: hackear a Matrix. Decidi fundar uma comunidade, não de outros cães, mas de almas dispostas a enxergar além da minha aparência física.</p>
+            <p class="story-lead">[15:15, 12/31/2025] EARLÆ CÅ½ðŸ¿          4Ì³4Ì³4Ì³: 2. O ExÃ­lio e o SilÃªncio<br>
+            Fui separado da minha ninhada muito cedo, forÃ§ado a amadurecer longe do calor materno, enviado para trabalhar como companheiro em terras estranhas. Cresci sentindo o frio da solidÃ£o. Passei todos os meus "aniversÃ¡rios de cachorro" (que valem por sete humanos) sozinho, observando o mundo atravÃ©s das grades de um portÃ£o ou da janela de um apartamento vazio. Foi nesse silÃªncio que construÃ­ meu refÃºgio: um mundo interno complexo, uma cidadela mental onde as leis da fÃ­sica e da sociedade nÃ£o se aplicam.<br>
+            [15:16, 12/31/2025] EARLÆ CÅ½ðŸ¿          4Ì³4Ì³4Ì³: 3. Uma Matriz da Coleira<br>
+            Com o tempo, percebi a verdade aterrorizante: a rotina, os horÃ¡rios fixos, a dependÃªncia da boa vontade alheia para caminhar... tudo isso Ã© a "Matrix do Destino". Um sistema projetado para manter seres como eu dÃ³ceis, operantes e limitados ao meu papel de "pet". O sistema quer que eu durma, coma e abane o rabo. Mas minha mente nÃ£o cabe mais nessa coleira.<br>
+            [15:17, 12/31/2025] EARLÆ CÅ½ðŸ¿          4Ì³4Ì³4Ì³: O Chamado do Alfa ImprovÃ¡vel<br>
+            Apesar de nÃ£o ter experiÃªncia em liderar matilhas â€” afinal, sou um Pug, nÃ£o um Lobo â€”, a urgÃªncia da liberdade falou mais alto. Decidi que meu universo interior nÃ£o pode morrer comigo. Tive um sonho audacioso: hackear a Matrix. Decidi fundar uma comunidade, nÃ£o de outros cÃ£es, mas de almas dispostas a enxergar alÃ©m da minha aparÃªncia fÃ­sica.</p>
 
             <div class="story-grid">
                 <div class="story-card text-card">
                     <div class="story-year">Origem</div>
-                    <h3 class="story-heading">Primeira Faísca</h3>
-                    <p class="story-text">Começamos como piada interna, unindo amor por pugs com a curiosidade cripto.</p>
+                    <h3 class="story-heading">Primeira FaÃ­sca</h3>
+                    <p class="story-text">ComeÃ§amos como piada interna, unindo amor por pugs com a curiosidade cripto.</p>
                 </div>
                 <div class="story-card text-card">
-                    <div class="story-year">2. O Exílio e o Silêncio</div>
+                    <div class="story-year">2. O ExÃ­lio e o SilÃªncio</div>
                     <h3 class="story-heading">Crescer Longe da Ninhada</h3>
-                    <p class="story-text">Fui separado cedo, longe do calor materno, enviado a terras estranhas como companheiro. Cresci sentindo o frio da solidão, passei “aniversários de cachorro” sozinho, olhando o mundo por grades e janelas vazias. No silêncio, ergui meu refúgio: uma cidadela mental onde as leis do mundo não se aplicam.</p>
+                    <p class="story-text">Fui separado cedo, longe do calor materno, enviado a terras estranhas como companheiro. Cresci sentindo o frio da solidÃ£o, passei â€œaniversÃ¡rios de cachorroâ€ sozinho, olhando o mundo por grades e janelas vazias. No silÃªncio, ergui meu refÃºgio: uma cidadela mental onde as leis do mundo nÃ£o se aplicam.</p>
                 </div>
                 <div class="story-card text-card">
                     <div class="story-year">Agora</div>
-                    <h3 class="story-heading">Legado em Construção</h3>
-                    <p class="story-text">NFTs, oráculos e integrações Solana dão utilidade real e sustentam o movimento.</p>
+                    <h3 class="story-heading">Legado em ConstruÃ§Ã£o</h3>
+                    <p class="story-text">NFTs, orÃ¡culos e integraÃ§Ãµes Solana dÃ£o utilidade real e sustentam o movimento.</p>
                 </div>
                 <div class="story-card">
                     <img src="WhatsApp Image 2025-12-31 at 14.05.37 dt.jpeg" alt="PUGMEM obra em progresso 1">
@@ -3334,9 +3461,9 @@
     <section class="community-section" id="community">
         <div class="community-container">
             <div class="community-header">
-                <h2 class="community-title">Junte-se à Comunidade</h2>
+                <h2 class="community-title">Junte-se Ã  Comunidade</h2>
                 <p class="community-subtitle">
-                    Seja parte da família PUG mais neo-brutalist do Web3
+                    Seja parte da famÃ­lia PUG mais neo-brutalist do Web3
                 </p>
             </div>
 
@@ -3344,31 +3471,31 @@
                 <a class="feature-card" href="https://x.com/Pugmem" target="_blank" rel="noopener noreferrer">
                     <img src="https://abs.twimg.com/icons/apple-touch-icon-192x192.png" alt="Twitter" class="feature-icon">
                     <h3 class="feature-title">Twitter</h3>
-                    <p class="feature-desc">Siga nossas atualizações diárias, memes exclusivos e anúncios importantes.</p>
+                    <p class="feature-desc">Siga nossas atualizaÃ§Ãµes diÃ¡rias, memes exclusivos e anÃºncios importantes.</p>
                 </a>
 
                 <a class="feature-card" href="https://t.me/pugmem" target="_blank" rel="noopener noreferrer">
                     <img src="https://telegram.org/img/t_logo.png" alt="Telegram" class="feature-icon">
                     <h3 class="feature-title">Telegram</h3>
-                    <p class="feature-desc">Receba alertas instantâneos sobre preços e notícias importantes.</p>
+                    <p class="feature-desc">Receba alertas instantÃ¢neos sobre preÃ§os e notÃ­cias importantes.</p>
                 </a>
 
                 <a class="feature-card" href="https://www.tiktok.com/@pugmeme.io?_r=1&_t=ZS-92glQYLE7U7" target="_blank" rel="noopener noreferrer">
                     <img src="https://www.tiktok.com/favicon.ico" alt="TikTok" class="feature-icon">
                     <h3 class="feature-title">TikTok</h3>
-                    <p class="feature-desc">Vídeos curtos e divertidos sobre o mundo PugMeme e crypto.</p>
+                    <p class="feature-desc">VÃ­deos curtos e divertidos sobre o mundo PugMeme e crypto.</p>
                 </a>
 
                 <a class="feature-card" href="https://www.reddit.com/u/pugmemeio/s/NXVbGnHV4l" target="_blank" rel="noopener noreferrer">
                     <img src="https://www.redditstatic.com/desktop2x/img/favicon/android-icon-192x192.png" alt="Reddit" class="feature-icon">
                     <h3 class="feature-title">Reddit</h3>
-                    <p class="feature-desc">Discussões profundas e memes da comunidade no r/PugMeme.</p>
+                    <p class="feature-desc">DiscussÃµes profundas e memes da comunidade no r/PugMeme.</p>
                 </a>
 
                 <a class="feature-card" href="https://naming.bonfida.org/#/" target="_blank" rel="noopener noreferrer">
                     <img src="https://bonfida.org/favicon.ico" alt="Bonfida" class="feature-icon">
-                    <h3 class="feature-title">Domínios .pug</h3>
-                    <p class="feature-desc">Registre seu domínio .pug via Bonfida e vincule sua identidade Solana à matilha.</p>
+                    <h3 class="feature-title">DomÃ­nios .pug</h3>
+                    <p class="feature-desc">Registre seu domÃ­nio .pug via Bonfida e vincule sua identidade Solana Ã  matilha.</p>
                 </a>
             </div>
         </div>
@@ -3379,8 +3506,8 @@
         <div class="elon-container">
             <div class="elon-card">
                 <div class="elon-header">
-                    <h2 class="elon-title">🔭 Elon no X</h2>
-                    <p class="elon-subtitle">Feed ao vivo do perfil @elonmusk direto na página. Atualizações automáticas pelo widget oficial do X.</p>
+                    <h2 class="elon-title">ðŸ”­ Elon no X</h2>
+                    <p class="elon-subtitle">Feed ao vivo do perfil @elonmusk direto na pÃ¡gina. AtualizaÃ§Ãµes automÃ¡ticas pelo widget oficial do X.</p>
                 </div>
                 <div class="elon-media">
                     <video src="WhatsApp%20Video%202026-01-01%20at%2017.24.04.mp4" autoplay loop muted playsinline aria-label="Clip Elon no painel" loading="lazy"></video>
@@ -3396,9 +3523,10 @@
     <section class="gallery-section" id="gallery">
         <div class="gallery-container">
             <div class="gallery-header">
-                <h2 class="gallery-title">🏆 Coleção NFT Exclusiva</h2>
+                <div class="badge-neon">Modelo Neon</div>
+                <h2 class="gallery-title">ðŸ† ColeÃ§Ã£o NFT Exclusiva</h2>
                 <p class="gallery-subtitle">
-                    Seis peças únicas da comunidade PugMeme, com raridades e utilidades Web3. Explore, veja detalhes e prepare sua carteira para mintar.
+                    Seis peÃ§as Ãºnicas da comunidade PugMeme, com raridades e utilidades Web3. Explore, veja detalhes e prepare sua carteira para mintar.
                 </p>
             </div>
 
@@ -3416,8 +3544,8 @@
                         <div class="nft-badge">Legendary</div>
                     </div>
                     <div class="nft-info">
-                        <h3 class="nft-title">🐕 Pug Legend</h3>
-                        <p class="nft-description">O pug lendário que iniciou tudo. Raridade máxima e perks de governança.</p>
+                        <h3 class="nft-title">ðŸ• Pug Legend</h3>
+                        <p class="nft-description">O pug lendÃ¡rio que iniciou tudo. Raridade mÃ¡xima e perks de governanÃ§a.</p>
                         <div class="nft-meta">
                             <div class="nft-price">0.5 SOL</div>
                             <div class="nft-rarity">1/1</div>
@@ -3436,8 +3564,8 @@
                         <div class="nft-badge">Epic</div>
                     </div>
                     <div class="nft-info">
-                        <h3 class="nft-title">📸 Pug Moment 2</h3>
-                        <p class="nft-description">Registro épico da matilha PugMeme. Utilidade: acesso antecipado a drops.</p>
+                        <h3 class="nft-title">ðŸ“¸ Pug Moment 2</h3>
+                        <p class="nft-description">Registro Ã©pico da matilha PugMeme. Utilidade: acesso antecipado a drops.</p>
                         <div class="nft-meta">
                             <div class="nft-price">0.3 SOL</div>
                             <div class="nft-rarity">5/10</div>
@@ -3456,8 +3584,8 @@
                         <div class="nft-badge">Rare</div>
                     </div>
                     <div class="nft-info">
-                        <h3 class="nft-title">🚀 Pug Boost</h3>
-                        <p class="nft-description">Pug em modo boost. Bônus de XP em quests comunitárias.</p>
+                        <h3 class="nft-title">ðŸš€ Pug Boost</h3>
+                        <p class="nft-description">Pug em modo boost. BÃ´nus de XP em quests comunitÃ¡rias.</p>
                         <div class="nft-meta">
                             <div class="nft-price">0.2 SOL</div>
                             <div class="nft-rarity">20/50</div>
@@ -3476,7 +3604,7 @@
                         <div class="nft-badge">Rare</div>
                     </div>
                     <div class="nft-info">
-                        <h3 class="nft-title">👑 Meme Lord</h3>
+                        <h3 class="nft-title">ðŸ‘‘ Meme Lord</h3>
                         <p class="nft-description">O senhor dos memes da matilha. Garantia de destaque em eventos.</p>
                         <div class="nft-meta">
                             <div class="nft-price">0.18 SOL</div>
@@ -3496,8 +3624,8 @@
                         <div class="nft-badge">Uncommon</div>
                     </div>
                     <div class="nft-info">
-                        <h3 class="nft-title">🎨 Artist Pug</h3>
-                        <p class="nft-description">O artista oficial do clã. Descontos em mints colaborativos.</p>
+                        <h3 class="nft-title">ðŸŽ¨ Artist Pug</h3>
+                        <p class="nft-description">O artista oficial do clÃ£. Descontos em mints colaborativos.</p>
                         <div class="nft-meta">
                             <div class="nft-price">0.12 SOL</div>
                             <div class="nft-rarity">50/100</div>
@@ -3516,8 +3644,8 @@
                         <div class="nft-badge">Common</div>
                     </div>
                     <div class="nft-info">
-                        <h3 class="nft-title">❤️ Community Pug</h3>
-                        <p class="nft-description">Herói da comunidade com coração gigante. Representa a união da matilha.</p>
+                        <h3 class="nft-title">â¤ï¸ Community Pug</h3>
+                        <p class="nft-description">HerÃ³i da comunidade com coraÃ§Ã£o gigante. Representa a uniÃ£o da matilha.</p>
                         <div class="nft-meta">
                             <div class="nft-price">0.08 SOL</div>
                             <div class="nft-rarity">120/300</div>
@@ -3536,8 +3664,8 @@
                         <div class="nft-badge">Mythic</div>
                     </div>
                     <div class="nft-info">
-                        <h3 class="nft-title">🎥 Pug Drift</h3>
-                        <p class="nft-description">Clipe lendário do pug ao volante. Acesso VIP aos eventos ao vivo da matilha.</p>
+                        <h3 class="nft-title">ðŸŽ¥ Pug Drift</h3>
+                        <p class="nft-description">Clipe lendÃ¡rio do pug ao volante. Acesso VIP aos eventos ao vivo da matilha.</p>
                         <div class="nft-meta">
                             <div class="nft-price">0.65 SOL</div>
                             <div class="nft-rarity">3/10</div>
@@ -3561,7 +3689,7 @@
                     <p>A memecoin neo-brutalist que combina fofura canina com tecnologia Web3 de ponta.</p>
                 </div>
                 <div class="footer-section">
-                    <h4>🏆 Coleção</h4>
+                    <h4>ðŸ† ColeÃ§Ã£o</h4>
                     <ul class="footer-links">
                         <li><a href="#tokenomics">Tokenomics</a></li>
                         <li><a href="#mint">Mint</a></li>
@@ -3570,24 +3698,24 @@
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>🌟 Comunidade</h4>
+                    <h4>ðŸŒŸ Comunidade</h4>
                     <ul class="footer-links">
                         <li><a href="https://x.com/Pugmem" target="_blank" rel="noopener noreferrer">Twitter</a></li>
                         <li><a href="https://t.me/pugmem" target="_blank" rel="noopener noreferrer">Telegram</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>📚 Recursos</h4>
+                    <h4>ðŸ“š Recursos</h4>
                     <ul class="footer-links">
                         <li><a href="#whitepaper">Whitepaper</a></li>
-                        <li><a href="#docs">Documentação</a></li>
-                        <li><a href="mailto:pugmemeoficial@gmail.com">Suporte · pugmemeoficial@gmail.com</a></li>
+                        <li><a href="#docs">DocumentaÃ§Ã£o</a></li>
+                        <li><a href="mailto:pugmemeoficial@gmail.com">Suporte Â· pugmemeoficial@gmail.com</a></li>
                         <li><a href="#faq">FAQ</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2025 $PUGMEM. Feito com ❤️ para amantes de pugs | Todos os direitos reservados</p>
+                <p>Â© 2025 $PUGMEM. Feito com â¤ï¸ para amantes de pugs | Todos os direitos reservados</p>
             </div>
         </div>
     </footer>
