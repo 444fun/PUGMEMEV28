@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>PUG Web3 Memes - Solana Memecoin</title>
+	<meta name="description" content="Join the PUG Web3 Memes revolution on Solana with NFTs, memes, and AI-powered features.">
+	<meta name="keywords" content="PUG, Web3, Memes, Solana, NFTs, Memecoin">
+	<meta property="og:title" content="PUG Web3 Memes">
+	<meta property="og:description" content="Solana-powered memecoin with NFTs and memes.">
+	<meta property="og:image" content="pug-hero.jpg">
+	<meta property="og:url" content="https://yourdomain.com">
+
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+	<!-- Favicon -->
+	<link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+	<!-- Styles -->
+	<link rel="stylesheet" href="styles-web3.css">
+
+	<!-- Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-4Q7LXSL53E"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'G-4Q7LXSL53E');
+	</script>
+</head>
+<body>
+	<!-- Hero Section -->
+	<section class="hero" id="hero">
+		<div class="hero-container">
+			<div class="hero-badge">PUG</div>
+			<h1 class="hero-title">PUG Web3 Memes</h1>
+			<p class="hero-subtitle">Solana Memecoin with NFTs and Memes</p>
+			<div class="hero-stats">
+				<div class="stat-item">
+					<span class="stat-number">1B</span>
+					<span class="stat-label">Supply</span>
+				</div>
+				<!-- Add more stats as needed -->
+			</div>
+			<div class="hero-buttons">
+				<button class="btn-primary" id="connectWallet">Connect Wallet</button>
+			</div>
+		</div>
+	</section>
+
+	<!-- Tokenomics Section -->
+	<section class="tokenomics" id="tokenomics">
+		<div class="container">
+			<h2>Tokenomics</h2>
+			<!-- Tokenomics content -->
+		</div>
+	</section>
+
+	<!-- NFT Showcase Section -->
+	<section class="nft-showcase" id="nft-showcase">
+		<div class="container">
+			<h2>NFT Showcase</h2>
+			<div class="nft-grid">
+				<!-- NFT cards -->
+			</div>
+		</div>
+	</section>
+
+	<!-- Meme Gallery Section -->
+	<section class="meme-gallery" id="meme-gallery">
+		<div class="container">
+			<h2>Meme Gallery</h2>
+			<div class="meme-grid">
+				<!-- Meme cards -->
+			</div>
+		</div>
+	</section>
+
+	<!-- Tech-Lab Radar Section -->
+	<section class="tech-lab" id="tech-lab">
+		<div class="container">
+			<h2>Tech Lab Radar</h2>
+			<div class="radar">
+				<!-- Tech cards -->
+			</div>
+		</div>
+	</section>
+
+	<!-- Oracle Section -->
+	<section class="oracle" id="oracle">
+		<div class="container">
+			<h2>Oracle</h2>
+			<button id="oracleButton">Get Prediction</button>
+			<div id="oracleQuote"></div>
+			<div id="oraclePredictions"></div>
+			<div id="oracleOrb"></div>
+		</div>
+	</section>
+
+	<!-- AI/Agent Shell Section -->
+	<section class="ai-shell" id="ai-shell">
+		<div class="container">
+			<h2>AI Agent Shell</h2>
+			<button id="agentLaunch">Launch Agent</button>
+			<div id="agentShell">
+				<div id="agentMessages"></div>
+				<form id="agentForm">
+					<input type="text" id="agentInput" placeholder="Ask the agent...">
+					<button type="submit">Send</button>
+				</form>
+			</div>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<footer class="footer" id="footer">
+		<div class="container">
+			<p>&copy; 2023 PUG Web3 Memes. All rights reserved.</p>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="script.js"></script>
+</body>
+</html>
