@@ -66,8 +66,10 @@ const TELEGRAM_CONFIG = {
 
 // CoinGecko Configuration
 const COINGECKO_CONFIG = {
-    apiKey: null,
+    apiKey: null, // Não necessário para API pública
     baseUrl: 'https://api.coingecko.com/api/v3',
+    contractAddress: 'EkPUWVb8ypF34YR9ncLMCmz8ttsXX2z8UMQefJhzpump',
+    updateInterval: 30000, // Atualizar a cada 30 segundos
     proApiKey: null
 };
 
@@ -2967,7 +2969,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 volume24h: document.getElementById('volume24h'),
                 liquidity: document.getElementById('liquidity'),
                 holdersCount: document.getElementById('holdersCount'),
-                status: document.getElementById('priceStatus')
+                status: document.getElementById('priceStatus'),
+                lastUpdate: document.getElementById('lastUpdate')
             };
 
             this.init();
@@ -2988,7 +2991,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         async loadRealPriceData() {
             try {
-                // Tenta carregar dados do DexScreener (mais confiável)
+                // Tenta carregar dados do CoinGecko primeiro (mais confiável)
+                const coinGeckoData = await this.fetchCoinGeckoPrice();
+                if (coinGeckoData) {
+                    this.updateWithRealData(coinGeckoData);
+                    this.isUsingRealData = true;
+                    console.log('📊 Usando dados reais do CoinGecko');
+                    return;
+                }
+
+                // Fallback para DexScreener
                 const dexscreenerData = await this.fetchDexScreenerData();
                 if (dexscreenerData) {
                     this.updateWithRealData(dexscreenerData);
@@ -3057,13 +3069,65 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        async fetchCoinGeckoPrice(retries = 3) {
+            for (let attempt = 1; attempt <= retries; attempt++) {
+                try {
+                    const url = `${COINGECKO_CONFIG.baseUrl}/coins/solana/contract/${COINGECKO_CONFIG.contractAddress}`;
+                    
+                    const response = await fetch(url, {
+                        method: 'GET',
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`CoinGecko API error: ${response.status}`);
+                    }
+
+                    const data = await response.json();
+
+                    return {
+                        price: data.market_data?.current_price?.usd || 0,
+                        priceChange24h: data.market_data?.price_change_percentage_24h || 0,
+                        marketCap: data.market_data?.market_cap?.usd || 0,
+                        volume24h: data.market_data?.total_volume?.usd || 0,
+                        circulatingSupply: data.market_data?.circulating_supply || 0,
+                        totalSupply: data.market_data?.total_supply || 0,
+                        lastUpdated: new Date(data.market_data?.last_updated)
+                    };
+                } catch (error) {
+                    console.error(`Tentativa ${attempt}/${retries} falhou:`, error);
+                    
+                    if (attempt === retries) {
+                        // Exibir notificação ao usuário
+                        if (typeof showNotification === 'function') {
+                            showNotification('⚠️ Dados de preço temporariamente indisponíveis', 'warning');
+                        }
+                        return null;
+                    }
+                    
+                    // Aguardar 2s antes de tentar novamente
+                    await new Promise(resolve => setTimeout(resolve, 2000));
+                }
+            }
+            return null;
+        }
+
         updateWithRealData(data) {
             this.currentPrice = data.price || this.basePrice;
+            this.isUsingRealData = true;
 
+            // Atualizar preço
             if (this.elements.price) {
                 this.elements.price.textContent = this.formatPrice(this.currentPrice);
+                // Adicionar badge "LIVE"
+                if (!this.elements.price.classList.contains('live')) {
+                    this.elements.price.classList.add('live');
+                }
             }
 
+            // Atualizar variação 24h
             if (this.elements.change && data.priceChange24h !== undefined) {
                 const changeElement = this.elements.change;
                 const isPositive = data.priceChange24h >= 0;
@@ -3076,10 +3140,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (changeValue) changeValue.textContent = `${isPositive ? '+' : ''}${data.priceChange24h.toFixed(2)}%`;
             }
 
+            // Atualizar Market Cap
             if (this.elements.marketCap && data.marketCap) {
                 this.elements.marketCap.textContent = this.formatCurrency(data.marketCap);
             }
 
+            // Atualizar Volume 24h
             if (this.elements.volume24h && data.volume24h) {
                 this.elements.volume24h.textContent = this.formatCurrency(data.volume24h);
             }
@@ -3092,6 +3158,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (this.elements.holdersCount) {
                 this.elements.holdersCount.textContent = this.formatNumber(1337 + Math.floor(Math.random() * 500));
             }
+
+            // Atualizar timestamp
+            if (this.elements.lastUpdate && data.lastUpdated) {
+                this.elements.lastUpdate.textContent = `Atualizado: ${data.lastUpdated.toLocaleTimeString('pt-BR')}`;
+            }
+
+            console.log('✅ Dados do CoinGecko atualizados:', data);
         }
 
         generatePriceChange() {
@@ -3196,18 +3269,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         startLiveUpdates() {
-            // Atualiza preço a cada 5-10 segundos
+            // Atualiza preço a cada 5-10 segundos (simulação/pequenas variações)
             const updateInterval = this.isUsingRealData ? 10000 : 5000; // Menos frequente com dados reais
             setInterval(() => {
                 this.updatePrice();
             }, updateInterval);
 
-            // Atualiza dados reais a cada 30 segundos se disponível
-            if (this.isUsingRealData) {
-                setInterval(async () => {
-                    await this.loadRealPriceData();
-                }, 30000);
-            }
+            // Atualiza dados reais a cada 30 segundos usando CoinGecko
+            setInterval(async () => {
+                await this.loadRealPriceData();
+            }, COINGECKO_CONFIG.updateInterval);
 
             // Pisca o indicador de status
             if (this.elements.status) {
