@@ -945,22 +945,243 @@ body::after {
 
 @media (max-width: 480px) {
     .solana-emblem {
-        font-size: 28px;
+        font-size: 22px;
     }
 
     .solana-emblem img {
-        width: 1em;
-        height: 1em;
+        width: 0.9em;
+        height: 0.9em;
     }
 
     .solana-emblem-secondary {
-        font-size: 28px;
-        margin-left: 15px;
+        font-size: 22px;
+        margin-left: 10px;
     }
 
     .solana-emblem-secondary img {
-        width: 1em;
-        height: 1em;
+        width: 0.9em;
+        height: 0.9em;
+    }
+
+    .hero-title {
+        font-size: 32px;
+        margin-bottom: 16px;
+    }
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 24px;
+    }
+    .hero-photo {
+        width: 160px;
+        height: 100px;
+        margin-top: 20px;
+    }
+    .hero-stats {
+        gap: 16px;
+        margin-bottom: 24px;
+    }
+    .premium-stats {
+        gap: 10px;
+    }
+    .premium-stats .stat-item {
+        padding: 12px 8px;
+        min-width: 120px;
+    }
+    .premium-stats .stat-number {
+        font-size: 18px;
+    }
+    .section-title {
+        font-size: 22px;
+        margin-bottom: 24px;
+    }
+    .nft-grid, .meme-grid, .token-grid, .info-grid, .tech-grid, .community-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    .nft-card, .meme-card, .token-card, .info-card, .tech-card, .community-card {
+        padding: 12px;
+        border-radius: 12px;
+        min-height: 120px;
+    }
+    .nft-image-container, .meme-image-wrapper {
+        height: 160px;
+    }
+    .nft-title, .meme-title, .token-card strong, .info-card h3, .tech-card h3 {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+    .btn-primary, .btn-secondary, .btn-buy, .btn-view, .btn-upload {
+        padding: 12px 16px;
+        font-size: 15px;
+        border-radius: 10px;
+    }
+    .filter-btn {
+        padding: 8px 12px;
+        font-size: 13px;
+        border-radius: 16px;
+    }
+    .hero-chip-row {
+        gap: 8px;
+        margin-top: 12px;
+    }
+    .hero-chip {
+        padding: 10px 8px;
+        min-width: 100px;
+        font-size: 11px;
+    }
+    .address-chip {
+        padding: 10px 8px;
+        gap: 8px;
+        min-width: 100px;
+    }
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    .footer-section h4 {
+        font-size: 15px;
+        margin-bottom: 10px;
+    }
+    .footer-section p {
+        font-size: 13px;
+        margin-bottom: 8px;
+    }
+    .social-link {
+        padding: 8px 10px;
+        font-size: 13px;
+        border-radius: 8px;
+    }
+    .footer-bottom {
+        font-size: 12px;
+        padding-top: 12px;
+    }
+    .oracle-orb {
+        width: 90px;
+        height: 90px;
+    }
+    .oracle-header h2 {
+        font-size: 20px;
+    }
+    .oracle-quote {
+        font-size: 13px;
+        margin-bottom: 10px;
+    }
+    .oracle-predictions {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    .oracle-prediction {
+        font-size: 11px;
+        padding: 8px;
+    }
+    .ai-agent-card {
+        padding: 12px;
+        border-radius: 12px;
+    }
+    .ai-chat-shell {
+        min-height: 120px;
+        max-height: 220px;
+    }
+    .ai-messages {
+        padding: 8px;
+        gap: 6px;
+    }
+    .ai-message {
+        font-size: 12px;
+        padding: 8px 10px;
+        border-radius: 10px;
+    }
+    .ai-form {
+        padding: 8px;
+        gap: 6px;
+    }
+    .ai-form input {
+        padding: 8px 10px;
+        border-radius: 8px;
+    }
+    .tech-lab {
+        padding: 40px 0 30px;
+    }
+    .tech-header h2 {
+        font-size: 18px;
+        margin-bottom: 6px;
+    }
+    .tech-header p {
+        font-size: 13px;
+        margin-bottom: 6px;
+    }
+    .radar-message {
+        font-size: 11px;
+        padding: 8px;
+        border-radius: 40px;
+    }
+    .community-title {
+        font-size: 28px;
+        margin-bottom: 8px;
+    }
+    .community-description {
+        font-size: 13px;
+        margin-bottom: 10px;
+    }
+    .header-panel {
+        padding: 18px 10px;
+        border-radius: 16px;
+    }
+    .header-stat {
+        padding: 8px 10px;
+        min-width: 60px;
+        font-size: 12px;
+    }
+    .stat-number {
+        font-size: 15px;
+    }
+    .stat-label {
+        font-size: 10px;
+    }
+    .contract-panel {
+        padding: 30px 0;
+    }
+    .contract-panel-title {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+    }
+    .contract-address-card {
+        padding: 12px;
+        border-radius: 10px;
+    }
+    .address-code {
+        font-size: 0.8rem;
+        padding: 8px;
+        border-radius: 8px;
+    }
+    .contract-address-actions {
+        gap: 8px;
+    }
+    .contract-copy-btn, .contract-explorer-btn, .contract-pump-btn {
+        padding: 8px 10px;
+        font-size: 12px;
+        border-radius: 8px;
+    }
+    .calendar-container iframe {
+        height: 220px;
+    }
+    .disclaimer-content {
+        padding: 10px 6px;
+        border-radius: 10px;
+        gap: 8px;
+    }
+    .disclaimer-icon {
+        font-size: 28px;
+    }
+    .disclaimer-text h3 {
+        font-size: 15px;
+    }
+    .disclaimer-text p {
+        font-size: 12px;
+    }
+    .disclaimer-note {
+        font-size: 11px;
+        padding-left: 8px;
     }
 }
 

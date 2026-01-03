@@ -2841,21 +2841,7 @@
             }
 
             .nav-links {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 10px;
-                justify-content: center;
-                width: 100%;
-            }
-
-            .navbar {
-                flex-wrap: wrap;
-                gap: 12px;
-                padding: 14px;
-            }
-
-            .hero-container {
-                padding: 0 16px;
+                display: none;
             }
 
             .features-grid {
@@ -3746,9 +3732,10 @@
 
         document.addEventListener('DOMContentLoaded', function () {
             if (window.TradingView && document.getElementById('chartWidget')) {
+                // Widget TradingView para SPL Token (PUGMEM)
                 new TradingView.widget({
                     autosize: true,
-                    symbol: "SOLUSDT",
+                    symbol: "BINANCE:SOLUSDT", // fallback para SOL/USDT
                     interval: "30",
                     timezone: "Etc/UTC",
                     theme: "light",
@@ -3760,6 +3747,12 @@
                     hide_legend: false,
                     container_id: "chartWidget"
                 });
+
+                // Adiciona embed do DEXScreener para o token SPL
+                const chartWidget = document.getElementById('chartWidget');
+                if (chartWidget) {
+                    chartWidget.innerHTML = `<iframe style="width:100%;height:500px;border:0;border-radius:10px;overflow:hidden;background:#fff" src="https://dexscreener.com/solana/EkPUWVb8ypF34YR9ncLMCmz8ttsXX2z8UMQefJhzpump?embed=1"></iframe>`;
+                }
             }
         });
 
