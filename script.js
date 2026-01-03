@@ -70,6 +70,7 @@ const COINGECKO_CONFIG = {
     baseUrl: 'https://api.coingecko.com/api/v3',
     contractAddress: 'EkPUWVb8ypF34YR9ncLMCmz8ttsXX2z8UMQefJhzpump',
     updateInterval: 30000, // Atualizar a cada 30 segundos
+    retryDelay: 2000, // Delay entre tentativas de retry (2 segundos)
     proApiKey: null
 };
 
@@ -2961,6 +2962,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.priceHistory = [this.basePrice];
             this.maxHistoryLength = 50;
             this.isUsingRealData = false;
+            this.isFetchingData = false; // Previne requisições sobrepostas
 
             this.elements = {
                 price: document.getElementById('pugPrice'),
@@ -2990,6 +2992,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         async loadRealPriceData() {
+            // Previne requisições sobrepostas
+            if (this.isFetchingData) {
+                console.log('⏳ Fetch já em andamento, ignorando requisição duplicada');
+                return;
+            }
+
+            this.isFetchingData = true;
+            
             try {
                 // Tenta carregar dados do CoinGecko primeiro (mais confiável)
                 const coinGeckoData = await this.fetchCoinGeckoPrice();
@@ -3021,6 +3031,8 @@ document.addEventListener('DOMContentLoaded', () => {
             } catch (error) {
                 console.log('⚠️ Erro ao carregar dados reais:', error);
                 this.isUsingRealData = false;
+            } finally {
+                this.isFetchingData = false;
             }
         }
 
@@ -3107,8 +3119,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         return null;
                     }
                     
-                    // Aguardar 2s antes de tentar novamente
-                    await new Promise(resolve => setTimeout(resolve, 2000));
+                    // Aguardar antes de tentar novamente
+                    await new Promise(resolve => setTimeout(resolve, COINGECKO_CONFIG.retryDelay));
                 }
             }
             return null;
