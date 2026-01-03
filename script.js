@@ -22,7 +22,7 @@ const METAPLEX_CONFIG = {
 
 // PUG Token Configuration
 // This is a PUBLIC Solana token address, not a secret API key
-const PUG_TOKEN_ADDRESS = 'GKKJkrCB8QEy7NwcNVwNa8avdywW6iCoNZpzaMtepump';
+const PUG_TOKEN_ADDRESS = 'EkPUWVb8ypF34YR9ncLMCmz8ttsXX2z8UMQefJhzpump';
 
 // IPFS Configuration
 const IPFS_CONFIG = {
