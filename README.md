@@ -3,6 +3,7 @@
 ## ✅ **STATUS: PRONTO PARA LANÇAMENTO**
 
 **Google Analytics Configurado:** `G-4Q7LXSL53E`
+**Endereço oficial do token (Solana):** `EkPUWVb8ypF34YR9ncLMCmz8ttsXX2z8UMQefJhzpump`
 **Última Atualização:** Dezembro 2025
 **Status de Produção:** ✅ Aprovado para Deploy
 **Verificação Pré-Deploy:** ✅ TODAS AS VERIFICAÇÕES APROVADAS
@@ -25,7 +26,7 @@
 - [x] Meta tags Open Graph completas
 - [x] Scripts Web3 do Solana carregados
 - [x] Função `connectWallet` implementada
-- [x] Contract chip com endereço Solana
+- [x] Contract chip com endereço Solana (`EkPUWVb8ypF34YR9ncLMCmz8ttsXX2z8UMQefJhzpump`)
 - [x] Botões sociais funcionais
 - [x] **🚀 Token Launch System** - Criar tokens SPL e adicionar liquidez
 
