@@ -9,3 +9,11 @@ yarn-error.log*
 
 # Vercel
 .vercel
+
+# Local artifacts
+*.zip
+index (1).html
+index (2).zip
+index .html
+index.zip
+my-app/
